@@ -12,7 +12,8 @@ extern "C" {
 /* Defines ------------------------------------------------------------------*/
 
 /* Prototypes ------------------------------------------------------------------*/
-void one_step (uint8_t dir);
+void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
+void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
 
 #ifdef __cplusplus
 }

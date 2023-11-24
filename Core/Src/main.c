@@ -20,15 +20,15 @@
 #include "main.h"
 #include "i2c.h"
 #include "tim.h"
-#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
 #include "ssd1306_interface.h"
-#include <string.h>
-#include <stdio.h>
+#include "button.h"
+#include "drive.h"
+#include "eeprom.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,13 +49,34 @@
 
 /* USER CODE BEGIN PV */
 char DBG_buffer [30];
+char LCD_buff[20];
+
+__IO uint16_t degree = 0; 
+__IO uint8_t minute = 0; 
+__IO uint8_t second = 0;
+
+__IO int32_t prevCounter = 0;
+__IO int32_t currCounter = 0;
+
+__IO uint16_t key_code = NO_KEY;
+
+uint8_t LCD_X = LCD_DEFAULT_X_SIZE; 
+uint8_t LCD_Y = LCD_DEFAULT_Y_SIZE;
+
+uint8_t rd_value[20] = {0};
+uint8_t wr_value[20] = {0xCA,0xFE,0xDE,0xAD,0x10,
+                        0x0F,0x0E,0x0D,0x0C,0x0B,
+                        0x0A,0x09,0x08,0x07,0x06,
+                        0x05,0x04,0x03,0x02,0x01};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-void delay_us(uint16_t );
-void tim_delay_init (void);
+void loop(void);
+extern void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
+extern void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
+												
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -92,39 +113,32 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+	encoder_init();
 	tim_delay_init ();
-	sprintf (DBG_buffer, (char *)"start\r\n");
-	DBG_PutString(DBG_buffer);
-	
-	/*SSD1306_Init();
-  SSD1306_ClearScreen();
-  while(SSD1306_IsReady() == 0){}*/
 	HAL_Delay(100);
 	
 	SSD1306_Init();
 	ssd1306_Clear();
 	
-	ssd1306_Goto(0,0);
-	ssd1306_PutString("Hello Drive 2!");
-//	while(SSD1306_IsReady() == 0){}
-		
-/*	ssd1306_Goto(0,1);
-	ssd1306_PutString("I2C BUS OLED SSD1306");
-//	while(SSD1306_IsReady() == 0){}
-		
-	ssd1306_Goto(0,2);
-	ssd1306_PutString ("LCD OLED 128x32");
-///	while(SSD1306_IsReady() == 0){}*/
-		
-	HAL_Delay (500);
-	sprintf (DBG_buffer, (char *)"display_ready\r\n");
-	DBG_PutString(DBG_buffer);
+	ssd1306_Goto(LCD_X, LCD_Y);
+	sprintf (LCD_buff, "%02d, %02d, %02d",  degree, minute, second);
+	ssd1306_PutString(LCD_buff);
+	HAL_Delay (20);
+	
+	EEPROM_WriteBytes (0x0000, wr_value, 20);
+	HAL_Delay (50);
+	EEPROM_WriteBytes (0x0001, wr_value, 20);
+
+	/*ssd1306_Goto(LCD_X, LCD_Y+1);
+	sprintf (LCD_buff, "_");
+	ssd1306_PutString(LCD_buff);*/
+	//while(SSD1306_IsReady() == 0){}				
 		
 	DRIVE_ENABLE(OFF);
 	STEP(OFF);
+	
 	HAL_Delay (100);
   /* USER CODE END 2 */
 
@@ -135,34 +149,59 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	/*	for (uint8_t  i = 0; i < 8; i++)
-    {
-      SSD1306_DrawFilledRect(i * 8, i * 8 + 2, 8, 12);
-      SSD1306_UpdateScreen();
-			while(SSD1306_IsReady() == 0){}      
-      HAL_Delay(25);
-    }*/
-    
-//		SSD1306_ClearScreen();
-//    while(SSD1306_IsReady() == 0);
-				
-		sprintf (DBG_buffer, (char *)"continue\r\n");
-		DBG_PutString(DBG_buffer);
-		
-/*		DRIVE_ENABLE(ON);
-		delay_us (5);
-		DIR_DRIVE (FORWARD);
-		delay_us (5);
-		for (uint8_t  i = 0; i < 5; i++)
-    {
-			STEP(ON);
-			delay_us (3);
-			STEP(OFF);
-			delay_us (3);
+		for (uint8_t count = 0; count <0xFF; count++)
+		{
+		//	loop() ;
+			if ((key_code = scan_keys()) != NO_KEY)
+			{		
+				switch (key_code)
+				{
+					case NO_KEY:
+						break;
+					
+					case KEY_LEFT:						
+						one_step (BACKWARD);	
+						ssd1306_Clear();	
+						ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+						snprintf(LCD_buff, sizeof(LCD_buff), "key=%03d", key_code);
+						ssd1306_PutString(LCD_buff);
+						break;
+					
+					case KEY_CENTER:
+					//	rd_value[0]=rd_value[1]=rd_value[2]=0x1;
+						//EEPROM_WriteBytes (0x00A7, wr_value, 10);
+					//	EEPROM_WriteBytes (0x0008, wr_value, 10);
+						//HAL_Delay (20);
+						for (uint8_t count = 0x00; count<0x03; count++)
+							EEPROM_ReadBytes (count, rd_value, 20);
+						
+						//ssd1306_Clear();	
+						//ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+						//snprintf(LCD_buff, sizeof(LCD_buff), "data=%x%x%x", rd_value[0], rd_value[1], rd_value[2]);
+					//	ssd1306_PutString(LCD_buff);
+						break;
+					
+					case KEY_RIGHT:
+						one_step (FORWARD);
+						ssd1306_Clear();	
+						ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+						snprintf(LCD_buff, sizeof(LCD_buff), "key=%03d", key_code);
+						ssd1306_PutString(LCD_buff);
+						break;
+					
+					case KEY_ENC:
+						break;
+					
+					default:
+						break;					
+				}
+			/*	ssd1306_Clear();	
+				ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+				snprintf(LCD_buff, sizeof(LCD_buff), "key=%03d", key_code);
+				ssd1306_PutString(LCD_buff);
+				key_code = NO_KEY;*/
+			}
 		}
-		DRIVE_ENABLE(OFF);
-		delay_us (5);*/
-		HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -204,8 +243,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1;
-  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
@@ -215,32 +253,67 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 //--------------------------------------------------------------------------------------------//
-void tim_delay_init (void)
+void loop(void) 
 {
-	LL_TIM_InitTypeDef TIM_InitStruct = {0};
-
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM14);   // Peripheral clock enable 
-
-  TIM_InitStruct.Prescaler = (48-1);
-  TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-  TIM_InitStruct.Autoreload = 0xFF;
-  TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
-  LL_TIM_Init(TIM14, &TIM_InitStruct);
-  LL_TIM_DisableARRPreload(TIM14);
+	currCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
+	currCounter = (32767 - ((currCounter-1) & 0x0FFFF))/2; //деление на 2, счёт щелчков (щелчок = 2 импульса)
+	int32_t need_step = 0;
+	int32_t delta = 0;
+	
+	if(currCounter != prevCounter) 
+	{
+		delta = (currCounter-prevCounter); //разница между текущим и предыдущим показанием энкодера
+    prevCounter = currCounter; //сохранение текущего показанаия энкодера    
+   // if((delta > -20) && (delta < 20)) // защита от дребезга контактов и переполнения счетчика (переполнение будет случаться очень редко)
+	
+		if (delta != 0)
+		{    
+		/*	ssd1306_Clear();	
+			ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+			snprintf(LCD_buff, sizeof(LCD_buff), "%06d %03d", currCounter, delta);
+			ssd1306_PutString(LCD_buff);*/
+			need_step = delta; //количество шагов
+			if (delta > 0)
+			{
+				DRIVE_ENABLE(ON);
+				delay_us (5);
+				DIR_DRIVE (FORWARD);
+				delay_us (5);
+				while (need_step > 0)
+				{
+					STEP(ON);
+					delay_us (3);
+					STEP(OFF);
+					delay_us (3);
+					need_step--;
+				}
+				DRIVE_ENABLE(OFF);
+				delay_us (2);
+			}
+			else
+			{
+				if (delta < 0)
+				{
+					DRIVE_ENABLE(ON);
+					delay_us (5);
+					DIR_DRIVE (BACKWARD);
+					delay_us (5);
+					while (need_step < 0)
+					{
+						STEP(ON);
+						delay_us (3);
+						STEP(OFF);
+						delay_us (3);
+						need_step++;
+					}
+					DRIVE_ENABLE(OFF);
+					delay_us (2);
+				}
+			}
+		}
+	}
 }
 
-//--------------------------------------------------------------------------------------------//
-void delay_us(uint16_t delay)
-{
-  LL_TIM_SetAutoReload(TIM14, delay); //
-	LL_TIM_ClearFlag_UPDATE(TIM14); //сброс флага обновления таймера
-	LL_TIM_SetCounter(TIM14, 0); //сброс счётного регистра
-	LL_TIM_EnableCounter(TIM14); //включение таймера
-	while (LL_TIM_IsActiveFlag_UPDATE(TIM14) == 0) {} //ожидание установки флага обновления таймера 
-	LL_TIM_DisableCounter(TIM14); //выключение таймера		
-}
-
-//--------------------------------------------------------------------------------------------//
 /* USER CODE END 4 */
 
 /**

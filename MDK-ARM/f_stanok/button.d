@@ -1,6 +1,5 @@
-f_stanok/ssd1306_interface.o: ..\display\ssd1306_interface.c \
-  ..\display\ssd1306_interface.h ..\Core\Inc\main.h \
-  ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h \
+f_stanok/button.o: ..\Core\Src\button.c ..\Core\Inc\button.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h \
   ..\Core\Inc\stm32f0xx_hal_conf.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_rcc.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_def.h \

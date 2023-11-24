@@ -71,16 +71,28 @@ void MX_GPIO_Init(void)
   LL_GPIO_Init(IN2_GPIO_Port, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = Button1_Pin;
+  GPIO_InitStruct.Pin = LEFT_BUTTON_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
-  LL_GPIO_Init(Button1_GPIO_Port, &GPIO_InitStruct);
+  LL_GPIO_Init(LEFT_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = Button2_Pin;
+  GPIO_InitStruct.Pin = CENTER_BUTTON_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
-  LL_GPIO_Init(Button2_GPIO_Port, &GPIO_InitStruct);
+  LL_GPIO_Init(CENTER_BUTTON_GPIO_Port, &GPIO_InitStruct);
+
+  /**/
+  GPIO_InitStruct.Pin = RIGHT_BUTTON_Pin;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
+  LL_GPIO_Init(RIGHT_BUTTON_GPIO_Port, &GPIO_InitStruct);
+
+  /**/
+  GPIO_InitStruct.Pin = ENCODER_BUTTON_Pin;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
+  LL_GPIO_Init(ENCODER_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
   /**/
   GPIO_InitStruct.Pin = PUL_Pin;

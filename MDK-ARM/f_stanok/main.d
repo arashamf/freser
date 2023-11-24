@@ -28,18 +28,17 @@ f_stanok/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr_ex.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_tim.h \
-  ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_usart.h \
-  ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_rcc.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_system.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_gpio.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_exti.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_bus.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_cortex.h \
+  ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_rcc.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_utils.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
-  ..\Core\Inc\i2c.h ..\Core\Inc\main.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\display\ssd1306.h \
-  ..\display\ssd1306_interface.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\i2c.h \
+  ..\Core\Inc\main.h ..\Core\Inc\tim.h ..\Core\Inc\gpio.h \
+  ..\display\ssd1306.h ..\display\ssd1306_interface.h \
+  ..\Core\Inc\button.h ..\Core\Inc\drive.h ..\Core\Inc\eeprom.h

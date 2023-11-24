@@ -30,20 +30,20 @@ extern "C" {
 #include "stm32f0xx_hal.h"
 
 #include "stm32f0xx_ll_tim.h"
-#include "stm32f0xx_ll_usart.h"
-#include "stm32f0xx_ll_rcc.h"
 #include "stm32f0xx_ll_system.h"
 #include "stm32f0xx_ll_gpio.h"
 #include "stm32f0xx_ll_exti.h"
 #include "stm32f0xx_ll_bus.h"
 #include "stm32f0xx_ll_cortex.h"
+#include "stm32f0xx_ll_rcc.h"
 #include "stm32f0xx_ll_utils.h"
 #include "stm32f0xx_ll_pwr.h"
 #include "stm32f0xx_ll_dma.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -73,10 +73,14 @@ void Error_Handler(void);
 #define IN1_GPIO_Port GPIOF
 #define IN2_Pin LL_GPIO_PIN_1
 #define IN2_GPIO_Port GPIOF
-#define Button1_Pin LL_GPIO_PIN_0
-#define Button1_GPIO_Port GPIOA
-#define Button2_Pin LL_GPIO_PIN_1
-#define Button2_GPIO_Port GPIOA
+#define LEFT_BUTTON_Pin LL_GPIO_PIN_0
+#define LEFT_BUTTON_GPIO_Port GPIOA
+#define CENTER_BUTTON_Pin LL_GPIO_PIN_1
+#define CENTER_BUTTON_GPIO_Port GPIOA
+#define RIGHT_BUTTON_Pin LL_GPIO_PIN_2
+#define RIGHT_BUTTON_GPIO_Port GPIOA
+#define ENCODER_BUTTON_Pin LL_GPIO_PIN_3
+#define ENCODER_BUTTON_GPIO_Port GPIOA
 #define PUL_Pin LL_GPIO_PIN_4
 #define PUL_GPIO_Port GPIOA
 #define DIR_Pin LL_GPIO_PIN_5

@@ -39,7 +39,9 @@ extern "C" {
 void MX_TIM3_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void encoder_init(void);
+void tim_delay_init (void);
+void delay_us(uint16_t);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
