@@ -52,8 +52,8 @@ char DBG_buffer [30];
 char LCD_buff[20];
 
 __IO uint16_t degree = 0; 
-__IO uint8_t minute = 0; 
-__IO uint8_t second = 0;
+__IO int8_t minute = 0; 
+__IO int8_t second = 0;
 
 __IO int32_t prevCounter = 0;
 __IO int32_t currCounter = 0;
@@ -63,11 +63,12 @@ __IO uint16_t key_code = NO_KEY;
 uint8_t LCD_X = LCD_DEFAULT_X_SIZE; 
 uint8_t LCD_Y = LCD_DEFAULT_Y_SIZE;
 
-uint8_t rd_value[20] = {0};
-uint8_t wr_value[20] = {0xCA,0xFE,0xDE,0xAD,0x10,
-                        0x0F,0x0E,0x0D,0x0C,0x0B,
+uint8_t eeprom_rx_buffer[20] = {0};
+/*uint8_t wr_value[20] = {0xCA,0xFE,0xDE,0xAD,0x10,
                         0x0A,0x09,0x08,0x07,0x06,
-                        0x05,0x04,0x03,0x02,0x01};
+												0x0F,0x0E,0x0D,0x0C,0x0B,
+                        0x05,0x04,0x03,0x02,0x01};*/
+static	uint8_t eeprom_tx_buffer[10];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,19 +124,13 @@ int main(void)
 	ssd1306_Clear();
 	
 	ssd1306_Goto(LCD_X, LCD_Y);
-	sprintf (LCD_buff, "%02d, %02d, %02d",  degree, minute, second);
+	snprintf (LCD_buff, sizeof(LCD_buff), "%02d, %02d, %02d",  degree, minute, second);
 	ssd1306_PutString(LCD_buff);
 	HAL_Delay (20);
 	
-	EEPROM_WriteBytes (0x0000, wr_value, 20);
-	HAL_Delay (50);
-	EEPROM_WriteBytes (0x0001, wr_value, 20);
+	/*EEPROM_WriteBytes (0x0000, wr_value, 10);
+	HAL_Delay (50);*/
 
-	/*ssd1306_Goto(LCD_X, LCD_Y+1);
-	sprintf (LCD_buff, "_");
-	ssd1306_PutString(LCD_buff);*/
-	//while(SSD1306_IsReady() == 0){}				
-		
 	DRIVE_ENABLE(OFF);
 	STEP(OFF);
 	
@@ -151,7 +146,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		for (uint8_t count = 0; count <0xFF; count++)
 		{
-		//	loop() ;
 			if ((key_code = scan_keys()) != NO_KEY)
 			{		
 				switch (key_code)
@@ -168,17 +162,12 @@ int main(void)
 						break;
 					
 					case KEY_CENTER:
-					//	rd_value[0]=rd_value[1]=rd_value[2]=0x1;
-						//EEPROM_WriteBytes (0x00A7, wr_value, 10);
-					//	EEPROM_WriteBytes (0x0008, wr_value, 10);
-						//HAL_Delay (20);
-						for (uint8_t count = 0x00; count<0x03; count++)
-							EEPROM_ReadBytes (count, rd_value, 20);
-						
-						//ssd1306_Clear();	
-						//ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
-						//snprintf(LCD_buff, sizeof(LCD_buff), "data=%x%x%x", rd_value[0], rd_value[1], rd_value[2]);
-					//	ssd1306_PutString(LCD_buff);
+						EEPROM_ReadBytes (0x00, eeprom_rx_buffer, 10);
+						ssd1306_Clear();	
+						ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+						snprintf(LCD_buff, sizeof(LCD_buff), "%x%x%x%x%x", eeprom_rx_buffer[0], eeprom_rx_buffer[1], 
+						eeprom_rx_buffer[2], eeprom_rx_buffer[3], eeprom_rx_buffer[4]);
+						ssd1306_PutString(LCD_buff);
 						break;
 					
 					case KEY_RIGHT:
@@ -190,16 +179,34 @@ int main(void)
 						break;
 					
 					case KEY_ENC:
+						while(1)
+						{
+							if ((key_code = scan_keys()) != KEY_ENC)
+							{	loop();	}
+							else
+							{
+							/*	ssd1306_Clear();	
+								ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+								snprintf (LCD_buff, sizeof(LCD_buff), "%02d, %02d, %02d",  degree, minute, second);
+								ssd1306_PutString(LCD_buff);*/							
+								break;
+							}
+						}
+						eeprom_tx_buffer[0]= (uint8_t)(second >> 8); //сначала старшая часть секунды
+						eeprom_tx_buffer[1]= (uint8_t)second; //младшая часть секунды
+						eeprom_tx_buffer[2]= (uint8_t)(minute >> 8); //сначала старшая часть минуты
+						eeprom_tx_buffer[3]= (uint8_t)minute; //младшая часть минуты
+						eeprom_tx_buffer[4]= (uint8_t)(degree>>24);
+						eeprom_tx_buffer[5]= (uint8_t)(degree>>16);
+						eeprom_tx_buffer[6]= (uint8_t)(degree>>8);
+						eeprom_tx_buffer[7]= (uint8_t)(degree);
 						break;
 					
 					default:
+						key_code = NO_KEY;
 						break;					
 				}
-			/*	ssd1306_Clear();	
-				ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
-				snprintf(LCD_buff, sizeof(LCD_buff), "key=%03d", key_code);
-				ssd1306_PutString(LCD_buff);
-				key_code = NO_KEY;*/
+				key_code = NO_KEY;
 			}
 		}
   }
@@ -257,7 +264,7 @@ void loop(void)
 {
 	currCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
 	currCounter = (32767 - ((currCounter-1) & 0x0FFFF))/2; //деление на 2, счёт щелчков (щелчок = 2 импульса)
-	int32_t need_step = 0;
+	//int32_t need_step = 0;
 	int32_t delta = 0;
 	
 	if(currCounter != prevCounter) 
@@ -266,50 +273,36 @@ void loop(void)
     prevCounter = currCounter; //сохранение текущего показанаия энкодера    
    // if((delta > -20) && (delta < 20)) // защита от дребезга контактов и переполнения счетчика (переполнение будет случаться очень редко)
 	
-		if (delta != 0)
+		if (delta != 0) //если изменилось положение энкодера
 		{    
-		/*	ssd1306_Clear();	
-			ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
-			snprintf(LCD_buff, sizeof(LCD_buff), "%06d %03d", currCounter, delta);
-			ssd1306_PutString(LCD_buff);*/
-			need_step = delta; //количество шагов
-			if (delta > 0)
-			{
-				DRIVE_ENABLE(ON);
-				delay_us (5);
-				DIR_DRIVE (FORWARD);
-				delay_us (5);
-				while (need_step > 0)
-				{
-					STEP(ON);
-					delay_us (3);
-					STEP(OFF);
-					delay_us (3);
-					need_step--;
+			minute += delta; //
+			if (minute < 0)
+			{			 
+				if (degree > 0)
+				{ 
+					degree--; 
+					minute = 59;
 				}
-				DRIVE_ENABLE(OFF);
-				delay_us (2);
+				else
+				{	
+					if (degree == 0)
+					{	minute = 0;	}
+				}
 			}
 			else
 			{
-				if (delta < 0)
+				if (minute > 59)
 				{
-					DRIVE_ENABLE(ON);
-					delay_us (5);
-					DIR_DRIVE (BACKWARD);
-					delay_us (5);
-					while (need_step < 0)
-					{
-						STEP(ON);
-						delay_us (3);
-						STEP(OFF);
-						delay_us (3);
-						need_step++;
-					}
-					DRIVE_ENABLE(OFF);
-					delay_us (2);
-				}
+					degree++;
+					if (degree >= 360)
+					{	degree = 0;	}
+					minute=0;
+				}				
 			}
+			ssd1306_Clear();	
+			ssd1306_Goto(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+			snprintf (LCD_buff, sizeof(LCD_buff), "%02d, %02d, %02d",  degree, minute, second);
+			ssd1306_PutString(LCD_buff);
 		}
 	}
 }
