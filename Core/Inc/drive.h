@@ -12,7 +12,8 @@ extern "C" {
 /* Defines ------------------------------------------------------------------*/
 
 /* Prototypes ------------------------------------------------------------------*/
-void one_step (uint8_t dir);
+void one_step (uint8_t );
+void step_angle (uint8_t , uint32_t );
 
 #ifdef __cplusplus
 }

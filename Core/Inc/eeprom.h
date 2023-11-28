@@ -1,6 +1,6 @@
 
-#ifndef __DRIVE_H__
-#define __DRIVE_H__
+#ifndef __EEPROM_H__
+#define __EEPROM_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,10 +14,11 @@ extern "C" {
 /* Prototypes ------------------------------------------------------------------*/
 void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
 void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
-
+void angle_to_EEPROMbuf (uint16_t , uint8_t , uint8_t , uint8_t *);
+void angle_from_EEPROMbuf (uint16_t , uint8_t , uint8_t , uint8_t *);
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __USART_H__ */
+#endif 
 

@@ -7,7 +7,6 @@
 /* Declarations and definitions ----------------------------------------------*/
 
 //SSD1306_State SSD1306_state = SSD1306_READY;
-//static uint8_t pixelBuffer[SSD1306_BUFFER_SIZE];
 static uint8_t temp_char[SIZE_TEMP_BUFFER];
 static uint8_t LCD_X=0, LCD_Y=0;
 
@@ -92,8 +91,8 @@ void ssd1306_PutChar(unsigned int c)
 	ssd1306_SendDataBuffer(temp_char, SIZE_TEMP_BUFFER);
 	
 	LCD_X += 8; //сдвиг по оси Х
-	if(LCD_X>SSD1306_X_SIZE ) //если вывалились за предел дисплея
-		{LCD_X = LCD_DEFAULT_X_SIZE;} //возврат в начало дисплея
+	if(LCD_X > SSD1306_X_SIZE) //если вывалились за предел дисплея
+	{	LCD_X = LCD_DEFAULT_X_SIZE;	} //возврат в начало дисплея
 }
 
 /*----------------------------------------------------------------------------*/
@@ -123,23 +122,23 @@ void ssd1306_num_to_str(unsigned int value, unsigned char nDigit)
 void ssd1306_Clear(void)
 {
 	unsigned short i;
-	unsigned short x=0;
-	unsigned short y=0;
+	unsigned short x = 0;
+	unsigned short y = 0;
 	ssd1306_Goto(0,0);
 
-	for (i=0; i<(SSD1306_BUFFER_SIZE ); i++) //(SSD1306_LCDWIDTH*SSD1306_LCDHEIGHT/8)
+	for (i=0; i<(SSD1306_BUFFER_SIZE ); i++) //перебор всех пикселей
 	{
-		ssd1306_PutChar(' ');
+		ssd1306_PutChar(' '); //запись пробела
 		x++;
-		if(x>SSD1306_X_SIZE)
+		if(x > SSD1306_X_SIZE) //если вышли за пределы дисплея
 		{
-			x =0;
+			x = 0;
 			y++;
-			ssd1306_Goto(0,y);
+			ssd1306_Goto(x, y);
 		}
 	}
 	LCD_X = LCD_DEFAULT_X_SIZE;
-	LCD_Y =0;
+	LCD_Y =	LCD_DEFAULT_Y_SIZE ;
 }
 
 /*----------------------------------------------------------------------------*/

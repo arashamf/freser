@@ -4,7 +4,7 @@
 #include "gpio.h"
 #include "tim.h"
 
-/* Functions -----------------------------------------------------------------*/
+// Functions -----------------------------------------------------------------//
 void one_step (uint8_t dir)
 {
 	DRIVE_ENABLE(ON);
@@ -18,3 +18,23 @@ void one_step (uint8_t dir)
 	DRIVE_ENABLE(OFF);
 	delay_us (2);
 }
+
+//----------------------------------------------------------------------------//
+void step_angle (uint8_t dir, uint32_t need_step)
+{
+	DRIVE_ENABLE(ON);
+	delay_us (5);
+	DIR_DRIVE (dir);
+	delay_us (5);
+	for (uint32_t count = 0; count < need_step; count++)
+	{
+		STEP(ON);
+		delay_us (3);
+		STEP(OFF);
+		delay_us (3);
+	}
+	DRIVE_ENABLE(OFF);
+	delay_us (2);
+}
+
+//----------------------------------------------------------------------------//
