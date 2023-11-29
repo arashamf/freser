@@ -45,15 +45,13 @@
 
 
 /* Functions -----------------------------------------------------------------*/
-extern void SSD1306_Init();
+void ssd1306_Init();
 void ssd1306_Goto(unsigned char x, unsigned char y);
 void ssd1306_PutChar(unsigned int c);
 void ssd1306_PutString(char *string);
 void ssd1306_num_to_str(unsigned int value, unsigned char nDigit);
 void ssd1306_Clear(void);
-void SSD1306_ClearScreen(void);
-void SSD1306_UpdateScreen(void);
-void SSD1306_DrawFilledRect(uint8_t xStart, uint8_t xEnd, uint8_t yStart, uint8_t yEnd);
+void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear);
 uint8_t SSD1306_IsReady(void);
 
 #endif // #ifndef SSD1306_H

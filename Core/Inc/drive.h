@@ -19,5 +19,5 @@ void step_angle (uint8_t , uint32_t );
 }
 #endif
 
-#endif /* __USART_H__ */
+#endif 
 

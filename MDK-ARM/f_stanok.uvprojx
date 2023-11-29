@@ -490,6 +490,11 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f0xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>angle_calc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\angle_calc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

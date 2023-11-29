@@ -1,6 +1,6 @@
 
-#ifndef __EEPROM_H__
-#define __EEPROM_H__
+#ifndef __ANGLE_CALC_H__
+#define __ANGLE_CALC_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -8,13 +8,15 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "typedef.h" 
 
 /* Defines ------------------------------------------------------------------*/
 
 /* Prototypes ------------------------------------------------------------------*/
-void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
-void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
-
+void init_angular_data (angular_data_t * );
+void angle_to_EEPROMbuf (angular_data_t * , uint8_t *);
+void angle_from_EEPROMbuf (angular_data_t * , uint8_t *);
+void angle_in_seconds (angular_data_t *);
 #ifdef __cplusplus
 }
 #endif

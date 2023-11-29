@@ -1,8 +1,8 @@
 Dependencies for Project 'f_stanok', Target 'f_stanok': (DO NOT MODIFY !)
 CompilerVersion: 6160000::V6.16::ARMCLANG
 F (startup_stm32f030x6.s)(0x655F6285)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto -c-gdwarf-4-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 536" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F030x6 SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o f_stanok/startup_stm32f030x6.o)
-F (..\Core\Src\drive.c)(0x6565E1F8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/drive.o -MD)
-I (..\Core\Inc\drive.h)(0x6565E292)
+F (..\Core\Src\drive.c)(0x656724AD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/drive.o -MD)
+I (..\Core\Inc\drive.h)(0x65672455)
 I (..\Core\Inc\main.h)(0x655F6281)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x5D7FBD39)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x655F6281)
@@ -89,8 +89,8 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x5D7FBD39)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-F (..\Core\Src\eeprom.c)(0x6565F90C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/eeprom.o -MD)
-I (..\Core\Inc\eeprom.h)(0x6565F64F)
+F (..\Core\Src\eeprom.c)(0x65672957)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/eeprom.o -MD)
+I (..\Core\Inc\eeprom.h)(0x6567295E)
 I (..\Core\Inc\main.h)(0x655F6281)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x5D7FBD39)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x655F6281)
@@ -132,7 +132,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x5D7FBD39)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-F (../Core/Src/main.c)(0x6565F9C5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/main.o -MD)
+F (../Core/Src/main.c)(0x65674808)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/main.o -MD)
 I (..\Core\Inc\main.h)(0x655F6281)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x5D7FBD39)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x655F6281)
@@ -177,11 +177,12 @@ I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
 I (..\Core\Inc\i2c.h)(0x655F6281)
 I (..\Core\Inc\tim.h)(0x6555E679)
 I (..\Core\Inc\gpio.h)(0x654E2905)
-I (..\display\ssd1306.h)(0x655DF73A)
-I (..\display\ssd1306_interface.h)(0x655F5CD7)
+I (..\Core\Inc\typedef.h)(0x6567482C)
+I (..\display\ssd1306.h)(0x65673112)
 I (..\Core\Inc\button.h)(0x65647C5B)
-I (..\Core\Inc\drive.h)(0x6565E292)
-I (..\Core\Inc\eeprom.h)(0x6565F64F)
+I (..\Core\Inc\drive.h)(0x65672455)
+I (..\Core\Inc\eeprom.h)(0x6567295E)
+I (..\Core\Inc\angle_calc.h)(0x6567478C)
 F (../Core/Src/gpio.c)(0x6555E549)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/gpio.o -MD)
 I (..\Core\Inc\gpio.h)(0x654E2905)
 I (..\Core\Inc\main.h)(0x655F6281)
@@ -396,6 +397,50 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x5D7FBD39)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
+F (..\Core\Src\angle_calc.c)(0x6567304F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/angle_calc.o -MD)
+I (..\Core\Inc\angle_calc.h)(0x6567478C)
+I (..\Core\Inc\main.h)(0x655F6281)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x5D7FBD39)
+I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x655F6281)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_rcc.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_def.h)(0x5D7FBD39)
+I (..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x5D7FBD39)
+I (..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\stm32f030x6.h)(0x5D7FBD39)
+I (..\Drivers\CMSIS\Include\core_cm0.h)(0x5D7FBD39)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60354010)
+I (..\Drivers\CMSIS\Include\cmsis_version.h)(0x5D7FBD39)
+I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x5D7FBD39)
+I (..\Drivers\CMSIS\Include\cmsis_armclang.h)(0x5D7FBD39)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x602A73BE)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60354004)
+I (..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x5D7FBD39)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x60354010)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_rcc_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_gpio.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_gpio_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_exti.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_dma.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_dma_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_cortex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_flash.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_flash_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr_ex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_tim.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_system.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_gpio.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_exti.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_bus.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_cortex.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_rcc.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_utils.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x5D7FBD39)
+I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x5D7FBD39)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
+I (..\Core\Inc\typedef.h)(0x6567482C)
 F (../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_gpio.c)(0x5D7FBD39)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/stm32f0xx_ll_gpio.o -MD)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_gpio.h)(0x5D7FBD39)
 I (..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x5D7FBD39)
@@ -1045,8 +1090,8 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c_ex.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr.h)(0x5D7FBD39)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_pwr_ex.h)(0x5D7FBD39)
-F (..\display\ssd1306.c)(0x6565D214)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/ssd1306.o -MD)
-I (..\display\ssd1306.h)(0x655DF73A)
+F (..\display\ssd1306.c)(0x65673125)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../display-I./RTE/_f_stanok-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F030x6 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F030x6 -DUSE_FULL_LL_DRIVER-o f_stanok/ssd1306.o -MD)
+I (..\display\ssd1306.h)(0x65673112)
 I (..\Core\Inc\main.h)(0x655F6281)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x5D7FBD39)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x655F6281)

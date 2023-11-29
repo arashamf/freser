@@ -95,24 +95,3 @@ void EEPROM_ReadBytes (uint16_t addr, uint8_t *buf, uint16_t bytes_count)
 	HAL_I2C_Mem_Read (&hi2c1, EEPROM_I2C1_ADDRESS, addr, 2, buf, bytes_count, EEPROM_I2C_TIMEOUT);
 }
 //------------------------------------------------------------------------------------------------//
-void angle_to_EEPROMbuf (uint16_t degree, uint8_t minute, uint8_t second, uint8_t * EEPROM_buffer)
-{
-	*(EEPROM_buffer+0) = (uint8_t)(second >> 8); //сначала старшая часть секунды
-	*(EEPROM_buffer+1) = (uint8_t)second; //младшая часть секунды
-	*(EEPROM_buffer+2) = (uint8_t)(minute >> 8); //сначала старшая часть минуты
-	*(EEPROM_buffer+3) = (uint8_t)minute; //младшая часть минуты
-	*(EEPROM_buffer+4) = (uint8_t)(degree>>24);
-	*(EEPROM_buffer+5) = (uint8_t)(degree>>16);
-	*(EEPROM_buffer+6) = (uint8_t)(degree>>8);
-	*(EEPROM_buffer+7) = (uint8_t)(degree);
-}
-
-//------------------------------------------------------------------------------------------------//
-void angle_from_EEPROMbuf (uint16_t degree, uint8_t minute, uint8_t second, uint8_t * EEPROM_buffer)
-{
-	second |= (((*(EEPROM_buffer+0)) << 8) | (*(EEPROM_buffer+1)));
-	minute |= (((*(EEPROM_buffer+2)) << 8) | (*(EEPROM_buffer+3)));
-	degree |= (((*(EEPROM_buffer+4)) << 24) | ((*(EEPROM_buffer+5)) << 16) | ((*(EEPROM_buffer+6)) << 8) | (*(EEPROM_buffer+7)));
-}
-
-//------------------------------------------------------------------------------------------------//

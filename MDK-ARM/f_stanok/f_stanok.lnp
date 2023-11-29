@@ -9,6 +9,7 @@
 "f_stanok\tim.o"
 "f_stanok\stm32f0xx_it.o"
 "f_stanok\stm32f0xx_hal_msp.o"
+"f_stanok\angle_calc.o"
 "f_stanok\stm32f0xx_ll_gpio.o"
 "f_stanok\stm32f0xx_hal_i2c.o"
 "f_stanok\stm32f0xx_hal_i2c_ex.o"

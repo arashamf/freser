@@ -24,11 +24,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "typedef.h"
 #include "ssd1306.h"
-#include "ssd1306_interface.h"
 #include "button.h"
 #include "drive.h"
 #include "eeprom.h"
+#include "angle_calc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -38,7 +39,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define EEPROM_MEMORY_PAGE 0x0001
+#define MEMORY_PAGE_ANGLE_ROTATION 0x0001
+#define MEMORY_PAGE_SHAFT_POSITION 0x0002
 #define STEP_UNIT 0.324
 /* USER CODE END PD */
 
@@ -52,10 +54,8 @@
 /* USER CODE BEGIN PV */
 char LCD_buff[20];
 
-__IO uint16_t Degree = 0; 
-__IO uint8_t Minute = 0; 
-__IO uint8_t Second = 0;
-__IO uint32_t AngleInSecond = 0;
+angular_data_t angular_rotation;
+angular_data_t shaft_angle;
 
 __IO int32_t prevCounter = 0;
 __IO int32_t currCounter = 0;
@@ -73,7 +73,7 @@ uint8_t eeprom_tx_buffer[10];
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-void loop(void);												
+void set_angle(angular_data_t * handle);												
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -112,27 +112,25 @@ int main(void)
   MX_TIM3_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+	
 	encoder_init();
 	tim_delay_init ();
 	HAL_Delay(100);
 	
-	SSD1306_Init();
+	ssd1306_Init();
 	ssd1306_Clear();
 	
-	EEPROM_ReadBytes (EEPROM_MEMORY_PAGE, eeprom_rx_buffer, 8);
-	//ssd1306_Goto(LCD_X, LCD_Y);
-	//snprintf (LCD_buff, sizeof(LCD_buff), "%d%d%d%d%d%d%d%d\"", eeprom_rx_buffer[0], eeprom_rx_buffer[1],
-	//eeprom_rx_buffer[2],eeprom_rx_buffer[3], eeprom_rx_buffer[4],eeprom_rx_buffer[5],eeprom_rx_buffer[6], eeprom_rx_buffer[7]);
-	//ssd1306_PutString(LCD_buff);
-	//angle_from_EEPROMbuf (Degree, Minute, Second, eeprom_rx_buffer);
-	Second |= (((*(eeprom_rx_buffer+0)) << 8) | (*(eeprom_rx_buffer+1)));
-	Minute |= (((*(eeprom_rx_buffer+2)) << 8) | (*(eeprom_rx_buffer+3)));
-	Degree |= (((*(eeprom_rx_buffer+4)) << 24) | ((*(eeprom_rx_buffer+5)) << 16) | ((*(eeprom_rx_buffer+6)) << 8) | (*(eeprom_rx_buffer+7)));
+	EEPROM_ReadBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_rx_buffer, 8); //получение угловых данных установки поворота из EEPROM
+	init_angular_data (&angular_rotation); //инициализация угловых данных установки поворота
+	angle_from_EEPROMbuf (&angular_rotation, eeprom_rx_buffer); //считывания угловых данных установки поворота
 	
-	ssd1306_Goto(LCD_X, LCD_Y);
-	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"",  Degree, Minute, Second);
-	ssd1306_PutString(LCD_buff);
-	HAL_Delay (20);
+	EEPROM_ReadBytes (MEMORY_PAGE_SHAFT_POSITION, eeprom_rx_buffer, 8);
+	init_angular_data (&shaft_angle);
+	angle_from_EEPROMbuf (&shaft_angle, eeprom_rx_buffer);
+	
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", angular_rotation.degree, 
+	angular_rotation.minute, angular_rotation.second);
+	ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);
 
 	DRIVE_ENABLE(OFF);
 	STEP(OFF);
@@ -157,63 +155,46 @@ int main(void)
 						break;
 					
 					case KEY_LEFT:						
-						AngleInSecond += Second;
-						AngleInSecond += Minute*60;
-						AngleInSecond += Degree*60*60;
-						need_step = AngleInSecond/STEP_UNIT;
+						angle_in_seconds (&angular_rotation);
+						need_step = angular_rotation.AngleInSecond/STEP_UNIT; //количество необходимых шагов
 						step_angle (BACKWARD, need_step);
-						ssd1306_Clear();	
-						ssd1306_Goto(LCD_X, LCD_Y);
+					
 						snprintf(LCD_buff, sizeof(LCD_buff), "back step=");
-						ssd1306_PutString(LCD_buff);
-						ssd1306_Goto(LCD_X, LCD_Y+1);
+						ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);
 						snprintf(LCD_buff, sizeof(LCD_buff), "%d", need_step);
-						ssd1306_PutString(LCD_buff);
-						AngleInSecond = 0;
+						ssd1306_PutData (LCD_X, LCD_Y+1, LCD_buff, 0);
+						angular_rotation.AngleInSecond = 0;
 						break;
 					
 					case KEY_CENTER:
-						EEPROM_ReadBytes (EEPROM_MEMORY_PAGE, eeprom_rx_buffer, 8);
-						ssd1306_Clear();	
-						ssd1306_Goto(LCD_X, LCD_Y);
-						snprintf(LCD_buff, sizeof(LCD_buff), "%x%x%x%x%x%x%x%x", eeprom_rx_buffer[0], eeprom_rx_buffer[1], 
-						eeprom_rx_buffer[2], eeprom_rx_buffer[3], eeprom_rx_buffer[4], eeprom_rx_buffer[5],	eeprom_rx_buffer[6], eeprom_rx_buffer[7]);
-						ssd1306_PutString(LCD_buff);
 						break;
 					
 					case KEY_RIGHT:
-						AngleInSecond += Second;
-						AngleInSecond += Minute*60;
-						AngleInSecond += Degree*60*60;
-						need_step = AngleInSecond/STEP_UNIT;
+						angle_in_seconds (&angular_rotation);
+						need_step = angular_rotation.AngleInSecond/STEP_UNIT;
 						step_angle (FORWARD, need_step);
-						ssd1306_Clear();	
-						ssd1306_Goto(LCD_X, LCD_Y);
+
 						snprintf(LCD_buff, sizeof(LCD_buff), "forward step");
-						ssd1306_PutString(LCD_buff);
-						ssd1306_Goto(LCD_X, LCD_Y+1);
+						ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);	
 						snprintf(LCD_buff, sizeof(LCD_buff), "%d", need_step);
-						ssd1306_PutString(LCD_buff);
-						AngleInSecond = 0;
+						ssd1306_PutData (LCD_X, LCD_Y+1, LCD_buff, 0);	
+						angular_rotation.AngleInSecond = 0;
 						break;
 					
 					case KEY_ENC:
-						ssd1306_Clear();	
-						ssd1306_Goto(LCD_X, LCD_Y);
-						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit",  Degree, Minute, Second);
-						ssd1306_PutString(LCD_buff);
+						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", angular_rotation.degree, angular_rotation.minute, angular_rotation.second);
+						ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);
 						while(1)
 						{
 							if ((key_code = scan_keys()) != KEY_ENC)
-							{	loop();	} //сканирование показаний энкодера
+							{	set_angle(&angular_rotation);	} //сканирование показаний энкодера
 							else
 							{	
-								angle_to_EEPROMbuf (Degree, Minute, Second, eeprom_tx_buffer); //перенос данных угла в буффер
-								EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, 8); //запись буффера с данными угла в память
-								ssd1306_Clear();
-								ssd1306_Goto(LCD_X, LCD_Y);
-								snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"",  Degree, Minute, Second);
-								ssd1306_PutString(LCD_buff);
+								angle_to_EEPROMbuf (&angular_rotation, eeprom_tx_buffer); //перенос данных угла в буффер
+								EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в память
+								snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", angular_rotation.degree, 
+								angular_rotation.minute, angular_rotation.second);
+								ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);		
 								break;	
 							}
 						}
@@ -273,7 +254,7 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 //--------------------------------------------------------------------------------------------//
-void loop(void) 
+void set_angle(angular_data_t * handle) 
 {
 	currCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
 	currCounter = (32767 - ((currCounter-1) & 0xFFFF))/2; //деление на 2, счёт щелчков (щелчок = 2 импульса)
@@ -287,34 +268,32 @@ void loop(void)
 	
 		if (delta != 0) //если изменилось положение энкодера
 		{    
-			Minute += delta; //
-			if (Minute < 0)
+			handle->minute += delta; //сохранение разницы
+			if (handle->minute < 0) //
 			{			 
-				if (Degree > 0)
+				if (handle->degree > 0)
 				{ 
-					Degree--; 
-					Minute = 59;
+					handle->degree--; 
+					handle->minute = 59;
 				}
 				else
 				{	
-					if (Degree == 0)
-					{	Minute = 0;	}
+					if (handle->degree == 0)
+					{	handle->minute = 0;	}
 				}
 			}
 			else
 			{
-				if (Minute > 59)
+				if (handle->minute > 59)
 				{
-					Degree++;
-					if (Degree >= 360)
-					{	Degree = 0;	}
-					Minute=0;
+					handle->degree++;
+					if (handle->degree >= 360)
+					{	handle->degree = 0;	}
+					handle->minute=0;
 				}				
 			}
-			ssd1306_Clear();	
-			ssd1306_Goto(LCD_X, LCD_Y);
-			snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit",  Degree, Minute, Second);
-			ssd1306_PutString(LCD_buff);
+			snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", handle->degree, handle->minute, handle->second);
+			ssd1306_PutData (LCD_X, LCD_Y, LCD_buff, 1);
 		}
 	}
 }

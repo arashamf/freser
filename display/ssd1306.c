@@ -1,17 +1,20 @@
 
-/* Includes ------------------------------------------------------------------*/
+// Includes ------------------------------------------------------------------//
 #include "ssd1306.h"
 #include "ssd1306_interface.h"
 #include "fonts.h"
 
-/* Declarations and definitions ----------------------------------------------*/
+// Declarations and definitions -----------------------------------------------//
+static void SSD1306_ClearScreen(void);
+static void SSD1306_UpdateScreen(void);
+
 
 //SSD1306_State SSD1306_state = SSD1306_READY;
 static uint8_t temp_char[SIZE_TEMP_BUFFER];
 static uint8_t LCD_X=0, LCD_Y=0;
 
-/* Functions -----------------------------------------------------------------*/
-void SSD1306_Init()
+// Functions -----------------------------------------------------------------//
+void ssd1306_Init()
 {   
 	ssd1306_SendCommand(DISPLAYOFF); 		//display off
 	ssd1306_SendCommand(MEMORYMODE); 	//Set Memory Addressing Mode   
@@ -66,7 +69,7 @@ void SSD1306_Init()
 	ssd1306_SendCommand(DISPLAYON); //--turn on SSD1306 panel
 }
 
-/*----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------//
 void ssd1306_Goto(unsigned char x, unsigned char y)
 {
 
@@ -77,7 +80,7 @@ void ssd1306_Goto(unsigned char x, unsigned char y)
 	ssd1306_SendCommand(0x10 | (x>>4));
 }
 
-/*----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------//
 void ssd1306_PutChar(unsigned int c)
 {
 //	temp_char[0] = SSD1306_BYTE_DATA ; //первый элемент сообщения - id данных
@@ -95,7 +98,7 @@ void ssd1306_PutChar(unsigned int c)
 	{	LCD_X = LCD_DEFAULT_X_SIZE;	} //возврат в начало дисплея
 }
 
-/*----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------//
 void ssd1306_PutString(char *string)
 {
 	while(*string != '\0')
@@ -105,7 +108,7 @@ void ssd1306_PutString(char *string)
 	}
 }
 
-/*----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------//
 void ssd1306_num_to_str(unsigned int value, unsigned char nDigit)
 {
 	switch(nDigit)
@@ -118,7 +121,7 @@ void ssd1306_num_to_str(unsigned int value, unsigned char nDigit)
 	}
 }
 
-/*----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------//
 void ssd1306_Clear(void)
 {
 	unsigned short i;
@@ -141,7 +144,17 @@ void ssd1306_Clear(void)
 	LCD_Y =	LCD_DEFAULT_Y_SIZE ;
 }
 
-/*----------------------------------------------------------------------------*/
+//--------------------------------------------------------------------------//
+void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear)
+{
+	if ( need_clear)
+	{	ssd1306_Clear(); }
+	ssd1306_Goto(coordinate_X, coordinate_Y);
+	HAL_Delay (3);
+	ssd1306_PutString(buffer);
+}
+
+//----------------------------------------------------------------------------//
 /*uint8_t SSD1306_IsReady()
 {
   if (SSD1306_state == SSD1306_BUSY)
