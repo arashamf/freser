@@ -42,6 +42,10 @@ void MX_TIM3_Init(void);
 void encoder_init(void);
 void tim_delay_init (void);
 void delay_us(uint16_t);
+void timer_bounce_init (void);
+void repeat_time (uint16_t );
+
+extern uint8_t end_bounce;
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

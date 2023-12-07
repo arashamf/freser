@@ -22,6 +22,8 @@
 
 /* USER CODE BEGIN 0 */
 
+uint8_t end_bounce = 0;
+
 /* USER CODE END 0 */
 
 /* TIM3 init function */
@@ -65,11 +67,11 @@ void MX_TIM3_Init(void)
   /* USER CODE END TIM3_Init 1 */
   LL_TIM_SetEncoderMode(TIM3, LL_TIM_ENCODERMODE_X2_TI1);
   LL_TIM_IC_SetActiveInput(TIM3, LL_TIM_CHANNEL_CH1, LL_TIM_ACTIVEINPUT_DIRECTTI);
-  LL_TIM_IC_SetPrescaler(TIM3, LL_TIM_CHANNEL_CH1, LL_TIM_ICPSC_DIV1);
+  LL_TIM_IC_SetPrescaler(TIM3, LL_TIM_CHANNEL_CH1, LL_TIM_ICPSC_DIV2);
   LL_TIM_IC_SetFilter(TIM3, LL_TIM_CHANNEL_CH1, LL_TIM_IC_FILTER_FDIV1_N2);
   LL_TIM_IC_SetPolarity(TIM3, LL_TIM_CHANNEL_CH1, LL_TIM_IC_POLARITY_RISING);
   LL_TIM_IC_SetActiveInput(TIM3, LL_TIM_CHANNEL_CH2, LL_TIM_ACTIVEINPUT_DIRECTTI);
-  LL_TIM_IC_SetPrescaler(TIM3, LL_TIM_CHANNEL_CH2, LL_TIM_ICPSC_DIV1);
+  LL_TIM_IC_SetPrescaler(TIM3, LL_TIM_CHANNEL_CH2, LL_TIM_ICPSC_DIV2);
   LL_TIM_IC_SetFilter(TIM3, LL_TIM_CHANNEL_CH2, LL_TIM_IC_FILTER_FDIV1_N4);
   LL_TIM_IC_SetPolarity(TIM3, LL_TIM_CHANNEL_CH2, LL_TIM_IC_POLARITY_RISING);
   TIM_InitStruct.Prescaler = 0;
@@ -91,7 +93,7 @@ void MX_TIM3_Init(void)
 void encoder_init(void) 
 {
     
-  LL_TIM_SetCounter(TIM3, 32760); // начальное значение счетчика:
+  LL_TIM_SetCounter(TIM3, 32767); // начальное значение счетчика:
 	
 	LL_TIM_CC_EnableChannel(TIM3,LL_TIM_CHANNEL_CH1); //Enable the encoder interface channels 
 	LL_TIM_CC_EnableChannel(TIM3,LL_TIM_CHANNEL_CH2);
@@ -106,7 +108,7 @@ void tim_delay_init (void)
 
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM14);   // Peripheral clock enable 
 
-  TIM_InitStruct.Prescaler = (48-1);
+  TIM_InitStruct.Prescaler = (48-1); //предделитель 48ћ√ц/48=1ћ√ц
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
   TIM_InitStruct.Autoreload = 0xFF;
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
@@ -123,5 +125,47 @@ void delay_us(uint16_t delay)
 	LL_TIM_EnableCounter(TIM14); //включение таймера
 	while (LL_TIM_IsActiveFlag_UPDATE(TIM14) == 0) {} //ожидание установки флага обновлени€ таймера 
 	LL_TIM_DisableCounter(TIM14); //выключение таймера		
+}
+
+//--------------------------------------------------------------------------------------------//
+void timer_bounce_init (void)
+{
+	LL_TIM_InitTypeDef TIM_InitStruct = {0};
+
+  LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_TIM16);   // Peripheral clock enable 
+
+  TIM_InitStruct.Prescaler = (48000-1); //предделитель 48ћ√ц/48000=1 √ц
+  TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
+  TIM_InitStruct.Autoreload = 0xFFFF;
+  TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
+  TIM_InitStruct.RepetitionCounter = 0;
+  LL_TIM_Init(TIM16, &TIM_InitStruct);
+  LL_TIM_DisableARRPreload(TIM16);	
+	
+	LL_TIM_ClearFlag_UPDATE(TIM16); //сброс флага обновлени€ таймера
+	LL_TIM_EnableIT_UPDATE(TIM16);
+	NVIC_SetPriority(TIM16_IRQn, 0);
+  NVIC_EnableIRQ(TIM16_IRQn);
+}
+
+//--------------------------------------------------------------------------------------------//
+void repeat_time (uint16_t delay)
+{
+  LL_TIM_SetAutoReload(TIM16, delay); //
+	LL_TIM_SetCounter(TIM16, 0); //сброс счЄтного регистра
+	LL_TIM_ClearFlag_UPDATE(TIM16); //сброс флага обновлени€ таймера
+	LL_TIM_EnableCounter(TIM16); //включение таймера	
+}
+
+//--------------------------------------------------------------------------------------------//
+
+void TIM16_IRQHandler(void)
+{
+	if (LL_TIM_IsActiveFlag_UPDATE(TIM16) == SET)
+	{	
+		LL_TIM_ClearFlag_UPDATE (TIM16); //сброс флага обновлени€ таймера
+		LL_TIM_DisableCounter(TIM16); //выключение таймера
+		end_bounce = SET;
+	}
 }
 /* USER CODE END 1 */

@@ -23,9 +23,9 @@ void one_step (uint8_t dir)
 void step_angle (uint8_t dir, uint32_t need_step)
 {
 	DRIVE_ENABLE(ON);
-	delay_us (5);
+	delay_us (6);
 	DIR_DRIVE (dir);
-	delay_us (5);
+	delay_us (6);
 	for (uint32_t count = 0; count < need_step; count++)
 	{
 		STEP(ON);
@@ -35,6 +35,10 @@ void step_angle (uint8_t dir, uint32_t need_step)
 	}
 	DRIVE_ENABLE(OFF);
 	delay_us (2);
+	if (dir == FORWARD)
+		DIR_DRIVE (BACKWARD);
+	else
+		DIR_DRIVE (FORWARD);
 }
 
 //----------------------------------------------------------------------------//

@@ -88,11 +88,17 @@ void Error_Handler(void);
 #define EN_DRIVE_Pin LL_GPIO_PIN_1
 #define EN_DRIVE_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-#define ON 1
-#define OFF 0
 
-#define FORWARD 1
-#define BACKWARD 0
+#define ON 									1
+#define OFF 								0
+
+#define FORWARD 						1
+#define BACKWARD 						0
+
+#define DISP_CLEAR 					1
+#define DISP_NOT_CLEAR 			0
+
+#define MAX_SEC							1296000			//359 градусов 59 минут 59 секунд в секундах
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
