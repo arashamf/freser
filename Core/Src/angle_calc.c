@@ -59,10 +59,11 @@ void ShaftAngle_in_Seconds (angular_data_t * handle)
 //------------------------------------------------------------------------------------------------//
 void GetAngle_from_Seconds (angular_data_t * handle)
 {
-/*handle->ShaftAngleInSec = 0;
-	handle->ShaftAngleInSec += handle->shaft_second;
-	handle->ShaftAngleInSec += handle->shaft_minute*60;
-	handle->ShaftAngleInSec += handle->shaft_degree*60*60;*/
+	uint32_t tmp = 0;
+	handle->shaft_degree = handle->ShaftAngleInSec/(3600);
+	tmp = handle->ShaftAngleInSec % 3600; //остаток с минутами и секундами
+	handle->shaft_minute = tmp/60;
+	handle->shaft_second = tmp % 60;
 }
 
 //------------------------------------------------------------------------------------------------//

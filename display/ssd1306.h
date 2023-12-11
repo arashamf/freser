@@ -4,6 +4,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "typedef.h"
 
 /* Declarations and definitions ----------------------------------------------*/
 #define SSD1306_X_SIZE                                            128
@@ -52,6 +53,7 @@ void ssd1306_PutString(char *string);
 void ssd1306_num_to_str(unsigned int value, unsigned char nDigit);
 void ssd1306_Clear(void);
 void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear);
+void display_default_screen (char * , angular_data_t* );
 uint8_t SSD1306_IsReady(void);
 
 #endif // #ifndef SSD1306_H

@@ -1,4 +1,4 @@
-f_stanok/ssd1306.o: ..\display\ssd1306.c ..\display\ssd1306.h \
+f_stanok/systick.o: ..\Core\Src\systick.c ..\Core\Inc\systick.h \
   ..\Core\Inc\main.h ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h \
   ..\Core\Inc\stm32f0xx_hal_conf.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_rcc.h \
@@ -38,5 +38,4 @@ f_stanok/ssd1306.o: ..\display\ssd1306.c ..\display\ssd1306.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
-  ..\Core\Inc\main.h ..\display\ssd1306_interface.h ..\display\fonts.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\main.h

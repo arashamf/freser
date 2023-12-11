@@ -98,7 +98,10 @@ void Error_Handler(void);
 #define DISP_CLEAR 					1
 #define DISP_NOT_CLEAR 			0
 
-#define MAX_SEC							1296000			//359 градусов 59 минут 59 секунд в секундах
+#define MAX_SEC							1296000			//360 градусов в секундах//
+
+#define CPU_CLOCK_VALUE			(48000000UL)	// Частота контроллера //
+#define TICKS_PER_SECOND		1000 
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

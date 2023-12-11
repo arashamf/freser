@@ -80,7 +80,7 @@ void ssd1306_Goto(unsigned char x, unsigned char y)
 	ssd1306_SendCommand(0x10 | (x>>4));
 }
 
-//----------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------//
 void ssd1306_PutChar(unsigned int c)
 {
 //	temp_char[0] = SSD1306_BYTE_DATA ; //первый элемент сообщения - id данных
@@ -98,7 +98,7 @@ void ssd1306_PutChar(unsigned int c)
 	{	LCD_X = LCD_DEFAULT_X_SIZE;	} //возврат в начало дисплея
 }
 
-//----------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------//
 void ssd1306_PutString(char *string)
 {
 	while(*string != '\0')
@@ -108,7 +108,7 @@ void ssd1306_PutString(char *string)
 	}
 }
 
-//----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------//
 void ssd1306_num_to_str(unsigned int value, unsigned char nDigit)
 {
 	switch(nDigit)
@@ -121,7 +121,7 @@ void ssd1306_num_to_str(unsigned int value, unsigned char nDigit)
 	}
 }
 
-//----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------//
 void ssd1306_Clear(void)
 {
 	unsigned short i;
@@ -144,7 +144,7 @@ void ssd1306_Clear(void)
 	LCD_Y =	LCD_DEFAULT_Y_SIZE ;
 }
 
-//--------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------//
 void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear)
 {
 	if ( need_clear)
@@ -154,7 +154,19 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 	ssd1306_PutString(buffer);
 }
 
-//----------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------//
+void display_default_screen (char * buffer, angular_data_t* rotation)
+{
+	snprintf (buffer, sizeof(buffer), "%03d* %02d' %02d\"", rotation->shaft_degree, 
+	rotation->shaft_minute, rotation->shaft_second);
+	ssd1306_PutData (LCD_X, LCD_Y, buffer, DISP_CLEAR);
+	
+	snprintf (buffer, sizeof(buffer), "%03d* %02d' %02d\"", rotation->set_degree, 
+	rotation->set_minute, rotation->set_second);
+	ssd1306_PutData (LCD_X, LCD_Y+1, buffer, DISP_NOT_CLEAR);
+}
+
+//-----------------------------------------------------------------------------------------------//
 /*uint8_t SSD1306_IsReady()
 {
   if (SSD1306_state == SSD1306_BUSY)
