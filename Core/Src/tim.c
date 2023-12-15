@@ -27,14 +27,13 @@
 
 static xTIMER xTimerList[MAX_xTIMERS];
 static portTickType xTimeNow;
-static void vTimerDisplayCallback(xTimerHandle xTimer);
+extern void vTimerDisplayCallback(xTimerHandle xTimer);
 static xTimerHandle xTimerDisplay;
 static void tim_delay_init (void);
 static void timer_bounce_init (void);
 
 uint8_t end_bounce = 0;
 extern angular_data_t curr_rotation;
-extern char LCD_buff;
 /* USER CODE END 0 */
 
 /* TIM3 init function */
@@ -242,7 +241,7 @@ void xTimer_Delete(xTimerHandle xTimer)
 	}		
 }
 
-//--------------------------------------------------------------------------------=--------------------//
+//-----------------------------------------------------------------------------------------------------//
 void xTimer_Task(uint32_t portTick)
 {
 	uint16_t i;
@@ -268,26 +267,26 @@ void xTimer_Task(uint32_t portTick)
 	}	
 }
 
-//---------------------------------------------------------------------------------=-------------------//
-static void vTimerDisplayCallback (xTimerHandle xTimer)
-{
-	display_default_screen (&LCD_buff, &curr_rotation);
-}
 
-//---------------------------------------------------------------------------------=-------------------//
+//-----------------------------------------------------------------------------------------------------//
 void TimerDisplayStart (void)
 {
-	xTimerDisplay = xTimer_Create(3000, DISABLE, &vTimerDisplayCallback, ENABLE);
-//	xTimer_Delete(xTimerDisplay);
+	xTimerDisplay = xTimer_Create(3000, ENABLE, &vTimerDisplayCallback, ENABLE);
 }
 
-//---------------------------------------------------------------------------------=-------------------//
+//-----------------------------------------------------------------------------------------------------//
+void vTimerDisplayCallback (xTimerHandle xTimer)
+{
+	display_default_screen (&curr_rotation);
+}
+
+//-----------------------------------------------------------------------------------------------------//
 void TimerDisplayDelete (void)
 {
 	xTimer_Delete(xTimerDisplay);
 }
 
-//---------------------------------------------------------------------------------=-------------------//
+//-----------------------------------------------------------------------------------------------------//
 void timers_ini (void)
 {
 	SysTick_Init (xTimer_Task);

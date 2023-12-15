@@ -38,4 +38,4 @@ f_stanok/gpio.o: ..\Core\Src\gpio.c ..\Core\Inc\gpio.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h

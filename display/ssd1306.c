@@ -8,10 +8,14 @@
 static void SSD1306_ClearScreen(void);
 static void SSD1306_UpdateScreen(void);
 
-
+// Private variables ---------------------------------------------------------//
 //SSD1306_State SSD1306_state = SSD1306_READY;
 static uint8_t temp_char[SIZE_TEMP_BUFFER];
-static uint8_t LCD_X=0, LCD_Y=0;
+static uint8_t LCD_X=0; 
+static uint8_t	LCD_Y=0;
+uint8_t kord_X=LCD_DEFAULT_X_SIZE ;  
+uint8_t	kord_Y=LCD_DEFAULT_Y_SIZE ; 
+char LCD_buff[20];
 
 // Functions -----------------------------------------------------------------//
 void ssd1306_Init()
@@ -140,8 +144,8 @@ void ssd1306_Clear(void)
 			ssd1306_Goto(x, y);
 		}
 	}
-	LCD_X = LCD_DEFAULT_X_SIZE;
-	LCD_Y =	LCD_DEFAULT_Y_SIZE ;
+	//LCD_X = LCD_DEFAULT_X_SIZE;
+	//LCD_Y =	LCD_DEFAULT_Y_SIZE ;
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -155,16 +159,19 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 }
 
 //-----------------------------------------------------------------------------------------------//
-void display_default_screen (char * buffer, angular_data_t* rotation)
+void display_default_screen (angular_data_t* rotation)
 {
-	snprintf (buffer, sizeof(buffer), "%03d* %02d' %02d\"", rotation->shaft_degree, 
-	rotation->shaft_minute, rotation->shaft_second);
-	ssd1306_PutData (LCD_X, LCD_Y, buffer, DISP_CLEAR);
+	//uint8_t kord_X = LCD_DEFAULT_X_SIZE ; 
+	//uint8_t kord_Y = LCD_DEFAULT_Y_SIZE ;
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->shaft_degree, rotation->shaft_minute, 
+	rotation->shaft_second);
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
 	
-	snprintf (buffer, sizeof(buffer), "%03d* %02d' %02d\"", rotation->set_degree, 
-	rotation->set_minute, rotation->set_second);
-	ssd1306_PutData (LCD_X, LCD_Y+1, buffer, DISP_NOT_CLEAR);
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->set_degree, rotation->set_minute, 
+	rotation->set_second);
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 }
+
 
 //-----------------------------------------------------------------------------------------------//
 /*uint8_t SSD1306_IsReady()

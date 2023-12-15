@@ -39,4 +39,4 @@ f_stanok/button.o: ..\Core\Src\button.c ..\Core\Inc\button.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
-  ..\Core\Inc\tim.h
+  ..\Core\Inc\typedef.h ..\Core\Inc\tim.h

@@ -42,6 +42,7 @@ void Delay_MS(uint32_t delay)
 
 	//ticks = Get_SysTick();
 	ticks = HAL_GetTick();
+	
 	//while( ( Get_SysTick() - ticks ) < delay)
 	while((HAL_GetTick() - ticks ) < delay)
 	{	__NOP();	}

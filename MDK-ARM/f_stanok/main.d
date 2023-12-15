@@ -38,8 +38,8 @@ f_stanok/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\i2c.h \
-  ..\Core\Inc\main.h ..\Core\Inc\tim.h ..\Core\Inc\gpio.h \
-  ..\Core\Inc\typedef.h ..\display\ssd1306.h ..\Core\Inc\button.h \
-  ..\Core\Inc\drive.h ..\Core\Inc\eeprom.h ..\Core\Inc\angle_calc.h \
-  ..\Core\Inc\typedef.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
+  ..\Core\Inc\main.h ..\Core\Inc\i2c.h ..\Core\Inc\tim.h \
+  ..\Core\Inc\gpio.h ..\Core\Inc\typedef.h ..\display\ssd1306.h \
+  ..\Core\Inc\button.h ..\Core\Inc\drive.h ..\Core\Inc\eeprom.h \
+  ..\Core\Inc\angle_calc.h

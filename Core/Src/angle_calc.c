@@ -48,6 +48,16 @@ void SetAngle_in_Seconds (angular_data_t * handle)
 }
 
 //------------------------------------------------------------------------------------------------//
+void GetSetAngle_from_Seconds (angular_data_t * handle)
+{
+	uint32_t tmp = 0;
+	handle->set_degree = handle->StepAngleInSec/(3600);
+	tmp = handle->StepAngleInSec % 3600; //остаток с минутами и секундами
+	handle->set_minute = tmp/60;
+	handle->set_second = tmp % 60;
+}
+
+//------------------------------------------------------------------------------------------------//
 void ShaftAngle_in_Seconds (angular_data_t * handle)
 {
 	handle->ShaftAngleInSec = 0;
@@ -57,7 +67,7 @@ void ShaftAngle_in_Seconds (angular_data_t * handle)
 }
 
 //------------------------------------------------------------------------------------------------//
-void GetAngle_from_Seconds (angular_data_t * handle)
+void GetAngleShaft_from_Seconds (angular_data_t * handle)
 {
 	uint32_t tmp = 0;
 	handle->shaft_degree = handle->ShaftAngleInSec/(3600);
@@ -67,4 +77,20 @@ void GetAngle_from_Seconds (angular_data_t * handle)
 }
 
 //------------------------------------------------------------------------------------------------//
+void AngleShaftReset (angular_data_t * handle)
+{
+	handle->shaft_second = 0; 
+	handle->shaft_minute = 0; 
+	handle->shaft_degree = 0;
+	handle->ShaftAngleInSec = 0; //текущее положение вала - нулевое
+}
+
+//------------------------------------------------------------------------------------------------//
+void GetAngleReset (angular_data_t * handle)
+{
+	handle->set_second = 0;
+	handle->set_minute = 1; 
+	handle->set_degree = 0;
+	GetSetAngle_from_Seconds (handle);
+}
 

@@ -44,6 +44,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include <string.h>
 #include <stdio.h>
+#include "typedef.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -91,17 +92,17 @@ void Error_Handler(void);
 
 #define ON 									1
 #define OFF 								0
-
 #define FORWARD 						1
 #define BACKWARD 						0
-
 #define DISP_CLEAR 					1
 #define DISP_NOT_CLEAR 			0
 
 #define MAX_SEC							1296000			//360 градусов в секундах//
-
 #define CPU_CLOCK_VALUE			(48000000UL)	// Частота контроллера //
 #define TICKS_PER_SECOND		1000 
+
+//extern angular_data_t curr_rotation; //структура с угловыми данными привода
+//extern encoder_data_t encoder_data; //структура с данными энкодера
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
