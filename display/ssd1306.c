@@ -161,8 +161,6 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 //-----------------------------------------------------------------------------------------------//
 void display_default_screen (angular_data_t* rotation)
 {
-	//uint8_t kord_X = LCD_DEFAULT_X_SIZE ; 
-	//uint8_t kord_Y = LCD_DEFAULT_Y_SIZE ;
 	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->shaft_degree, rotation->shaft_minute, 
 	rotation->shaft_second);
 	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);

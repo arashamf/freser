@@ -13,42 +13,53 @@
 
 // Variables ------------------------------------------------------------------//
 __IO uint32_t need_step = 0;
-
+__IO float step_unit= (float)STEP18_IN_SEC/STEP_DIV;
 //----------------------------------------------------------------------------------------------------//
-void one_step (uint8_t dir)
+void rotate_one_step (uint8_t need_step)
 {
-	DRIVE_ENABLE(ON);
-	delay_us (5);
-	DIR_DRIVE (dir);
-	delay_us (5);
-	STEP(ON);
-	delay_us (5);
-	STEP(OFF);
-	delay_us (5);
-	DRIVE_ENABLE(OFF);
-	delay_us (2);
+	for (uint8_t count = 0; count < need_step; count++)
+	{
+			STEP(ON);
+			delay_us (5);
+			STEP(OFF);
+			delay_us (5);
+	}
 }
 
 //----------------------------------------------------------------------------------------------------//
 void step_angle (uint8_t dir, uint32_t need_step)
 {
-	DRIVE_ENABLE(ON);
-	delay_us (6);
+	uint16_t quant = 0;
+	/*DRIVE_ENABLE(ON);
+	delay_us (6);*/
 	DIR_DRIVE (dir);
 	delay_us (6);
-	for (uint32_t count = 0; count < need_step; count++)
+	
+	if ((quant = (uint16_t)need_step/STEP_DIV) > 0) //количество целых шагов по 1,8 градуса
 	{
-		STEP(ON);
-		delay_us (3);
-		STEP(OFF);
+		for (uint16_t count = 0; count < quant; count++)
+		{
+			DRIVE_ENABLE(ON);
+			delay_us (6);
+			rotate_one_step (STEP_DIV); //поворот на один шаг  по 1,8 градуса
+			DRIVE_ENABLE(OFF);
+			delay_us (2000);
+		}
+	}
+		
+	if ((quant = need_step%STEP_DIV) > 0)
+	{
+		DRIVE_ENABLE(ON);
+		delay_us (6);
+		rotate_one_step (quant);
+		DRIVE_ENABLE(OFF);
 		delay_us (3);
 	}
-	DRIVE_ENABLE(OFF);
-	delay_us (2);
-	if (dir == FORWARD)
+	
+/*	if (dir == FORWARD)
 		DIR_DRIVE (BACKWARD);
 	else
-		DIR_DRIVE (FORWARD);
+		DIR_DRIVE (FORWARD);*/
 }
 
 //----------------------------------------------------------------------------------------------------//
@@ -74,15 +85,18 @@ void set_angle (angular_data_t * HandleAng, encoder_data_t * HandleEncData)
 				HandleAng->set_minute += delta; //сохранение разницы
 				if (HandleAng->set_minute <= 0) //если значение минут меньше 0
 				{			 
-					if ((HandleAng->set_degree > 0) && (HandleAng->set_minute < 0)) //если значение градусов больше 0
+					if ((HandleAng->set_degree > 0) ) //если значение градусов больше 0
 					{ 
 						HandleAng->set_degree--; //уменьшаем градус на единицу
 						HandleAng->set_minute = 59;
 					}
 					else
 					{	
-						if ((HandleAng->set_degree == 0) && (HandleAng->set_minute == 0)) //если значение градусов равно 0
-						{	HandleAng->set_minute = 1;	} //установка 1 в значение минут
+						if (HandleAng->set_degree == 0)
+						{
+							if (HandleAng->set_minute <= 0) //если значение градусов равно 0
+							{	HandleAng->set_minute = 1;	} //установка 1 в значение минут
+						}
 					}
 				}
 				else
@@ -131,23 +145,21 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 					{
 						while (delta > 0) //пока дельта больше нуля
 						{
-							need_step = HandleAng->StepAngleInSec/STEP_UNIT; //количество необходимых шагов
+							need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
 							step_angle (FORWARD, need_step); //поворот по часовой стрелке
 							delta--;  //уменьшение дельты
 						}						
 						
-						if (HandleAng->ShaftAngleInSec > (MAX_SEC-1)) //если угол положения вала 360 гр. или больше
-						{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - MAX_SEC;	} 
-						else
-						{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec; }
+						HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec;
+						if (HandleAng->ShaftAngleInSec > (CIRCLE_IN_SEC-1)) //если угол положения вала 360 гр. или больше
+						{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - CIRCLE_IN_SEC;	} 
 						
 						GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 						
 						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" f", HandleAng->shaft_degree, 
 						HandleAng->shaft_minute, HandleAng->shaft_second);	
 						ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", HandleAng->set_degree, 
-						HandleAng->set_minute, HandleAng->set_second);
+						snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step);
 						ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
 					}
 				}
@@ -163,7 +175,7 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 						{
 							while (delta < 0) //пока дельта меньше нуля
 							{
-								need_step = HandleAng->StepAngleInSec/STEP_UNIT; //количество необходимых шагов
+								need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
 								step_angle (BACKWARD, need_step); //поворот против часовой стрелки
 								delta++; //увеличение дельты
 							}							
@@ -172,14 +184,13 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 							else 
 							{
 								if (HandleAng->ShaftAngleInSec < HandleAng->StepAngleInSec) //если угол положения вала меньше угла шага
-								{	HandleAng->ShaftAngleInSec =  MAX_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
+								{	HandleAng->ShaftAngleInSec = CIRCLE_IN_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
 							}
 							GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 							snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" b", HandleAng->shaft_degree, 
 							HandleAng->shaft_minute, HandleAng->shaft_second);	
 							ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-							snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", HandleAng->set_degree, 
-							HandleAng->set_minute, HandleAng->set_second);
+							snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step);
 							ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
 						}
 					}
@@ -198,12 +209,13 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 void rbt_shaft_rotation (angular_data_t * HandleAng) 
 {
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
-	need_step = HandleAng->StepAngleInSec/STEP_UNIT; //количество необходимых шагов
+	need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
 	step_angle (FORWARD, need_step); //поворот по часовой стрелке
-	if (HandleAng->ShaftAngleInSec > (MAX_SEC-1)) //если угол положения вала 360 гр. или больше
-	{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - MAX_SEC;	} 
-	else
-	{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec; }							
+	
+	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec;
+	if (HandleAng->ShaftAngleInSec > (CIRCLE_IN_SEC-1)) //если угол положения вала 360 гр. или больше
+	{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - CIRCLE_IN_SEC;	} 
+	
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
@@ -212,16 +224,49 @@ void rbt_shaft_rotation (angular_data_t * HandleAng)
 //---------------------------------------------------------------------------------------------------//
 void lbt_shaft_rotation (angular_data_t * HandleAng) 
 {
-	need_step = HandleAng->StepAngleInSec/STEP_UNIT; //количество необходимых шагов
-	step_angle (BACKWARD, need_step); //поворот по часовой стрелке
+	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
+	need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
+	step_angle (BACKWARD, need_step); //поворот против часовой стрелке
+	
 	if (HandleAng->ShaftAngleInSec >= HandleAng->StepAngleInSec) //если угол положения вала больше угла шага
 	{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - HandleAng->StepAngleInSec; }
 	else 
 	{
 		if (HandleAng->ShaftAngleInSec < HandleAng->StepAngleInSec) //если угол положения вала меньше угла шага
-		{	HandleAng->ShaftAngleInSec =  MAX_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
+		{	HandleAng->ShaftAngleInSec = CIRCLE_IN_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
 	}
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
 }
+
+//---------------------------------------------------------------------------------------------------//
+void one_full_turn (void) 
+{
+	step_angle (FORWARD, STEPS_IN_REV);
+}
+
+//---------------------------------------------------------------------------------------------------//
+void lbt_rotate_to_zero (angular_data_t * HandleAng) 
+{
+	need_step = ((HandleAng->ShaftAngleInSec)/step_unit);
+	step_angle (BACKWARD, need_step); //поворот против часовой стрелке
+	
+	HandleAng->ShaftAngleInSec = 0;
+	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
+	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
+	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
+}
+
+//---------------------------------------------------------------------------------------------------//
+void rbt_rotate_to_zero (angular_data_t * HandleAng) 
+{
+	need_step = ((CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec)/step_unit);
+	step_angle (FORWARD, need_step); //поворот против часовой стрелке
+	
+	HandleAng->ShaftAngleInSec = 0;
+	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
+	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
+	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
+}
+

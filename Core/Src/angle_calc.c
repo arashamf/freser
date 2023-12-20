@@ -13,7 +13,7 @@ void angle_to_EEPROMbuf (angular_data_t * handle, uint8_t * EEPROM_buffer)
 	*(EEPROM_buffer+3) = (uint8_t)(handle->set_degree); 	//младшая часть градуса
 	
 	//передача угловых данных текущего положения вала из EEPROM
-	*(EEPROM_buffer+4) 	= (uint8_t)	handle->shaft_second; 				
+	*(EEPROM_buffer+4) = (uint8_t)	handle->shaft_second; 				
 	*(EEPROM_buffer+5) = (uint8_t)	handle->shaft_minute; 				
 	*(EEPROM_buffer+6) = (uint8_t)(handle->shaft_degree>>8);
 	*(EEPROM_buffer+7) = (uint8_t)(handle->shaft_degree);

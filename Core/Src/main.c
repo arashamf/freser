@@ -64,9 +64,7 @@ __IO uint16_t key_code = NO_KEY;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-/*void set_angle (angular_data_t * , encoder_data_t *);			
-void enc_shaft_rotation (angular_data_t *, encoder_data_t * );
-void bt_shaft_rotation (angular_data_t * ) ;*/
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -127,7 +125,8 @@ int main(void)
 	display_default_screen (&curr_rotation);
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //
-	
+	encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation = 0;
+	encoder_data.currCounter_SetAngle = encoder_data.currCounter_ShaftRotation = 0;
 	HAL_Delay (100);
   /* USER CODE END 2 */
 
@@ -135,59 +134,66 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		enc_shaft_rotation (&curr_rotation, &encoder_data); //ia?aaioea aaiiuo yieiaa?a (oi?aaeaiea iiai?ioii aaea)
+	//	enc_shaft_rotation (&curr_rotation, &encoder_data); //
 		
 		if ((key_code = scan_keys()) != NO_KEY)
 		{		
 			switch (key_code)
-			{
-				case NO_KEY:
-					break;
-					
+			{					
 				case KEY_LEFT:	
 					lbt_shaft_rotation (&curr_rotation) ;
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" klf", curr_rotation.shaft_degree, 
-					curr_rotation.shaft_minute, curr_rotation.shaft_second);	
-					ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", curr_rotation.set_degree, 
-					curr_rotation.set_minute, curr_rotation.set_second);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);		
-
+					display_default_screen (&curr_rotation);
 					break;
 					
 				case KEY_CENTER_SHORT: //
-					display_default_screen (&curr_rotation);	
+					while(1)
+					{
+						if ((key_code = scan_keys()) == NO_KEY)
+						{	continue;	}
+						else
+						{
+							switch (key_code)
+							{
+								case KEY_LEFT:
+									lbt_rotate_to_zero (&curr_rotation);
+									break;
+								
+								case KEY_CENTER_SHORT:
+									one_full_turn();
+									break;
+								
+								case KEY_RIGHT: 
+									rbt_rotate_to_zero (&curr_rotation);
+									break;	
+
+							default:
+								key_code = NO_KEY;
+								break;									
+							}
+							display_default_screen (&curr_rotation);	
+							break;
+						}
+					}
 					break;
 						
 				case KEY_CENTER_LONG:	
 					AngleShaftReset (&curr_rotation);
 					angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); 
 					EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8);
-				
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" kcl", curr_rotation.shaft_degree, 
-					curr_rotation.shaft_minute, curr_rotation.shaft_second);	
-					ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", curr_rotation.set_degree, 
-					curr_rotation.set_minute, curr_rotation.set_second);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+					display_default_screen (&curr_rotation);
 					break;
 						
 						
 				case KEY_RIGHT: 
 					rbt_shaft_rotation (&curr_rotation) ;
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" krt", curr_rotation.shaft_degree, 
-					curr_rotation.shaft_minute, curr_rotation.shaft_second);	
-					ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", curr_rotation.set_degree, 
-					curr_rotation.set_minute, curr_rotation.set_second);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+					display_default_screen (&curr_rotation);
 					break;
 					
 				case KEY_ENC_SHORT: 
 					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", curr_rotation.set_degree, 
 					curr_rotation.set_minute, curr_rotation.set_second);
 					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_CLEAR);
-					encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation;
+					encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation; //
 					while(1)
 					{
 						if ((key_code = scan_keys()) != KEY_ENC_SHORT)
@@ -205,13 +211,7 @@ int main(void)
 					
 				case KEY_ENC_LONG: 
 					GetAngleReset (&curr_rotation);
-				
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" kel", curr_rotation.shaft_degree, 
-					curr_rotation.shaft_minute, curr_rotation.shaft_second);	
-					ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", curr_rotation.set_degree, 
-					curr_rotation.set_minute, curr_rotation.set_second);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+					display_default_screen (&curr_rotation);
 					break;
 					
 				default:
