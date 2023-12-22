@@ -7,18 +7,18 @@
 // Exported types -------------------------------------------------------------//
 static struct KEY_MACHINE_t Key_Machine;
 
-// Prototypes ----------------------------------------------------------------//
+// Prototypes ---------------------------------------------------------------------------------------//
 static uint8_t scan_buttons_GPIO (void);
 
-//Private defines ------------------------------------------------------------//
+//Private defines -----------------------------------------------------------------------------------//
 #define KEY_BOUNCE_TIME 			60 				// время дребезга в мс
-#define KEY_AUTOREPEAT_TIME 	100 	// время автоповтора в мс
+#define KEY_AUTOREPEAT_TIME 	100 			// время автоповтора в мс
 #define COUNT_REPEAT_BUTTON 	5
 
-// Private variables ---------------------------------------------------------//
+// Private variables -------------------------------------------------------------------------------//
 uint8_t count_autorepeat = 0; //подсчёт удержания кнопки
 
-//----------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------//
 uint16_t scan_keys (void)
 {
 	static __IO uint8_t key_state = KEY_STATE_OFF; // начальное состояние кнопки - не нажата
@@ -50,8 +50,16 @@ uint16_t scan_keys (void)
 				{
 					if (LL_GPIO_IsInputPinSet(ENCODER_BUTTON_GPIO_Port, ENCODER_BUTTON_Pin) == 1)
 					{
-						key_state =  KEY_STATE_ON;
+						key_state = KEY_STATE_ON;
 						key_code = KEY_ENC_SHORT;
+					}
+					else
+					{
+						if (LL_GPIO_IsInputPinSet(MODE_BUTTON_GPIO_Port, MODE_BUTTON_Pin) == 1)
+						{
+							key_state =  	KEY_STATE_ON;
+							key_code 	= 	KEY_MODE;
+						}
 					}
 				}
 			}
@@ -120,12 +128,13 @@ uint16_t scan_keys (void)
 	return NO_KEY;
 }
 
-//----------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------//
 static uint8_t scan_buttons_GPIO (void)
 {
-	return ((LL_GPIO_IsInputPinSet(RIGHT_BUTTON_GPIO_Port, RIGHT_BUTTON_Pin)) || 
-					(LL_GPIO_IsInputPinSet(CENTER_BUTTON_GPIO_Port, CENTER_BUTTON_Pin)) || 
-					(LL_GPIO_IsInputPinSet(LEFT_BUTTON_GPIO_Port, LEFT_BUTTON_Pin)) ||
-					(LL_GPIO_IsInputPinSet(ENCODER_BUTTON_GPIO_Port, ENCODER_BUTTON_Pin))) ;
+	return ((LL_GPIO_IsInputPinSet(RIGHT_BUTTON_GPIO_Port, RIGHT_BUTTON_Pin)) 		|| 
+					(LL_GPIO_IsInputPinSet(CENTER_BUTTON_GPIO_Port, CENTER_BUTTON_Pin)) 	|| 
+					(LL_GPIO_IsInputPinSet(LEFT_BUTTON_GPIO_Port, LEFT_BUTTON_Pin)) 			||
+					(LL_GPIO_IsInputPinSet(ENCODER_BUTTON_GPIO_Port, ENCODER_BUTTON_Pin)) ||
+					(LL_GPIO_IsInputPinSet(MODE_BUTTON_GPIO_Port, MODE_BUTTON_Pin))) 			; 																																		
 }
 

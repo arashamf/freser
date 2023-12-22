@@ -59,10 +59,10 @@ void MX_GPIO_Init(void)
   LL_GPIO_ResetOutputPin(EN_DRIVE_GPIO_Port, EN_DRIVE_Pin);
 
   /**/
-  GPIO_InitStruct.Pin = IN1_Pin;
+  GPIO_InitStruct.Pin = MODE_BUTTON_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
-  LL_GPIO_Init(IN1_GPIO_Port, &GPIO_InitStruct);
+  LL_GPIO_Init(MODE_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
   /**/
   GPIO_InitStruct.Pin = IN2_Pin;

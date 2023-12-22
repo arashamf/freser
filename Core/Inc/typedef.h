@@ -31,6 +31,23 @@ typedef struct
 	int8_t flag_DirShaftRotation;
 } encoder_data_t;
 
+typedef struct 
+{
+	uint8_t teeth_gear_numbers;
+	uint8_t remain_teeth_gear;
+	uint16_t step_shaft_degree; 
+	int8_t step_shaft_minute; 
+	int8_t step_shaft_second;
+	uint32_t ShaftAngleInSec;
+} milling_data_t;
+
+	//----------------------------------------------------------------------------------//
+	typedef enum 
+	{
+		MODE_DEFAULT 				= 0,			//режим - по умолчанию
+		MODE_MILLING								//режим - фрезеровка
+	} MACHINE_MODE_t; 	
+
 // Defines ----------------------------------------------------------------------//
 
 // Private variables -----------------------------------------------------------//

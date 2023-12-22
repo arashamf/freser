@@ -56,9 +56,7 @@ encoder_data_t encoder_data = {0}; //структура с данными энкодера
 
 __IO uint16_t key_code = NO_KEY;
 
-//uint8_t kord_X = kord_DEFAULT_X_SIZE; //сдвиг дисплея по горизонтали
-//uint8_t kord_Y = kord_DEFAULT_Y_SIZE; //номер строки дисплея 
-
+uint8_t tool_mode = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -122,11 +120,13 @@ int main(void)
 	{	init_angular_data (&curr_rotation, eeprom_rx_buffer); }//инициализация и конвертация угловых данных установки поворота в структуру
 	ShaftAngle_in_Seconds (&curr_rotation); //перевод угловых данных положения вала в секунды
 	
-	display_default_screen (&curr_rotation);
+	display_default_screen (&curr_rotation); //заставка по умолчанию
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //
 	encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation = 0;
 	encoder_data.currCounter_SetAngle = encoder_data.currCounter_ShaftRotation = 0;
+	tool_mode = MODE_DEFAULT;
+	
 	HAL_Delay (100);
   /* USER CODE END 2 */
 
@@ -134,89 +134,140 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	//	enc_shaft_rotation (&curr_rotation, &encoder_data); //
-		
+	//	enc_shaft_rotation (&curr_rotation, &encoder_data); //		
 		if ((key_code = scan_keys()) != NO_KEY)
-		{		
-			switch (key_code)
-			{					
-				case KEY_LEFT:	
-					lbt_shaft_rotation (&curr_rotation) ;
-					display_default_screen (&curr_rotation);
-					break;
+		{	
+			if (tool_mode == MODE_DEFAULT)
+			{
+				switch (key_code)
+				{					
+					case KEY_LEFT:	
+						left_shaft_rotation (&curr_rotation) ;
+						display_default_screen (&curr_rotation);
+						break;
 					
-				case KEY_CENTER_SHORT: //
-					while(1)
-					{
-						if ((key_code = scan_keys()) == NO_KEY)
-						{	continue;	}
-						else
+					case KEY_CENTER_SHORT: //переход в подрежим
+						while(1)
 						{
-							switch (key_code)
+							if ((key_code = scan_keys()) == NO_KEY)
+							{	continue;	}
+							else
 							{
-								case KEY_LEFT:
-									lbt_rotate_to_zero (&curr_rotation);
-									break;
+								switch (key_code)
+								{
+									case KEY_LEFT:
+										left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
+										break;
 								
-								case KEY_CENTER_SHORT:
-									one_full_turn();
-									break;
+									case KEY_CENTER_SHORT:
+										one_full_turn(); //оборот на 360 гр
+										break;
 								
-								case KEY_RIGHT: 
-									rbt_rotate_to_zero (&curr_rotation);
-									break;	
+									case KEY_RIGHT: 
+										right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
+										break;	
 
-							default:
-								key_code = NO_KEY;
-								break;									
+									default:
+										key_code = NO_KEY;
+										break;									
+								}
+								display_default_screen (&curr_rotation);	
+								break;
 							}
+						}
+						break;
+						
+					case KEY_CENTER_LONG:	
+						AngleShaftReset (&curr_rotation);
+						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); 
+						EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8);
+						display_default_screen (&curr_rotation);
+						break;
+						
+						
+					case KEY_RIGHT: 
+						right_shaft_rotation (&curr_rotation) ;
+						display_default_screen (&curr_rotation);
+						break;
+					
+					case KEY_ENC_SHORT: 
+						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", curr_rotation.set_degree, 
+						curr_rotation.set_minute, curr_rotation.set_second);
+						ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_CLEAR);
+						encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation; //
+						while(1)
+						{
+							if ((key_code = scan_keys()) != KEY_ENC_SHORT)
+							{	set_angle(&curr_rotation, &encoder_data);	}
+							else
+							{	
+								angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); 
+								EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); 		
+								display_default_screen (&curr_rotation);
+								encoder_data.prevCounter_ShaftRotation = encoder_data.currCounter_SetAngle;
+								break;	
+							}
+						}
+						break;
+					
+					case KEY_ENC_LONG: 
+						GetAngleReset (&curr_rotation);
+						display_default_screen (&curr_rotation);
+						break;
+				
+					case KEY_MODE: 
+						tool_mode = MODE_MILLING;
+						while (1)
+						{
+							
+						}
+						break;
+
+				
+					default:
+						key_code = NO_KEY;
+						break;	
+				}
+			}
+			else
+			{
+				if (tool_mode == MODE_MILLING)
+				{
+					switch (key_code)
+					{	
+						case KEY_LEFT:	
+							display_default_screen (&curr_rotation);
+							break;
+					
+						case KEY_CENTER_SHORT: //переход в подрежим
 							display_default_screen (&curr_rotation);	
 							break;
-						}
-					}
-					break;
 						
-				case KEY_CENTER_LONG:	
-					AngleShaftReset (&curr_rotation);
-					angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); 
-					EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8);
-					display_default_screen (&curr_rotation);
-					break;
-						
-						
-				case KEY_RIGHT: 
-					rbt_shaft_rotation (&curr_rotation) ;
-					display_default_screen (&curr_rotation);
-					break;
-					
-				case KEY_ENC_SHORT: 
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", curr_rotation.set_degree, 
-					curr_rotation.set_minute, curr_rotation.set_second);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_CLEAR);
-					encoder_data.prevCounter_SetAngle = encoder_data.prevCounter_ShaftRotation; //
-					while(1)
-					{
-						if ((key_code = scan_keys()) != KEY_ENC_SHORT)
-						{	set_angle(&curr_rotation, &encoder_data);	}
-						else
-						{	
-							angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); 
-							EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); 		
+						case KEY_CENTER_LONG:	
 							display_default_screen (&curr_rotation);
-							encoder_data.prevCounter_ShaftRotation = encoder_data.currCounter_SetAngle;
+							break;
+											
+						case KEY_RIGHT: 
+							display_default_screen (&curr_rotation);
+							break;
+					
+						case KEY_ENC_SHORT:
+							display_default_screen (&curr_rotation);
+							break;
+					
+						case KEY_ENC_LONG: 							
+							display_default_screen (&curr_rotation);
+							break;
+				
+						case KEY_MODE: 
+							tool_mode = MODE_DEFAULT;
+							break;
+				
+						default:
+							key_code = NO_KEY;
 							break;	
-						}
 					}
-					break;
-					
-				case KEY_ENC_LONG: 
-					GetAngleReset (&curr_rotation);
-					display_default_screen (&curr_rotation);
-					break;
-					
-				default:
-					key_code = NO_KEY;
-					break;					
+				}					
 			}
 		}
     /* USER CODE END WHILE */

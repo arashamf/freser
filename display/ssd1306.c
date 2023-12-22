@@ -13,6 +13,7 @@ static void SSD1306_UpdateScreen(void);
 static uint8_t temp_char[SIZE_TEMP_BUFFER];
 static uint8_t LCD_X=0; 
 static uint8_t	LCD_Y=0;
+
 uint8_t kord_X=LCD_DEFAULT_X_SIZE ;  
 uint8_t	kord_Y=LCD_DEFAULT_Y_SIZE ; 
 char LCD_buff[20];
@@ -144,8 +145,6 @@ void ssd1306_Clear(void)
 			ssd1306_Goto(x, y);
 		}
 	}
-	//LCD_X = LCD_DEFAULT_X_SIZE;
-	//LCD_Y =	LCD_DEFAULT_Y_SIZE ;
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -161,8 +160,8 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 //-----------------------------------------------------------------------------------------------//
 void display_default_screen (angular_data_t* rotation)
 {
-	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->shaft_degree, rotation->shaft_minute, 
-	rotation->shaft_second);
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->shaft_degree, 
+	rotation->shaft_minute, rotation->shaft_second);
 	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
 	
 	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->set_degree, rotation->set_minute, 

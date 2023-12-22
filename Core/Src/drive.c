@@ -30,8 +30,6 @@ void rotate_one_step (uint8_t need_step)
 void step_angle (uint8_t dir, uint32_t need_step)
 {
 	uint16_t quant = 0;
-	/*DRIVE_ENABLE(ON);
-	delay_us (6);*/
 	DIR_DRIVE (dir);
 	delay_us (6);
 	
@@ -40,10 +38,10 @@ void step_angle (uint8_t dir, uint32_t need_step)
 		for (uint16_t count = 0; count < quant; count++)
 		{
 			DRIVE_ENABLE(ON);
-			delay_us (6);
+			delay_us (5);
 			rotate_one_step (STEP_DIV); //поворот на один шаг  по 1,8 градуса
 			DRIVE_ENABLE(OFF);
-			delay_us (2000);
+			delay_us (1600); //задержка 2 мс
 		}
 	}
 		
@@ -113,6 +111,40 @@ void set_angle (angular_data_t * HandleAng, encoder_data_t * HandleEncData)
 		}
 		snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" edit", HandleAng->set_degree, 
 		HandleAng->set_minute, HandleAng->set_second);
+		ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR); //2 строка дисплея
+	}
+}
+
+//----------------------------------------------------------------------------------------------------//
+void set_teeth_gear (milling_data_t * HandleMil, encoder_data_t * HandleEncData) 
+{
+	snprintf (LCD_buff, sizeof(LCD_buff), "Enter_teeth:");
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d %03d* %02d' %02d\" b", HandleMil->teeth_gear_numbers, 
+	HandleMil->step_shaft_degree, HandleMil->step_shaft_minute, HandleMil->step_shaft_second);	
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+	
+	int32_t currCounter=0;
+	int32_t delta = 0;
+	
+	currCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
+	HandleEncData->currCounter_SetAngle = (32767 - ((currCounter-1) & 0xFFFF))/2; //деление на 2, счёт щелчков (щелчок = 2 импульса)
+	
+	if(HandleEncData->currCounter_SetAngle != HandleEncData->prevCounter_SetAngle) //если текущее значение энкодера на равно предыдущему
+	{
+		delta = (HandleEncData->currCounter_SetAngle - HandleEncData->prevCounter_SetAngle); //разница между текущим и предыдущим показанием энкодера
+    HandleEncData->prevCounter_SetAngle = HandleEncData->currCounter_SetAngle; //сохранение текущего показанаия энкодера    
+    if((delta > -20) && (delta < 20)) // защита от дребезга контактов и переполнения счетчика (переполнение будет случаться очень редко)
+		{
+			if (delta != 0) //если изменилось положение энкодера
+			{  
+				snprintf (LCD_buff, sizeof(LCD_buff), "delta=%d", delta);
+				ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR); //1 строка дисплея			
+				HandleMil->teeth_gear_numbers += delta; //сохранение разни		
+			}
+		}
+		snprintf (LCD_buff, sizeof(LCD_buff), "%03d %03d* %02d' %02d\" b", HandleMil->teeth_gear_numbers, 
+		HandleMil->step_shaft_degree, HandleMil->step_shaft_minute, HandleMil->step_shaft_second);	
 		ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR); //2 строка дисплея
 	}
 }
@@ -206,7 +238,7 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 
 
 //---------------------------------------------------------------------------------------------------//
-void rbt_shaft_rotation (angular_data_t * HandleAng) 
+void right_shaft_rotation (angular_data_t * HandleAng) 
 {
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
 	need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
@@ -222,7 +254,7 @@ void rbt_shaft_rotation (angular_data_t * HandleAng)
 }
 
 //---------------------------------------------------------------------------------------------------//
-void lbt_shaft_rotation (angular_data_t * HandleAng) 
+void left_shaft_rotation (angular_data_t * HandleAng) 
 {
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
 	need_step = HandleAng->StepAngleInSec/step_unit; //количество необходимых шагов
@@ -247,7 +279,7 @@ void one_full_turn (void)
 }
 
 //---------------------------------------------------------------------------------------------------//
-void lbt_rotate_to_zero (angular_data_t * HandleAng) 
+void left_rotate_to_zero (angular_data_t * HandleAng) 
 {
 	need_step = ((HandleAng->ShaftAngleInSec)/step_unit);
 	step_angle (BACKWARD, need_step); //поворот против часовой стрелке
@@ -259,7 +291,7 @@ void lbt_rotate_to_zero (angular_data_t * HandleAng)
 }
 
 //---------------------------------------------------------------------------------------------------//
-void rbt_rotate_to_zero (angular_data_t * HandleAng) 
+void right_rotate_to_zero (angular_data_t * HandleAng) 
 {
 	need_step = ((CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec)/step_unit);
 	step_angle (FORWARD, need_step); //поворот против часовой стрелке

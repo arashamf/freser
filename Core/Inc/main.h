@@ -70,8 +70,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define IN1_Pin LL_GPIO_PIN_0
-#define IN1_GPIO_Port GPIOF
+#define MODE_BUTTON_Pin LL_GPIO_PIN_0
+#define MODE_BUTTON_GPIO_Port GPIOF
 #define IN2_Pin LL_GPIO_PIN_1
 #define IN2_GPIO_Port GPIOF
 #define LEFT_BUTTON_Pin LL_GPIO_PIN_0
@@ -99,9 +99,6 @@ void Error_Handler(void);
 
 #define CPU_CLOCK_VALUE			(48000000UL)	// Частота контроллера //
 #define TICKS_PER_SECOND		1000 
-
-//extern angular_data_t curr_rotation; //структура с угловыми данными привода
-//extern encoder_data_t encoder_data; //структура с данными энкодера
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

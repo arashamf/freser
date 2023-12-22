@@ -23,10 +23,10 @@ void rotate_one_step (uint8_t );
 void step_angle (uint8_t , uint32_t );
 void set_angle (angular_data_t * , encoder_data_t *);			
 void enc_shaft_rotation (angular_data_t *, encoder_data_t * );
-void rbt_shaft_rotation (angular_data_t * ) ;
-void lbt_shaft_rotation (angular_data_t * ) ;
-void lbt_rotate_to_zero (angular_data_t * ) ;
-void rbt_rotate_to_zero (angular_data_t * ) ;
+void right_shaft_rotation (angular_data_t * ) ;
+void left_shaft_rotation (angular_data_t * ) ;
+void left_rotate_to_zero (angular_data_t * ) ;
+void right_rotate_to_zero (angular_data_t * ) ;
 void one_full_turn (void) ;
 // Variables ------------------------------------------------------------------//
 extern __IO uint32_t need_step;
