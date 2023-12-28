@@ -277,7 +277,7 @@ void TimerDisplayStart (void)
 //-----------------------------------------------------------------------------------------------------//
 void vTimerDisplayCallback (xTimerHandle xTimer)
 {
-	display_default_screen (&curr_rotation);
+//	display_default_screen (&curr_rotation);
 }
 
 //-----------------------------------------------------------------------------------------------------//

@@ -10,12 +10,12 @@ static void SSD1306_UpdateScreen(void);
 
 // Private variables ---------------------------------------------------------//
 //SSD1306_State SSD1306_state = SSD1306_READY;
-static uint8_t temp_char[SIZE_TEMP_BUFFER];
-static uint8_t LCD_X=0; 
+static uint8_t 	temp_char[SIZE_TEMP_BUFFER];
+static uint8_t 	LCD_X=0; 
 static uint8_t	LCD_Y=0;
 
-uint8_t kord_X=LCD_DEFAULT_X_SIZE ;  
-uint8_t	kord_Y=LCD_DEFAULT_Y_SIZE ; 
+uint8_t kord_X	=	LCD_DEFAULT_X_SIZE ;  
+uint8_t	kord_Y	=	LCD_DEFAULT_Y_SIZE ; 
 char LCD_buff[20];
 
 // Functions -----------------------------------------------------------------//
@@ -158,7 +158,7 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 }
 
 //-----------------------------------------------------------------------------------------------//
-void display_default_screen (angular_data_t* rotation)
+void default_screen_mode1 (angular_data_t* rotation)
 {
 	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", rotation->shaft_degree, 
 	rotation->shaft_minute, rotation->shaft_second);
@@ -169,6 +169,18 @@ void display_default_screen (angular_data_t* rotation)
 	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 }
 
+
+//-----------------------------------------------------------------------------------------------//
+void default_screen_mode2 (milling_data_t* handle)
+{
+	snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@", handle->teeth_gear_numbers, 
+	handle->remain_teeth_gear);
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
+	
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", handle->step_shaft_degree, 
+	handle->step_shaft_minute, handle->step_shaft_second);
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
 
 //-----------------------------------------------------------------------------------------------//
 /*uint8_t SSD1306_IsReady()

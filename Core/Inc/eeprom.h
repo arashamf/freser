@@ -10,6 +10,8 @@ extern "C" {
 #include "main.h"
 
 // Defines ---------------------------------------------------------------------//
+#define 	MEMORY_PAGE_ANGLE_ROTATION 	0x0001
+#define 	MEMORY_PAGE_TEETH_ANGLE 		0x0010
 
 // Prototypes -----------------------------------------------------------------//
 void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
