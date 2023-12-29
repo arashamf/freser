@@ -15,7 +15,7 @@ extern I2C_HandleTypeDef hi2c1;
 
 // Private variables ---------------------------------------------------------//
 uint8_t eeprom_rx_buffer[20] = {0};
-uint8_t eeprom_tx_buffer[10] = {0} ;
+uint8_t eeprom_tx_buffer[20] = {0} ;
 
 //---------------------------------------------------------------------//
 void EEPROM_WriteBytes (uint16_t addr, uint8_t *buf, uint16_t bytes_count)

@@ -133,12 +133,12 @@ void set_teeth_gear (milling_data_t * HandleMil, encoder_data_t * HandleEncData)
 			if (delta != 0) //если изменилось положение энкодера
 			{  
 				HandleMil->teeth_gear_numbers += delta;
-				if (HandleMil->teeth_gear_numbers > 0xFF) //количество зубьев не больше 255
-				{	HandleMil->teeth_gear_numbers = 0;	}	
+				if (HandleMil->teeth_gear_numbers > 0xFE) //количество зубьев не больше 254
+				{	HandleMil->teeth_gear_numbers = 0x02;	}	
 				else
 				{
-					if (HandleMil->teeth_gear_numbers < 0)
-					{	HandleMil->teeth_gear_numbers = 0xFF;	}
+					if (HandleMil->teeth_gear_numbers < 0x02) //и не меньше 2
+					{	HandleMil->teeth_gear_numbers = 0xFE;	}
 				}									
 			}
 		}
@@ -294,7 +294,7 @@ void right_rotate_to_zero (angular_data_t * HandleAng)
 	need_step = ((CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec)/step_unit);
 	step_angle (FORWARD, need_step); //поворот против часовой стрелке
 	
-	HandleAng->ShaftAngleInSec = 0;
+	HandleAng->ShaftAngleInSec = 0; //сброс текущего угла вала в нулевую позицию
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
@@ -334,3 +334,5 @@ void left_teeth_rotation (milling_data_t * HandleMil, angular_data_t * HandleAng
 		}
 	}
 }
+
+//---------------------------------------------------------------------------------------------------//

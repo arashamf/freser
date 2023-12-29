@@ -33,8 +33,8 @@ typedef struct
 
 typedef struct 
 {
-	int16_t 	teeth_gear_numbers;
-	uint16_t 	remain_teeth_gear;
+	uint8_t 	teeth_gear_numbers;
+	uint8_t 	remain_teeth_gear;
 	uint16_t 	step_shaft_degree; 
 	int8_t 		step_shaft_minute; 
 	int8_t 		step_shaft_second;
