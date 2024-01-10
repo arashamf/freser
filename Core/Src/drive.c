@@ -1,5 +1,5 @@
 
-/* Includes ------------------------------------------------------------------*/
+// Includes ------------------------------------------------------------------//
 #include "main.h"
 #include "drive.h"
 #include "gpio.h"
@@ -11,13 +11,14 @@
 
 // Functions -----------------------------------------------------------------//
 
-// Variables ------------------------------------------------------------------//
-__IO uint32_t need_step = 0;
-__IO float step_unit= (float)STEP18_IN_SEC/STEP_DIV;
+// Variables -----------------------------------------------------------------//
+__IO uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
+__IO float step_unit= (float)(STEP18_IN_SEC/STEP_DIV); //количество секунд в одном микрошаге (1,8гр/100=6480/100)
+
 //----------------------------------------------------------------------------------------------------//
 void rotate_one_step (uint8_t need_step)
 {
-	for (uint8_t count = 0; count < need_step; count++)
+	for (uint8_t count = 0; count < need_step; count++) //количество
 	{
 			STEP(ON);
 			delay_us (5);
@@ -41,23 +42,23 @@ void step_angle (uint8_t dir, uint32_t need_step)
 			delay_us (5);
 			rotate_one_step (STEP_DIV); //поворот на один шаг  по 1,8 градуса
 			DRIVE_ENABLE(OFF);
-			delay_us (1600); //задержка 2 мс
+			delay_us (1500); //задержка 1500 мкс
 		}
 	}
 		
 	if ((quant = need_step%STEP_DIV) > 0) //остаток микрошагов (<1,8 гр)
 	{
 		DRIVE_ENABLE(ON);
-		delay_us (6);
+		delay_us (5);
 		rotate_one_step (quant);
 		DRIVE_ENABLE(OFF);
 		delay_us (3);
 	}
 	
 /*	if (dir == FORWARD)
-		DIR_DRIVE (BACKWARD);
+		{	DIR_DRIVE (BACKWARD); }
 	else
-		DIR_DRIVE (FORWARD);*/
+		{	DIR_DRIVE (FORWARD); }*/
 }
 
 //----------------------------------------------------------------------------------------------------//
@@ -147,6 +148,16 @@ void set_teeth_gear (milling_data_t * HandleMil, encoder_data_t * HandleEncData)
 		snprintf (LCD_buff, sizeof(LCD_buff), "%03d@ edit",HandleMil->teeth_gear_numbers);
 		ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 	}
+}
+
+//---------------------------------------------------------------------------------------------------//
+void encoder_reset (encoder_data_t * HandleEncData) 
+{
+	int32_t encCounter = 0;
+	encCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
+	HandleEncData->currCounter_SetAngle = (32767 - ((encCounter-1) & 0xFFFF))/2;
+	HandleEncData->prevCounter_SetAngle = HandleEncData->currCounter_SetAngle;
+	HandleEncData->prevCounter_ShaftRotation = HandleEncData->currCounter_SetAngle;
 }
 
 //---------------------------------------------------------------------------------------------------//
@@ -273,7 +284,15 @@ void left_shaft_rotation (angular_data_t * HandleAng)
 //---------------------------------------------------------------------------------------------------//
 void one_full_turn (void) 
 {
-	step_angle (FORWARD, STEPS_IN_REV);
+	
+	step_angle (FORWARD, STEPS_IN_REV); //полный оборот на 360 градусов
+	//step_angle (FORWARD, STEP_TOOL); //полный оборот на 360гр с учётом делителя редуктора (360гр*40)
+	for(uint8_t count = 0; count < 40; count++)
+	{
+		step_angle (FORWARD, STEPS_IN_REV);
+		delay_us (1500); //задержка 1500 мкс
+	//	HAL_Delay (3);
+	}
 }
 
 //---------------------------------------------------------------------------------------------------//

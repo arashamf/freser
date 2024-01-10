@@ -122,6 +122,12 @@ void MilAngleTeethReset (milling_data_t * handle)
 }
 
 //------------------------------------------------------------------------------------------------//
+void RemainTeethGearReset (milling_data_t * handle)
+{
+	handle->remain_teeth_gear = handle->teeth_gear_numbers;
+}
+
+//------------------------------------------------------------------------------------------------//
 void teeth_angle_to_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer)
 {
 	//передача угловых данных установки поворота вала из EEPROM
