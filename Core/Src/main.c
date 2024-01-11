@@ -179,7 +179,7 @@ int main(void)
 										key_code = NO_KEY; //выход из подрежима 
 										break;									
 								}
-								default_screen_mode1 (&curr_rotation);	//заставка по умолчанию режима 1
+							//	default_screen_mode1 (&curr_rotation);	//заставка по умолчанию режима 1
 								break;
 							}
 						}

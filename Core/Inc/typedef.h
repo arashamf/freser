@@ -76,6 +76,7 @@ typedef union
 
 #define 	STEP18_IN_SEC			6480 //количество секунд в одном шаге двигателя (1,8гр)
 #define 	CIRCLE_IN_SEC			(STEP18_IN_SEC*CIRCLE_IN_STEP)	//количество секунд в одном полном обороте двигателя 	(360 гр)
+
 // Private variables -----------------------------------------------------------//
 
 #ifdef __cplusplus
