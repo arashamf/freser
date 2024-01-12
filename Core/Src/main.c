@@ -133,6 +133,7 @@ int main(void)
 	default_screen_mode1 (&curr_rotation); //заставка по умолчанию
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //
+	
 	status_flag.tool_mode = MODE_DEFAULT; //режим по умолчанию
 	status_flag.right_flag = status_flag.left_flag = OFF;
 	
@@ -179,7 +180,7 @@ int main(void)
 										key_code = NO_KEY; //выход из подрежима 
 										break;									
 								}
-							//	default_screen_mode1 (&curr_rotation);	//заставка по умолчанию режима 1
+								default_screen_mode1 (&curr_rotation);	//заставка по умолчанию режима 1
 								break;
 							}
 						}
@@ -246,7 +247,7 @@ int main(void)
 							{
 								left_teeth_rotation (&milling_mode, &curr_rotation); //поворот фрезы против часовой стрелке
 								angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
-								remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося еоличества зубьев
+								remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося количества зубьев
 								EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 9);
 								default_screen_mode2 (&milling_mode);
 							}

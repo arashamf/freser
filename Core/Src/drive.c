@@ -22,9 +22,9 @@ void rotate_step (uint8_t micro_step)
 	for (uint8_t count = 0; count < micro_step; count++) //количество микрошагов (импульсов)
 	{
 			STEP(ON);
-			delay_us (5);
+			delay_us (4);
 			STEP(OFF);
-			delay_us (5);
+			delay_us (4); //
 	}
 }
 
@@ -87,7 +87,7 @@ void set_angle (angular_data_t * HandleAng, encoder_data_t * HandleEncData)
 				ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR); //1 строка дисплея
 				
 				HandleAng->set_minute += delta; //сохранение разницы
-				if (HandleAng->set_minute <= 0) //если значение минут меньше 0
+				if (HandleAng->set_minute < 0) //если значение минут меньше 0
 				{			 
 					if ((HandleAng->set_degree > 0) ) //если значение градусов больше 0
 					{ 
@@ -160,9 +160,9 @@ void encoder_reset (encoder_data_t * HandleEncData)
 {
 	int32_t encCounter = 0;
 	encCounter = LL_TIM_GetCounter(TIM3); //текущее показание энкодера
-	HandleEncData->currCounter_SetAngle = (32767 - ((encCounter-1) & 0xFFFF))/2;
-	HandleEncData->prevCounter_SetAngle = HandleEncData->currCounter_SetAngle;
-	HandleEncData->prevCounter_ShaftRotation = HandleEncData->currCounter_SetAngle;
+	HandleEncData->currCounter_SetAngle = (32767 - ((encCounter-1) & 0xFFFF))/2; //преобразование полученного показания энкодера
+	HandleEncData->prevCounter_SetAngle = HandleEncData->currCounter_SetAngle; //сохранение преобразованного текущего показания энкодера в структуру установки шага поворота
+	HandleEncData->prevCounter_ShaftRotation = HandleEncData->currCounter_SetAngle; //сохранение преобразованного текущего показания энкодера в структуру данных положения вала
 }
 
 //---------------------------------------------------------------------------------------------------//
@@ -170,7 +170,6 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 {
 	int32_t currCounter=0;
 	int32_t delta = 0;
-//	float buf_step = 0;
 	currCounter= LL_TIM_GetCounter(TIM3); //текущее показание энкодера
 	HandleEncData->currCounter_ShaftRotation= (32767 - ((currCounter-1) & 0xFFFF))/2; //деление на 2, счёт щелчков (щелчок = 2 импульса)
 	
@@ -235,7 +234,9 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 								if (HandleAng->ShaftAngleInSec < HandleAng->StepAngleInSec) //если угол положения вала меньше угла шага
 								{	HandleAng->ShaftAngleInSec = CIRCLE_IN_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
 							}
+							
 							GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
+							
 							snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" b", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
 							ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
 							snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step); 
