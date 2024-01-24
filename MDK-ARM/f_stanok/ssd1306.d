@@ -40,4 +40,4 @@ f_stanok/ssd1306.o: ..\display\ssd1306.c ..\display\ssd1306.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
   ..\Core\Inc\main.h ..\Core\Inc\typedef.h \
-  ..\display\ssd1306_interface.h ..\display\fonts.h
+  ..\display\ssd1306_interface.h ..\display\fonts.h ..\Core\Inc\tim.h

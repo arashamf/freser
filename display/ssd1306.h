@@ -55,7 +55,9 @@ void ssd1306_Clear(void);
 void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear);
 void default_screen_mode1 (angular_data_t * );
 void default_screen_mode2 (milling_data_t * );
-uint8_t SSD1306_IsReady(void);
+void setangle_mode_screen (angular_data_t* );
+void return_mode_screen (angular_data_t* );
+void setteeth_mode_screen (milling_data_t* handle);
 
 // Variables ------------------------------------------------------------------//
 extern char LCD_buff[20];

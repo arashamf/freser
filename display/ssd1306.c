@@ -3,6 +3,7 @@
 #include "ssd1306.h"
 #include "ssd1306_interface.h"
 #include "fonts.h"
+#include "tim.h"
 
 // Declarations and definitions -----------------------------------------------//
 static void SSD1306_ClearScreen(void);
@@ -153,7 +154,7 @@ void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer,
 	if ( need_clear)
 	{	ssd1306_Clear(); }
 	ssd1306_Goto(coordinate_X, coordinate_Y);
-	HAL_Delay (3);
+	delay_us (3000);
 	ssd1306_PutString(buffer);
 }
 
@@ -183,13 +184,34 @@ void default_screen_mode2 (milling_data_t* handle)
 }
 
 //-----------------------------------------------------------------------------------------------//
-/*uint8_t SSD1306_IsReady()
+void setangle_mode_screen (angular_data_t* handle)
 {
-  if (SSD1306_state == SSD1306_BUSY)
-  {
-    return 0;
-  }  
-  return 1;
-}*/
+	snprintf (LCD_buff, sizeof(LCD_buff), "setup mode1");
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+	
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", handle->set_degree, 
+	handle->set_minute, handle->set_second);
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
 
+//-----------------------------------------------------------------------------------------------//
+void return_mode_screen (angular_data_t* handle)
+{	
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", handle->shaft_degree, 
+	handle->shaft_minute, handle->shaft_second);
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+	
+	snprintf (LCD_buff, sizeof(LCD_buff), "<- push ->");	
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
 
+//-----------------------------------------------------------------------------------------------//
+void setteeth_mode_screen (milling_data_t* handle)
+{	
+	snprintf (LCD_buff, sizeof(LCD_buff), "setup mode2");
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d teeth", handle->teeth_gear_numbers);
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
+
+//-----------------------------------------------------------------------------------------------//

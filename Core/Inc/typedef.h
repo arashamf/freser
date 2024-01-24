@@ -31,7 +31,7 @@ typedef struct
 	int32_t 	currCounter_SetAngle; 			//текущее показание энкодера
 	int32_t 	prevCounter_ShaftRotation;  //сохранённое показание энкодера
 	int32_t 	currCounter_ShaftRotation;	//текущее показание энкодера
-	int8_t 		flag_DirShaftRotation; 			//флага достоверности
+	int32_t 	flag_DirShaftRotation;
 } encoder_data_t;
 
 //------------------------------------------------------------------------------------//
@@ -42,7 +42,7 @@ typedef struct
 	uint16_t 	step_shaft_degree; //часть угла поворота вала в режиме фрезеровки в градусах
 	int8_t 		step_shaft_minute; //часть угла поворота вала в режиме фрезеровки в минутах
 	int8_t 		step_shaft_second; //часть угла поворота вала в режиме фрезеровки в секундах
-	uint32_t 	AngleTeethInSec; //угол поворота в секундах
+	uint32_t 	AngleTeethInSec; //угол поворота в режиме фрезеровки в секундах
 } milling_data_t;
 
 //----------------------------------------------------------------------------------//
@@ -75,8 +75,9 @@ typedef union
 #define 	STEP_TOOL					(STEPS_IN_REV*REDUCER) //количество микрошагов в одном полном обороте (360 гр) с учётом делителя драйвера и редуктора 
 
 #define 	STEP18_IN_SEC			6480 //количество секунд в одном шаге двигателя (1,8гр)
-#define 	CIRCLE_IN_SEC			(STEP18_IN_SEC*CIRCLE_IN_STEP)	//количество секунд в одном полном обороте двигателя 	(360 гр)
-
+#define 	CIRCLE_IN_SEC			(STEP18_IN_SEC*CIRCLE_IN_STEP)	//количество секунд в одном полном обороте двигателя (360 гр)
+#define 	SECOND_PER_MINUTE 		60
+#define 	SECOND_PER_DEGREE 		3600
 // Private variables -----------------------------------------------------------//
 
 #ifdef __cplusplus

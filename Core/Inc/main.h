@@ -90,12 +90,13 @@ void Error_Handler(void);
 #define EN_DRIVE_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
-#define ON 									1
-#define OFF 								0
-#define FORWARD 						1
-#define BACKWARD 						0
-#define DISP_CLEAR 					1
-#define DISP_NOT_CLEAR 			0
+#define ON 												1
+#define OFF 											0
+#define FORWARD 									1
+#define BACKWARD 									0
+#define DISP_CLEAR 								1
+#define DISP_NOT_CLEAR 						0
+#define EEPROM_NUMBER_BYTES 			14
 
 #define CPU_CLOCK_VALUE			(48000000UL)	// Частота контроллера //
 #define TICKS_PER_SECOND		1000 

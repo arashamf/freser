@@ -1,5 +1,6 @@
-f_stanok/drive.o: ..\Core\Src\drive.c ..\Core\Inc\drive.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h \
+f_stanok/stanok_math.o: ..\Core\Src\stanok_math.c \
+  ..\Core\Inc\stanok_math.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h \
   ..\Core\Inc\stm32f0xx_hal_conf.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_rcc.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_def.h \
@@ -39,6 +40,4 @@ f_stanok/drive.o: ..\Core\Src\drive.c ..\Core\Inc\drive.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
-  ..\Core\Inc\gpio.h ..\Core\Inc\tim.h ..\Core\Inc\typedef.h \
-  ..\display\ssd1306.h ..\Core\Inc\main.h ..\Core\Inc\eeprom.h \
-  ..\Core\Inc\angle_calc.h ..\Core\Inc\stanok_math.h
+  ..\Core\Inc\typedef.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h

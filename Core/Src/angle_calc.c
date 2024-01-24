@@ -26,45 +26,45 @@ void angle_from_EEPROMbuf (angular_data_t * handle, uint8_t * EEPROM_buffer)
 	handle->ShaftAngleInSec = (uint32_t)(((*(EEPROM_buffer+4))<<24) | ((*(EEPROM_buffer+5))<<16) | ((*(EEPROM_buffer+6))<<8) | ((*(EEPROM_buffer+7))<<0));
 }
 
-//------------------------перевод угловых данных из формата гр/мин/с в секунды------------------------//
+//------------------------перевод угла шага хода вала из формата гр/мин/с в секунды------------------------//
 void SetAngle_in_Seconds (angular_data_t * handle)
 {
 	handle->StepAngleInSec=0;
 	handle->StepAngleInSec += handle->set_second;
-	handle->StepAngleInSec += handle->set_minute*60;
-	handle->StepAngleInSec += handle->set_degree*60*60;
+	handle->StepAngleInSec += handle->set_minute*SECOND_PER_MINUTE ;
+	handle->StepAngleInSec += handle->set_degree*SECOND_PER_DEGREE;
 }
 
-//-------------------------перевод угловых данных из секунд в формат гр/мин/с-------------------------//
+//-------------------------перевод угла шага хода вала из секунд в формат гр/мин/с-------------------------//
 void GetSetAngle_from_Seconds (angular_data_t * handle)
 {
 	uint32_t tmp = 0;
-	handle->set_degree = handle->StepAngleInSec/(3600);
-	tmp = handle->StepAngleInSec % 3600; //остаток с минутами и секундами
-	handle->set_minute = tmp/60;
-	handle->set_second = tmp % 60;
+	handle->set_degree = handle->StepAngleInSec/ SECOND_PER_DEGREE; //количество градусов
+	tmp = handle->StepAngleInSec % SECOND_PER_DEGREE; //остаток с минутами и секундами
+	handle->set_minute = tmp/SECOND_PER_MINUTE;  //количество минут
+	handle->set_second = tmp % SECOND_PER_MINUTE; //количество секунд
 }
 
-//----------------------------------------------------------------------------------------------------//
+//-------------------перевод угла текущего положения вала из формата гр/мин/с в секунды-------------------//
 void ShaftAngle_in_Seconds (angular_data_t * handle)
 {
 	handle->ShaftAngleInSec = 0;
 	handle->ShaftAngleInSec += handle->shaft_second;
-	handle->ShaftAngleInSec += handle->shaft_minute*60;
-	handle->ShaftAngleInSec += handle->shaft_degree*60*60;
+	handle->ShaftAngleInSec += handle->shaft_minute*SECOND_PER_MINUTE;
+	handle->ShaftAngleInSec += handle->shaft_degree*SECOND_PER_DEGREE;
 }
 
-//----------------------------------------------------------------------------------------------------//
+//-------------------перевод угла текущего положения вала из секунд в формат гр/мин/с-------------------//
 void GetAngleShaft_from_Seconds (angular_data_t * handle)
 {
 	uint32_t tmp = 0;
-	handle->shaft_degree = handle->ShaftAngleInSec/(3600);
-	tmp = handle->ShaftAngleInSec % 3600; //остаток с минутами и секундами
-	handle->shaft_minute = tmp/60;
-	handle->shaft_second = tmp % 60;
+	handle->shaft_degree = handle->ShaftAngleInSec/(SECOND_PER_DEGREE); //количество градусов
+	tmp = handle->ShaftAngleInSec % SECOND_PER_DEGREE; //остаток с минутами и секундами
+	handle->shaft_minute = tmp/SECOND_PER_MINUTE; //количество минут
+	handle->shaft_second = tmp % SECOND_PER_MINUTE; //количество секунд
 }
 
-//------------------------------------------------------------------------------------------------//
+//-------------------------------обнуление угла текущего положения вала -------------------------------//
 void AngleShaftReset (angular_data_t * handle)
 {
 	handle->shaft_second = 0; 
@@ -73,7 +73,7 @@ void AngleShaftReset (angular_data_t * handle)
 	handle->ShaftAngleInSec = 0; //текущее положение вала - нулевое
 }
 
-//------------------------------------------------------------------------------------------------//
+//---------------------------сброс угла шага хода вала на минимальное значение---------------------------//
 void SetAngleReset (angular_data_t * handle)
 {
 	handle->set_second = 0;
@@ -82,35 +82,35 @@ void SetAngleReset (angular_data_t * handle)
 	SetAngle_in_Seconds (handle);
 }
 
-//------------------------------------------------------------------------------------------------//
+//-----------------перевод угла поворота в режиме фрезеровки из формата гр/мин/с в секунды-----------------//
 void MilAngleTeeth_in_Seconds (milling_data_t * handle)
 {
 	handle->AngleTeethInSec = 0;
 	handle->AngleTeethInSec += handle->step_shaft_second;
-	handle->AngleTeethInSec += handle->step_shaft_minute*60;
-	handle->AngleTeethInSec += handle->step_shaft_degree*60*60;
+	handle->AngleTeethInSec += handle->step_shaft_minute*SECOND_PER_MINUTE;
+	handle->AngleTeethInSec += handle->step_shaft_degree*SECOND_PER_DEGREE;
 }
 
-//------------------------------------------------------------------------------------------------//
+//------------------перевод угла поворота в режиме фрезеровки из секунд в формат гр/мин/с------------------//
 void MilAngleTeeth_from_Seconds (milling_data_t * handle)
 {
 	uint32_t tmp = 0;
-	handle->step_shaft_degree = handle->AngleTeethInSec/(3600);
-	tmp = handle->AngleTeethInSec % 3600; //остаток с минутами и секундами
-	handle->step_shaft_minute = tmp/60;
-	handle->step_shaft_second = tmp % 60;
+	handle->step_shaft_degree = handle->AngleTeethInSec/SECOND_PER_DEGREE; //количество градусов
+	tmp = handle->AngleTeethInSec % SECOND_PER_DEGREE; //остаток с минутами и секундами
+	handle->step_shaft_minute = tmp/SECOND_PER_MINUTE; //количество минут
+	handle->step_shaft_second = tmp % SECOND_PER_MINUTE; //количество секунд
 }
 
-//------------------------------------------------------------------------------------------------//
+//---------------------------расчёт угла поворота после ввода количества зубов---------------------------//
 void GetMilAngleTeeth (milling_data_t * handle)
 {	
 	uint32_t tmp = 0;
 	handle->remain_teeth_gear = handle->teeth_gear_numbers; //сохранение количества оставшихся зубов	
 	handle->AngleTeethInSec = CIRCLE_IN_SEC/handle->teeth_gear_numbers; //угол между зубьями
-	MilAngleTeeth_from_Seconds (handle);
+	MilAngleTeeth_from_Seconds (handle); //перевод угла поворота из секунд в формат гр/мин/с
 }
 
-//------------------------------------------------------------------------------------------------//
+//---------------------сброс угловых данных режима фрезеровки на минимальное значение---------------------//
 void MilAngleTeethReset (milling_data_t * handle)
 {	
 	handle->teeth_gear_numbers 	= 2;
@@ -154,3 +154,4 @@ void remain_teeth_to_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer
 	*(EEPROM_buffer+8) = (uint8_t)(handle->remain_teeth_gear); //сохранение оставшихся количества зубьев
 }
 
+//------------------------------------------------------------------------------------------------//
