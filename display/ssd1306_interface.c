@@ -14,31 +14,6 @@ static uint8_t temp[2];
 static uint8_t msg_size = 0;
 
 /* Functions -----------------------------------------------------------------*/
-/*void ssd1306_SendCommand ()
-{
-  uint16_t i;
-  //LL_I2C_DisableBitPOS(I2C1); //Disable Pos
-  LL_I2C_AcknowledgeNextData(I2C1, LL_I2C_ACK); //the generation of a ACKnowledge or Non ACKnowledge condition after the address receive match code or next received byte
-  LL_I2C_GenerateStartCondition(I2C1); //генерировани€ услови€ START
-  while(LL_I2C_IsActiveFlag_BUSY(I2C1)){}; //SET: When a Start condition is detected
-  (void) I2C1->ISR; //
-  LL_I2C_TransmitData8(I2C1, EEPROM_I2C1_ADDRESS | I2C_REQUEST_WRITE);
-  while(!LL_I2C_IsActiveFlag_ADDR(I2C1)){}; //SET: When the received slave address matched with one of the enabled slave address
-  LL_I2C_ClearFlag_ADDR(I2C1); //”становка этого бита очищает флаг ADDR в регистре I2C_ISR
-  
-	LL_I2C_TransmitData8(I2C1, (uint8_t) (addr>>8)); //старша€ часть 16 битного адреса микросхемы пам€ти
-  while(!LL_I2C_IsActiveFlag_TXE(I2C1)){};
-  LL_I2C_TransmitData8(I2C1, (uint8_t) addr);
-  while(!LL_I2C_IsActiveFlag_TXE(I2C1)){};
-		
-  for(i=0;i<bytes_count;i++) //передача данных побайтно
-  {
-    LL_I2C_TransmitData8(I2C1, buf[i]);
-    while(!LL_I2C_IsActiveFlag_TXE(I2C1)){};
-  }
-  LL_I2C_GenerateStopCondition(I2C1);
-}*/
-
 
 /*----------------------------------------------------------------------------*/
 void ssd1306_SendCommand(uint8_t type_command)

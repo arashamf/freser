@@ -1,6 +1,6 @@
 
-#ifndef __DRIVE_H__
-#define __DRIVE_H__
+#ifndef __STANOK_MATH_H__
+#define __STANOK_MATH_H__
 
 #ifdef __cplusplus
 extern "C" {

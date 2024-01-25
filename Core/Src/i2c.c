@@ -21,7 +21,7 @@
 #include "i2c.h"
 
 /* USER CODE BEGIN 0 */
-I2C_HandleTypeDef hi2c1;
+#include "tim.h"
 /* USER CODE END 0 */
 
 I2C_HandleTypeDef hi2c1;
@@ -132,5 +132,20 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+/*void i2c_write_array (uint8_t slave_adress, uint16_t registr_adr, uint8_t * data_buffer, uint8_t number_bytes)
+{
+        I2C1->CR2 = I2C_CR2_RELOAD | (1 << I2C_CR2_NBYTES_Pos ) | I2C_CR2_START | (slave_adress | FLAG_WRITE);
+        while((I2C1->ISR & I2C_ISR_TXIS) != I2C_ISR_TXIS){};
+        I2C1->TXDR = data;
+        while((I2C1->ISR & I2C_ISR_TCR) != I2C_ISR_TCR);
+        I2C1->CR2 = (I2C_CR2_AUTOEND | (registr_adr << 16) | (slave_adress | FLAG_WRITE));
+				while((I2C1->ISR & I2C_ISR_TXIS) != I2C_ISR_TXIS){};
+        for(uint16_t Count = 0; Count < number_bytes; Count++)
+        {
+            while((I2C1->ISR & I2C_ISR_TXIS) != I2C_ISR_TXIS);
+            I2C1->TXDR = (uint32_t)* (data_buffer+Count);
+            localPtr++;
+        }
+        delay_us(1000);
+}*/
 /* USER CODE END 1 */

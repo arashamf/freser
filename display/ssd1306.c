@@ -210,7 +210,7 @@ void setteeth_mode_screen (milling_data_t* handle)
 {	
 	snprintf (LCD_buff, sizeof(LCD_buff), "setup mode2");
 	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-	snprintf (LCD_buff, sizeof(LCD_buff), "%03d teeth", handle->teeth_gear_numbers);
+	snprintf (LCD_buff, sizeof(LCD_buff), "%03d@", handle->teeth_gear_numbers);
 	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 }
 

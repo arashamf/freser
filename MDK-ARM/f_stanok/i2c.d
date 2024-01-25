@@ -38,4 +38,5 @@ f_stanok/i2c.o: ..\Core\Src\i2c.c ..\Core\Inc\i2c.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h \
   ..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\typedef.h \
+  ..\Core\Inc\tim.h

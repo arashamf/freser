@@ -153,8 +153,8 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 					{
 					while (delta > 0) //пока дельта больше нуля
 					{
-						need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
-						//need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
+						//need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
+						need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
 						step_angle (FORWARD, need_step); //поворот по часовой стрелке
 						delta--;  //уменьшение дельты
 					}											
@@ -178,8 +178,8 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 						{
 						while (delta < 0) //пока дельта меньше нуля
 						{
-							need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
-							//need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
+							//need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
+							need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
 							step_angle (BACKWARD, need_step); //поворот против часовой стрелки
 							delta++; //увеличение дельты
 						}							
@@ -211,7 +211,7 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 
 
 //---------------------------------------------------------------------------------------------------//
-/*void right_shaft_rotation (angular_data_t * HandleAng) 
+void right_shaft_rotation (angular_data_t * HandleAng) 
 {
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
@@ -247,7 +247,7 @@ void left_shaft_rotation (angular_data_t * HandleAng)
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
-}*/
+}
 
 //---------------------------------------------------------------------------------------------------//
 void one_full_turn (void) 

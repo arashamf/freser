@@ -11,7 +11,7 @@ static struct KEY_MACHINE_t Key_Machine;
 static uint8_t scan_buttons_GPIO (void);
 
 //Private defines -----------------------------------------------------------------------------------//
-#define KEY_BOUNCE_TIME 			60 				// время дребезга в мс
+#define KEY_BOUNCE_TIME 			50 				// время дребезга в мс
 #define KEY_AUTOREPEAT_TIME 	100 			// время автоповтора в мс
 #define COUNT_REPEAT_BUTTON 	5
 
@@ -76,11 +76,11 @@ uint16_t scan_keys (void)
 	{
 		if (end_bounce == SET) //если флаг окончания дребезга установлен
 		{
-			end_bounce = RESET; 
-			if(scan_buttons_GPIO() == 0)	 // если кнопка отпущена
+			end_bounce = RESET;  //сброс флага
+			if(scan_buttons_GPIO() == 0)	 // если кнопка отпущена (нажатие менее 50 мс это дребезг)
 			{
 				key_state = KEY_STATE_OFF; //переход в начальное состояние ожидания нажатия кнопки
-				return key_code; //возврата номера кнопки
+				return NO_KEY; //возврат 0 
 			}	
 			else //если кнопка продолжает удерживаться
 			{	
@@ -91,12 +91,12 @@ uint16_t scan_keys (void)
 		}
 	}
 	
-	if (key_state == KEY_STATE_AUTOREPEAT) //если режим автоповтора
+	if (key_state == KEY_STATE_AUTOREPEAT) //если активен режим автоповтора
 	{
-		if (end_bounce == SET) //если флаг окончания дребезга установлен
+		if (end_bounce == SET) //если флаг окончания дребезга установлен (устанавливается в прерывании таймера)
 		{
-			end_bounce = RESET;
-			if(scan_buttons_GPIO() == 0)	 // если кнопка отпущена
+			end_bounce = RESET; //сброс флага
+			if(scan_buttons_GPIO() == 0)	 // если кнопка была отпущена (короткое нажатие кнопки < 150 мс)
 			{
 				key_state = KEY_STATE_OFF; //переход в начальное состояние ожидания нажатия кнопки
 				return key_code; //возврата номера кнопки
@@ -105,7 +105,7 @@ uint16_t scan_keys (void)
 			{			
 				if (count_autorepeat < COUNT_REPEAT_BUTTON)
 				{	count_autorepeat++;	}
-				else
+				else //если кнопка удерживалась более 650 мс
 				{	
 					switch (key_code)
 					{
