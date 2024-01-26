@@ -130,6 +130,7 @@ int main(void)
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //	
 	status_flag.tool_mode = MODE_DEFAULT; //флаг = режим 1
+	status_flag.right_flag = status_flag.left_flag = OFF;
 	
 	delay_us (20000);
   /* USER CODE END 2 */
@@ -162,9 +163,9 @@ int main(void)
 										left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
 										break;
 								
-								/*	case KEY_CENTER_SHORT:
+									case KEY_CENTER_SHORT:
 										one_full_turn(); //оборот на 360 градусов
-										break;*/
+										break;
 								
 									case KEY_RIGHT: 
 										right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
@@ -205,7 +206,7 @@ int main(void)
 				
 					case KEY_MODE: 
 						status_flag.tool_mode = MODE_MILLING; //режим - фрезеровка
-						default_screen_mode2 (&milling_mode);	//заставка дисплея - режим 2 по умолчанию
+						default_screen_mode2 (&milling_mode, &status_flag);	//заставка дисплея - режим 2 по умолчанию
 						break;
 			
 					default:
@@ -220,11 +221,14 @@ int main(void)
 					switch (key_code)
 					{	
 						case KEY_LEFT: //нажатие левой кнопки
-							left_teeth_rotation (&milling_mode, &curr_rotation); //поворот фрезы против часовой стрелке
-							angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
-							remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося количества зубьев
-							EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-5)); //запись 9 байт
-							default_screen_mode2 (&milling_mode); //заставка дисплея - режим 2 по умолчанию
+							if (status_flag.left_flag == ON)
+							{
+								left_teeth_rotation (&milling_mode, &curr_rotation); //поворот фрезы против часовой стрелке
+								angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
+								remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося количества зубьев
+								EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-5)); //запись 9 байт
+								default_screen_mode2 (&milling_mode, &status_flag); //заставка дисплея - режим 2 по умолчанию
+							}
 							break;
 					
 						case KEY_CENTER_SHORT: //переход в подрежим
@@ -239,46 +243,52 @@ int main(void)
 									{
 										case KEY_LEFT:
 											left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
-											RemainTeethGearReset(&milling_mode); //сброс угловых настроек шестерёнки 
-											SetupMillingMode (&milling_mode, &encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим установки количества зубьев детали
+											//RemainTeethGearReset(&milling_mode); //сброс угловых настроек шестерёнки 
+											//SetupMillingMode (&milling_mode, &encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим установки количества зубьев детали
+											key_code = KEY_ENC_LONG;
 											break;							
 								
 										case KEY_RIGHT: 
 											right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
-											RemainTeethGearReset(&milling_mode); //сброс угловых настроек шестерёнки
-											SetupMillingMode (&milling_mode, &encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим установки количества зубьев детали
+											//RemainTeethGearReset(&milling_mode); //сброс угловых настроек шестерёнки
+										//	SetupMillingMode (&milling_mode, &encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим установки количества зубьев детали
+											key_code = KEY_ENC_LONG;
 											break;	
 
 										default:
 											key_code = NO_KEY;
 											break;									
 									}
-									default_screen_mode2 (&milling_mode);	//главное меню режима фрезеровки
+									default_screen_mode2 (&milling_mode, &status_flag);	//главное меню режима фрезеровки
 									break;
 								}
 							}
 							break;
 						
 						case KEY_CENTER_LONG:	
-							default_screen_mode2 (&milling_mode); //главное меню режима фрезеровки
+							default_screen_mode2 (&milling_mode, &status_flag); //главное меню режима фрезеровки
 							break;
 											
 						case KEY_RIGHT: //правая кнопка панели
-							right_teeth_rotation	(&milling_mode, &curr_rotation); //поворот фрезы по часовой стрелке
-							angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
-							remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося количества зубьев
-							EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-5));  //запись 9 байт в EEPROM
-							default_screen_mode2 	(&milling_mode); //заставка дисплея - режим 2 по умолчанию
+							if (status_flag.right_flag == ON) 
+							{
+								right_teeth_rotation	(&milling_mode, &curr_rotation); //поворот фрезы по часовой стрелке
+								angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
+								remain_teeth_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer); //сохранение оставшегося количества зубьев
+								EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-5));  //запись 9 байт в EEPROM
+								default_screen_mode2 	(&milling_mode, &status_flag); //заставка дисплея - режим 2 по умолчанию
+							}							
 							break;
 					
 						case KEY_ENC_SHORT: //короткое нажатие энкодера	- резерв в режиме фрезеровки
-							default_screen_mode2 (&milling_mode); //главное меню режима фрезеровки
+							default_screen_mode2 (&milling_mode, &status_flag); //главное меню режима фрезеровки
 							break;
 					
-						case KEY_ENC_LONG: 		//длинное нажатие энкодера - сброс всех настроек режима фрезеровки			
+						case KEY_ENC_LONG: 		//длинное нажатие энкодера - сброс всех настроек режима фрезеровки	
 							MilAngleTeethReset (&milling_mode); //сброс всех установок режима фрезеровки
+							status_flag.right_flag = status_flag.left_flag = OFF; //сброс флагов поворота
 							SetupMillingMode (&milling_mode, &encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим установки количества зубьев детали
-							default_screen_mode2 (&milling_mode); //главное меню режима фрезеровки
+							default_screen_mode2 (&milling_mode, &status_flag); //главное меню режима фрезеровки
 							break;
 				
 						case KEY_MODE: 
@@ -289,7 +299,7 @@ int main(void)
 							break;
 				
 						default:
-							key_code = NO_KEY;
+							key_code = NO_KEY; 
 							break;	
 					}
 				}		
@@ -388,6 +398,22 @@ void SetupMillingMode (milling_data_t * handle_mil, encoder_data_t * handle_enc,
 			EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, TXbuffer, EEPROM_NUMBER_BYTES ); //отправка в EEPROM 14 байт
 			handle_enc->prevCounter_ShaftRotation = handle_enc->prevCounter_SetAngle; //сброс показаний энкодера
 			break;
+		}
+		while (1)
+		{
+			key_code = scan_keys();
+			if ((key_code != KEY_RIGHT) || (key_code != KEY_LEFT))
+			{	select_rotation_mode_screen();	}
+			else
+			{
+				if (key_code == KEY_RIGHT) 
+				{status_flag.right_flag = ON;}
+				else
+				{
+					if (key_code == KEY_LEFT) 
+					{	status_flag.left_flag = ON;	}
+				}
+			}
 		}
 	}
 }

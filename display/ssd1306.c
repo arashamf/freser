@@ -75,7 +75,7 @@ void ssd1306_Init()
 	ssd1306_SendCommand(DISPLAYON); //--turn on SSD1306 panel
 }
 
-//----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------//
 void ssd1306_Goto(unsigned char x, unsigned char y)
 {
 
@@ -151,7 +151,7 @@ void ssd1306_Clear(void)
 //------------------------------------------------------------------------------------------------//
 void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear)
 {
-	if ( need_clear)
+	if (need_clear)
 	{	ssd1306_Clear(); }
 	ssd1306_Goto(coordinate_X, coordinate_Y);
 	delay_us (3000);
@@ -172,11 +172,27 @@ void default_screen_mode1 (angular_data_t* rotation)
 
 
 //-----------------------------------------------------------------------------------------------//
-void default_screen_mode2 (milling_data_t* handle)
+void default_screen_mode2 (milling_data_t* handle, STATUS_FLAG_t * status)
+
 {
-	snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@", handle->teeth_gear_numbers, 
-	handle->remain_teeth_gear);
-	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
+	if (status->left_flag == ON)
+	{
+		snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@ <-", handle->teeth_gear_numbers, 
+		handle->remain_teeth_gear);
+	}
+	else
+	{
+		if (status->right_flag == ON)
+		{
+			snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@ ->", handle->teeth_gear_numbers, 
+			handle->remain_teeth_gear);
+		}
+		else
+		{
+			snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@ <->", handle->teeth_gear_numbers, 
+			handle->remain_teeth_gear);
+		}
+	}
 	
 	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", handle->step_shaft_degree, 
 	handle->step_shaft_minute, handle->step_shaft_second);
@@ -215,3 +231,30 @@ void setteeth_mode_screen (milling_data_t* handle)
 }
 
 //-----------------------------------------------------------------------------------------------//
+void shaft_rotation_screen (angular_data_t * HandleAng, uint32_t step, uint8_t dir)
+{
+	if (dir == FORWARD)
+	{
+		snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"->", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
+		ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+		snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", step);
+		ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+	}
+	else
+	{
+		snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"<-", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
+		ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+		snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", step); 
+		ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+	}
+}
+
+//-----------------------------------------------------------------------------------------------//
+void select_rotation_mode_screen ()
+{	
+	snprintf (LCD_buff, sizeof(LCD_buff), "select rotation");
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+	snprintf (LCD_buff, sizeof(LCD_buff), "<-push button->");
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
+

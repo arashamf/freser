@@ -54,10 +54,12 @@ void ssd1306_num_to_str(unsigned int value, unsigned char nDigit);
 void ssd1306_Clear(void);
 void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear);
 void default_screen_mode1 (angular_data_t * );
-void default_screen_mode2 (milling_data_t * );
+void default_screen_mode2 (milling_data_t * , STATUS_FLAG_t * );
 void setangle_mode_screen (angular_data_t* );
 void return_mode_screen (angular_data_t* );
 void setteeth_mode_screen (milling_data_t* handle);
+void shaft_rotation_screen (angular_data_t * , uint32_t , uint8_t );
+void select_rotation_mode_screen ();
 
 // Variables ------------------------------------------------------------------//
 extern char LCD_buff[20];

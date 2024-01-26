@@ -25,13 +25,13 @@ typedef struct
 	uint32_t 	ShaftAngleInSec; 	//полное текущее положение вала в секундах
 } angular_data_t;
 
+//----------------------------------------------------------------------
 typedef struct 
 {
 	int32_t 	prevCounter_SetAngle; 			//сохранённое показание энкодера
 	int32_t 	currCounter_SetAngle; 			//текущее показание энкодера
 	int32_t 	prevCounter_ShaftRotation;  //сохранённое показание энкодера
 	int32_t 	currCounter_ShaftRotation;	//текущее показание энкодера
-	int32_t 	flag_DirShaftRotation;
 } encoder_data_t;
 
 //------------------------------------------------------------------------------------//
