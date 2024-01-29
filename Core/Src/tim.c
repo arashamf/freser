@@ -25,13 +25,11 @@
 #include "typedef.h"
 #include "ssd1306.h"
 
-static xTIMER xTimerList[MAX_xTIMERS];
-static portTickType xTimeNow;
-extern void vTimerDisplayCallback(xTimerHandle xTimer);
-static xTimerHandle xTimerDisplay;
+// Prototypes ------------------------------------------------------------------//
 static void tim_delay_init (void);
 static void timer_bounce_init (void);
 
+// Variables -----------------------------------------------------------------//
 uint8_t end_bounce = 0;
 extern angular_data_t curr_rotation;
 /* USER CODE END 0 */
@@ -179,124 +177,10 @@ void TIM16_IRQHandler(void)
 }
 
 //-----------------------------------------------------------------------------------------------------//
-void xTimer_Init(uint32_t (*GetSysTick)(void))
-{
-	xTimeNow = GetSysTick; //получение текущего системного времени
-}
-
-//-----------------------------------------------------------------------------------------------------//
-xTimerHandle xTimer_Create(uint32_t xTimerPeriodInTicks, FunctionalState AutoReload, 
-tmrTIMER_CALLBACK CallbackFunction, FunctionalState NewState)
-{
-	xTimerHandle NewTimer = NULL;
-	uint16_t i;
-	
-	for (i = 0; i < MAX_xTIMERS; i++) 
-	{
-		if (xTimerList[i].CallbackFunction == NULL) 
-		{
-			xTimerList[i].periodic = xTimerPeriodInTicks;
-			xTimerList[i].AutoReload = AutoReload;
-			xTimerList[i].CallbackFunction = CallbackFunction;
-			
-			if (NewState != DISABLE) 
-			{
-				xTimerList[i].expiry = xTimeNow() + xTimerPeriodInTicks; 
-				xTimerList[i].State = __ACTIVE;
-			} 
-			else 
-			{	xTimerList[i].State = __IDLE;	}		
-			NewTimer = (xTimerHandle)(i + 1);
-			break;
-    }
-  }
-	return NewTimer;
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void xTimer_SetPeriod(xTimerHandle xTimer, uint32_t xTimerPeriodInTicks) 
-{
-	if ( xTimer != NULL ) 
-	{	xTimerList[(uint32_t)xTimer-1].periodic = xTimerPeriodInTicks;	}
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void xTimer_Reload(xTimerHandle xTimer) 
-{
-	if ( xTimer != NULL ) 
-	{
-		xTimerList[(uint32_t)xTimer-1].expiry = xTimeNow() + xTimerList[(uint32_t)xTimer-1].periodic;
-		xTimerList[(uint32_t)xTimer-1].State = __ACTIVE;
-	}
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void xTimer_Delete(xTimerHandle xTimer)
-{
-	if ( xTimer != NULL ) 
-	{
-		xTimerList[(uint32_t)xTimer-1].CallbackFunction = NULL;
-		xTimerList[(uint32_t)xTimer-1].State = __IDLE;
-		xTimer = NULL;
-	}		
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void xTimer_Task(uint32_t portTick)
-{
-	uint16_t i;
-	
-	for (i = 0; i < MAX_xTIMERS; i++) 
-	{
-		switch (xTimerList[i].State) 
-		{
-			case __ACTIVE:
-				if ( portTick >= xTimerList[i].expiry ) 
-				{				
-					if ( xTimerList[i].AutoReload != DISABLE ) 
-					{	xTimerList[i].expiry = portTick + xTimerList[i].periodic;	} 
-					else 
-					{	xTimerList[i].State = __IDLE;	}			
-					xTimerList[i].CallbackFunction((xTimerHandle)(i + 1));
-				}					
-				break;
-				
-			default:
-				break;
-		}
-	}	
-}
-
-
-//-----------------------------------------------------------------------------------------------------//
-void TimerDisplayStart (void)
-{
-	xTimerDisplay = xTimer_Create(3000, ENABLE, &vTimerDisplayCallback, ENABLE);
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void vTimerDisplayCallback (xTimerHandle xTimer)
-{
-//	display_default_screen (&curr_rotation);
-}
-
-//-----------------------------------------------------------------------------------------------------//
-void TimerDisplayDelete (void)
-{
-	xTimer_Delete(xTimerDisplay);
-}
-
-//-----------------------------------------------------------------------------------------------------//
 void timers_ini (void)
 {
-	SysTick_Init (xTimer_Task);
-	xTimer_Init(&Get_SysTick); //&Get_SysTick - указатель на ф-ю получения системного времени
-	
+
 	tim_delay_init(); 		//инициализация TIM14 для микросекундных задержек
-	timer_bounce_init();	//инициализация TIM16	для отчёта задержек дребезга кнопок
- 	
-	//таймер таймаута при отсутствии получения сообщений по UART от GPS приемника
-	//xTimerDisplay = xTimer_Create(5000, ENABLE, &vTimerDisplayCallback, ENABLE); //перезагрузка и инициализация GPS-модуля через 5с 
-						
+	timer_bounce_init();	//инициализация TIM16	для отчёта задержек дребезга кнопок 							
 }
 /* USER CODE END 1 */

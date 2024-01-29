@@ -18,6 +18,7 @@
 #define SSD1306_I2C_ADDRESS                                	0x78
 #define SSD1306_BYTE_COMMAND                                0x00
 #define SSD1306_BYTE_DATA                                   0x40
+
 /* Private variables ---------------------------------------------------------*/
 typedef enum
 {

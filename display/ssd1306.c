@@ -89,12 +89,9 @@ void ssd1306_Goto(unsigned char x, unsigned char y)
 //-------------------------------------------------------------------------------------------------//
 void ssd1306_PutChar(unsigned int c)
 {
-//	temp_char[0] = SSD1306_BYTE_DATA ; //первый элемент сообщения - id данных
-//	for (unsigned char x=0; x<(SIZE_TEMP_BUFFER-2); x++) //если используется ф-я HAL_I2C_Master_Transmit()
 	for (unsigned char x=0; x<(SIZE_TEMP_BUFFER-1); x++) //если используется ф-я HAL_I2C_Mem_Write()
 	{
-	//	temp_char[x+1] = LCD_font[c*5+x]; //5 элементов из массива со шрифтом
-		temp_char[x] = LCD_font[c*5+x];
+		temp_char[x] = LCD_font[c*5+x]; //5 элементов из массива со шрифтом
 	}
 	temp_char[SIZE_TEMP_BUFFER-1] = 0; //последний элемент сообщения - 0
 	ssd1306_SendDataBuffer(temp_char, SIZE_TEMP_BUFFER);
