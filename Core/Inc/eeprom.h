@@ -10,15 +10,14 @@ extern "C" {
 #include "main.h"
 
 // Defines ---------------------------------------------------------------------//
-#define 	MEMORY_PAGE_ANGLE_ROTATION 	0x0001
-#define 	MEMORY_PAGE_TEETH_ANGLE 		0x0010
+#define 	EEPROM_MEMORY_PAGE 	0x0001
 
 // Prototypes -----------------------------------------------------------------//
 void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
 void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
 
 // Variables ------------------------------------------------------------------//
-extern uint8_t eeprom_rx_buffer[];
+//extern uint8_t eeprom_rx_buffer[];
 extern uint8_t eeprom_tx_buffer[];
 #ifdef __cplusplus
 }

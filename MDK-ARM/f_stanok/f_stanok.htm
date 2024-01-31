@@ -3,7 +3,7 @@
 <title>Static Call Graph - [f_stanok\f_stanok.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image f_stanok\f_stanok.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Mon Jan 29 15:03:35 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Wed Jan 31 17:28:22 2024
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -291,7 +291,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
@@ -337,8 +337,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
 <P><STRONG><a name="[ea]"></a>__rt_memcpy</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, rt_memcpy.o(.text), UNUSED)
@@ -398,8 +398,8 @@ Global Symbols
 <P><STRONG><a name="[99]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 20 bytes, fdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
@@ -414,8 +414,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9f]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, ffixui.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
@@ -437,8 +437,8 @@ Global Symbols
 <P><STRONG><a name="[46]"></a>__aeabi_ui2f</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, fflti.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f_normalise
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
@@ -568,7 +568,7 @@ Global Symbols
 
 <P><STRONG><a name="[fb]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[b1]"></a>AngleShaftReset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, angle_calc.o(.text.AngleShaftReset))
+<P><STRONG><a name="[b0]"></a>AngleShaftReset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, angle_calc.o(.text.AngleShaftReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -590,7 +590,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
@@ -605,7 +605,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
@@ -896,7 +896,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b2]"></a>MilAngleTeethReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.MilAngleTeethReset))
+<P><STRONG><a name="[b1]"></a>MilAngleTeethReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.MilAngleTeethReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -918,14 +918,14 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(.text.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[b7]"></a>RemainTeethGearReset</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, angle_calc.o(.text.RemainTeethGearReset))
+<P><STRONG><a name="[b6]"></a>RemainTeethGearReset</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, angle_calc.o(.text.RemainTeethGearReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[3]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(.text.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[b0]"></a>SetAngleReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngleReset))
+<P><STRONG><a name="[af]"></a>SetAngleReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngleReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -994,7 +994,7 @@ Global Symbols
 <P><STRONG><a name="[15]"></a>TIM16_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, tim.o(.text.TIM16_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[ae]"></a>angle_from_EEPROMbuf</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, angle_calc.o(.text.angle_from_EEPROMbuf))
+<P><STRONG><a name="[ad]"></a>angle_from_EEPROMbuf</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, angle_calc.o(.text.angle_from_EEPROMbuf))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1002,7 +1002,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
@@ -1051,7 +1051,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a2]"></a>delay_us</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, tim.o(.text.delay_us))
-<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
@@ -1059,7 +1059,7 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
 </UL>
 
 <P><STRONG><a name="[a5]"></a>enc_shaft_rotation</STRONG> (Thumb, 304 bytes, Stack size 32 bytes, drive.o(.text.enc_shaft_rotation))
@@ -1114,14 +1114,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[2c]"></a>main</STRONG> (Thumb, 620 bytes, Stack size 8 bytes, main.o(.text.main))
+<P><STRONG><a name="[2c]"></a>main</STRONG> (Thumb, 576 bytes, Stack size 8 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288 + Unknown Stack Size
 <LI>Call Chain = main &rArr; SetupRotationMode &rArr; set_angle &rArr; setangle_mode_screen &rArr; ssd1306_PutData &rArr; ssd1306_Clear &rArr; ssd1306_SendDataBuffer &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder_init
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
@@ -1132,18 +1131,18 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;teeth_angle_from_EEPROMbuf
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remain_teeth_to_EEPROMbuf
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_from_EEPROMbuf
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngleReset
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RemainTeethGearReset
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;teeth_angle_from_EEPROMbuf
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remain_teeth_to_EEPROMbuf
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_from_EEPROMbuf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngleReset
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RemainTeethGearReset
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeeth_from_Seconds
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeethReset
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleShaftReset
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeethReset
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleShaftReset
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_ReadBytes
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder_reset
@@ -1157,15 +1156,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[b5]"></a>remain_teeth_to_EEPROMbuf</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, angle_calc.o(.text.remain_teeth_to_EEPROMbuf))
+<P><STRONG><a name="[b4]"></a>remain_teeth_to_EEPROMbuf</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, angle_calc.o(.text.remain_teeth_to_EEPROMbuf))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b9]"></a>repeat_time</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, tim.o(.text.repeat_time))
+<P><STRONG><a name="[b8]"></a>repeat_time</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, tim.o(.text.repeat_time))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
 </UL>
 
-<P><STRONG><a name="[b3]"></a>return_mode_screen</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ssd1306.o(.text.return_mode_screen))
+<P><STRONG><a name="[b2]"></a>return_mode_screen</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ssd1306.o(.text.return_mode_screen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = return_mode_screen &rArr; ssd1306_PutData &rArr; ssd1306_Clear &rArr; ssd1306_SendDataBuffer &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
@@ -1178,7 +1177,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b6]"></a>right_rotate_to_zero</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, drive.o(.text.right_rotate_to_zero))
+<P><STRONG><a name="[b5]"></a>right_rotate_to_zero</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, drive.o(.text.right_rotate_to_zero))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = right_rotate_to_zero &rArr; EEPROM_WriteBytes &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
@@ -1193,7 +1192,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b4]"></a>right_teeth_rotation</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, drive.o(.text.right_teeth_rotation))
+<P><STRONG><a name="[b3]"></a>right_teeth_rotation</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, drive.o(.text.right_teeth_rotation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = right_teeth_rotation &rArr; step_angle &rArr; rotate_step
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
@@ -1205,7 +1204,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b8]"></a>rotate_step</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, drive.o(.text.rotate_step))
+<P><STRONG><a name="[b7]"></a>rotate_step</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, drive.o(.text.rotate_step))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = rotate_step
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
@@ -1216,8 +1215,8 @@ Global Symbols
 <P><STRONG><a name="[8c]"></a>scan_keys</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, button.o(.text.scan_keys))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = scan_keys
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;repeat_time
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_buttons_GPIO
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;repeat_time
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_buttons_GPIO
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
@@ -1271,7 +1270,7 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_teeth_gear
 </UL>
 
-<P><STRONG><a name="[ad]"></a>ssd1306_Clear</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, ssd1306.o(.text.ssd1306_Clear))
+<P><STRONG><a name="[ba]"></a>ssd1306_Clear</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, ssd1306.o(.text.ssd1306_Clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = ssd1306_Clear &rArr; ssd1306_SendDataBuffer &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
@@ -1279,8 +1278,7 @@ Global Symbols
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 </UL>
 
 <P><STRONG><a name="[a1]"></a>ssd1306_Goto</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Goto))
@@ -1288,13 +1286,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
 <P><STRONG><a name="[ac]"></a>ssd1306_Init</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Init))
@@ -1308,12 +1306,12 @@ Global Symbols
 <P><STRONG><a name="[a0]"></a>ssd1306_PutData</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ssd1306.o(.text.ssd1306_PutData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = ssd1306_PutData &rArr; ssd1306_Clear &rArr; ssd1306_SendDataBuffer &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
@@ -1327,7 +1325,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
@@ -1341,8 +1339,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Transmit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
 <P><STRONG><a name="[bc]"></a>ssd1306_SendDataBuffer</STRONG> (Thumb, 28 bytes, Stack size 24 bytes, ssd1306_interface.o(.text.ssd1306_SendDataBuffer))
@@ -1350,25 +1348,25 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
 <P><STRONG><a name="[a7]"></a>step_angle</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, drive.o(.text.step_angle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = step_angle &rArr; rotate_step
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
-<P><STRONG><a name="[af]"></a>teeth_angle_from_EEPROMbuf</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, angle_calc.o(.text.teeth_angle_from_EEPROMbuf))
+<P><STRONG><a name="[ae]"></a>teeth_angle_from_EEPROMbuf</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, angle_calc.o(.text.teeth_angle_from_EEPROMbuf))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1446,8 +1444,8 @@ Global Symbols
 <P><STRONG><a name="[9e]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
@@ -1464,7 +1462,7 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[ba]"></a>scan_buttons_GPIO</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, button.o(.text.scan_buttons_GPIO))
+<P><STRONG><a name="[b9]"></a>scan_buttons_GPIO</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, button.o(.text.scan_buttons_GPIO))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
 </UL>
 

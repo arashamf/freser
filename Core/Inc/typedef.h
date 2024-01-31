@@ -31,7 +31,7 @@ typedef struct
 	int32_t 	currCounter_SetAngle; 			//текущее показание энкодера
 	int32_t 	prevCounter_ShaftRotation;  //сохранённое показание энкодера
 	int32_t 	currCounter_ShaftRotation;	//текущее показание энкодера
-	int32_t 	flag_DirShaftRotation;
+	int8_t 		flag_DirShaftRotation;
 } encoder_data_t;
 
 //------------------------------------------------------------------------------------//
@@ -62,9 +62,7 @@ typedef union
 		uint8_t right_flag		: 1;
 		uint8_t raw						:	5;
 	};
-
 	uint8_t flag;
-
 }STATUS_FLAG_t;
 
 // Defines ----------------------------------------------------------------------//

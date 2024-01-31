@@ -202,7 +202,7 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 					}
 				}
 				angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
-				EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //запись буффера с данными угла поворота в памяти					
+				EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //запись буффера с данными угла поворота в памяти					
 			}
 			else
 			{	delta = 0;	}
@@ -226,7 +226,7 @@ void right_shaft_rotation (angular_data_t * HandleAng)
 	
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
-	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
+	EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
 }
 
 //---------------------------------------------------------------------------------------------------//
@@ -247,7 +247,7 @@ void left_shaft_rotation (angular_data_t * HandleAng)
 	}
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
-	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
+	EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти					
 }
 
 //---------------------------------------------------------------------------------------------------//
@@ -269,7 +269,7 @@ void left_rotate_to_zero (angular_data_t * HandleAng)
 	HandleAng->ShaftAngleInSec = 0;
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
-	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
+	EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
 }
 
 //---------------------------------------------------------------------------------------------------//
@@ -284,7 +284,7 @@ void right_rotate_to_zero (angular_data_t * HandleAng)
 	HandleAng->ShaftAngleInSec = 0; //сброс текущего угла вала в нулевую позицию
 	GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 	angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
-	EEPROM_WriteBytes (MEMORY_PAGE_ANGLE_ROTATION, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
+	EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, 8); //запись буффера с данными угла поворота в памяти
 }
 
 //---------------------------------------------------------------------------------------------------//

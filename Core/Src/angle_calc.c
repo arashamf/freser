@@ -145,7 +145,7 @@ void teeth_angle_from_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffe
 	handle->remain_teeth_gear = (uint8_t)(*(EEPROM_buffer+8)); //сохранение оставшихся количества зубьев
 	handle->teeth_gear_numbers = (uint8_t)(*(EEPROM_buffer+9)); //сохранение установленного количества зубьев
 	handle->AngleTeethInSec = (uint32_t)(((*(EEPROM_buffer+10)) << 24) | ((*(EEPROM_buffer+11)) << 16)
-	| ((*(EEPROM_buffer+12)) << 8) | ((*(EEPROM_buffer+13)) << 0));
+	| ((*(EEPROM_buffer+12)) << 8) | ((*(EEPROM_buffer+13)) << 0)); //получение угловых данных фрезеровки
 }
 
 //------------------------------------------------------------------------------------------------//
