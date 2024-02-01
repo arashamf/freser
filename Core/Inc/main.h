@@ -29,6 +29,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_hal.h"
 
+#include "stm32f0xx_ll_i2c.h"
 #include "stm32f0xx_ll_tim.h"
 #include "stm32f0xx_ll_system.h"
 #include "stm32f0xx_ll_gpio.h"

@@ -71,7 +71,7 @@ void ssd1306_Init()
 	ssd1306_SendCommand(SWITCHCAPVCC); 		//
 	
 //	ssd1306_SendCommand(CHARGEPUMP); //--set DC-DC enable
-//	ssd1306_SendCommand(0x14); //
+//	ssd1306_SendCommand(0x14); 			//
 	ssd1306_SendCommand(DISPLAYON); //--turn on SSD1306 panel
 }
 
@@ -169,14 +169,29 @@ void default_screen_mode1 (angular_data_t* rotation)
 
 
 //-----------------------------------------------------------------------------------------------//
-void default_screen_mode2 (milling_data_t* handle)
+void default_screen_mode2 (milling_data_t* handle, STATUS_FLAG_t * status)
 {
-	snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@", handle->teeth_gear_numbers, 
-	handle->remain_teeth_gear);
+	snprintf (LCD_buff, sizeof(LCD_buff), "set=%03d@ rem=%03d@", handle->teeth_gear_numbers, handle->remain_teeth_gear);
 	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);
 	
-	snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"", handle->step_shaft_degree, 
-	handle->step_shaft_minute, handle->step_shaft_second);
+	if (status->left_flag == ON)
+	{
+		snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"<-", handle->step_shaft_degree, 
+		handle->step_shaft_minute, handle->step_shaft_second);
+	}
+	else
+	{
+		if (status->right_flag == ON)
+		{
+			snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"->", handle->step_shaft_degree, 
+			handle->step_shaft_minute, handle->step_shaft_second);
+		}
+		else
+		{
+			snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\"<->", handle->step_shaft_degree, 
+			handle->step_shaft_minute, handle->step_shaft_second);
+		}
+	}
 	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 }
 
@@ -208,6 +223,15 @@ void setteeth_mode_screen (milling_data_t* handle)
 	snprintf (LCD_buff, sizeof(LCD_buff), "setup mode2");
 	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
 	snprintf (LCD_buff, sizeof(LCD_buff), "%03d@", handle->teeth_gear_numbers);
+	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
+}
+
+//-----------------------------------------------------------------------------------------------//
+void select_rotation_mode_screen (void)
+{	
+	snprintf (LCD_buff, sizeof(LCD_buff), "select rotation");
+	ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+	snprintf (LCD_buff, sizeof(LCD_buff), "<-push button->");
 	ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);
 }
 

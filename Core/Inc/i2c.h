@@ -32,8 +32,6 @@ extern "C" {
 
 /* USER CODE END Includes */
 
-extern I2C_HandleTypeDef hi2c1;
-
 /* USER CODE BEGIN Private defines */
 #define FLAG_WRITE 	0x0 // операци¤ записи
 #define FLAG_READ 	0x1 	// операци¤ чтени¤
@@ -42,7 +40,10 @@ extern I2C_HandleTypeDef hi2c1;
 void MX_I2C1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void i2c_read_array (uint8_t , uint16_t , uint8_t * , uint8_t );
+void i2c_write_byte (uint8_t , uint8_t * , uint8_t );
+void i2c_write_buffer_16bit_registr (uint8_t , uint16_t , uint8_t *, uint8_t);
+void i2c_write_buffer_8bit_registr (uint8_t , uint8_t , uint8_t *, uint8_t);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

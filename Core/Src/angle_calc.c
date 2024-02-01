@@ -105,7 +105,6 @@ void MilAngleTeeth_from_Seconds (milling_data_t * handle)
 void GetMilAngleTeeth (milling_data_t * handle)
 {	
 	uint32_t tmp = 0;
-	handle->remain_teeth_gear = handle->teeth_gear_numbers; //сохранение количества оставшихся зубов	
 	handle->AngleTeethInSec = CIRCLE_IN_SEC/handle->teeth_gear_numbers; //угол между зубьями
 	MilAngleTeeth_from_Seconds (handle); //перевод угла поворота из секунд в формат гр/мин/с
 }
@@ -128,24 +127,20 @@ void RemainTeethGearReset (milling_data_t * handle)
 }
 
 //------------------------------------------------------------------------------------------------//
-void teeth_angle_to_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer)
+void teeth_angle_to_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer, STATUS_FLAG_t * status_flag)
 {
 	//передача угловых данных установки поворота вала из EEPROM
 	*(EEPROM_buffer+8) = (uint8_t)(handle->remain_teeth_gear);
 	*(EEPROM_buffer+9) = (int8_t)(handle->teeth_gear_numbers); 
-	*(EEPROM_buffer+10) = (uint8_t)(handle->AngleTeethInSec >> 24); 	
-	*(EEPROM_buffer+11) = (uint8_t)(handle->AngleTeethInSec >> 16); 				
-	*(EEPROM_buffer+12) = (uint8_t)(handle->AngleTeethInSec >> 8); //сначала старшая часть градуса
-	*(EEPROM_buffer+13) = (uint8_t)(handle->AngleTeethInSec); 	//младшая часть градуса		
+	*(EEPROM_buffer+10) = (uint8_t)(status_flag->flag); 		
 }
 
 //------------------------------------------------------------------------------------------------//
-void teeth_angle_from_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer)
+void teeth_angle_from_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer, STATUS_FLAG_t * status_flag)
 {
 	handle->remain_teeth_gear = (uint8_t)(*(EEPROM_buffer+8)); //сохранение оставшихся количества зубьев
 	handle->teeth_gear_numbers = (uint8_t)(*(EEPROM_buffer+9)); //сохранение установленного количества зубьев
-	handle->AngleTeethInSec = (uint32_t)(((*(EEPROM_buffer+10)) << 24) | ((*(EEPROM_buffer+11)) << 16)
-	| ((*(EEPROM_buffer+12)) << 8) | ((*(EEPROM_buffer+13)) << 0)); //получение угловых данных фрезеровки
+	status_flag->flag = (uint8_t)(*(EEPROM_buffer+10));
 }
 
 //------------------------------------------------------------------------------------------------//

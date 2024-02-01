@@ -19,16 +19,16 @@ void SetAngle_in_Seconds (angular_data_t *);
 void GetSetAngle_from_Seconds (angular_data_t * );
 void ShaftAngle_in_Seconds (angular_data_t * );
 void GetAngleShaft_from_Seconds (angular_data_t * );
-void AngleShaftReset (angular_data_t * handle);
-void SetAngleReset (angular_data_t * handle);
+void AngleShaftReset (angular_data_t * );
+void SetAngleReset (angular_data_t * );
 void MilAngleTeeth_in_Seconds (milling_data_t * );
 void MilAngleTeeth_from_Seconds (milling_data_t * );
-void GetMilAngleTeeth (milling_data_t * handle);
-void MilAngleTeethReset (milling_data_t * handle);
-void RemainTeethGearReset (milling_data_t * handle);
-void teeth_angle_to_EEPROMbuf (milling_data_t * , uint8_t * );
-void teeth_angle_from_EEPROMbuf (milling_data_t * , uint8_t * );
-void remain_teeth_to_EEPROMbuf (milling_data_t * handle, uint8_t * EEPROM_buffer);
+void GetMilAngleTeeth (milling_data_t * );
+void MilAngleTeethReset (milling_data_t * );
+void RemainTeethGearReset (milling_data_t * );
+void teeth_angle_to_EEPROMbuf (milling_data_t * , uint8_t * , STATUS_FLAG_t * );
+void teeth_angle_from_EEPROMbuf (milling_data_t * , uint8_t *, STATUS_FLAG_t * );
+void remain_teeth_to_EEPROMbuf (milling_data_t * , uint8_t * );
 #ifdef __cplusplus
 }
 #endif
