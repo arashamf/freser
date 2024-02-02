@@ -58,7 +58,7 @@ uint16_t scan_keys (void)
 						if (LL_GPIO_IsInputPinSet(MODE_BUTTON_GPIO_Port, MODE_BUTTON_Pin) == 1)
 						{
 							key_state =  	KEY_STATE_ON;
-							key_code 	= 	KEY_MODE;
+							key_code 	= 	KEY_MODE_SHORT;
 						}
 					}
 				}
@@ -116,6 +116,10 @@ uint16_t scan_keys (void)
 						case KEY_ENC_SHORT:
 							key_code = KEY_ENC_LONG;	
 							break;
+						
+						case KEY_MODE_SHORT:
+							key_code = KEY_MODE_LONG;	
+							break;	
 						
 						default:
 							break;	

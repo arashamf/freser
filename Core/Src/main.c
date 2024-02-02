@@ -122,8 +122,7 @@ int main(void)
 	GetSetAngle_from_Seconds (&curr_rotation); 		//перевод угловых данных установки угла в формат гр/мин/с
 	GetAngleShaft_from_Seconds (&curr_rotation);	//перевод угловых данных положения вала в формат гр/мин/с
 	
-	GetMilAngleTeeth (&milling_mode); //подсчёт угла хода вала для режима фрезировки
-	
+	GetMilAngleTeeth (&milling_mode); //подсчёт угла хода вала для режима фрезировки	
 	if ((milling_mode.AngleTeethInSec > CIRCLE_IN_SEC))//проверка достоверности полученных угловых данных режима фрезеровки
 	{	
 		MilAngleTeethReset (&milling_mode);	//сброс настроек режима фрезеровки
@@ -132,9 +131,9 @@ int main(void)
 	MilAngleTeeth_from_Seconds (&milling_mode); //перевод угловых данных хода шага фрезировки в формат гр/мин/с
 	
 	if (status_flag.tool_mode == MODE_DEFAULT)
-	{ default_screen_mode1 (&curr_rotation); }//заставка по умолчанию режима 1
+	{ default_screen_mode1 (&curr_rotation); } //заставка по умолчанию режима 1
 	else
-	{ default_screen_mode2 (&milling_mode, &status_flag); }
+	{ default_screen_mode2 (&milling_mode, &status_flag); } //заставка по умолчанию режима фрезеровка
 	
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //
@@ -166,15 +165,17 @@ int main(void)
 								switch (key_code)
 								{
 									case KEY_LEFT:
-										left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
+										left_rotate_to_zero ( &curr_rotation); //поворот против часовой позиции в нулевую позицию
+										curr_rotation.mode1_error = 0; //обнуление накопленной ошибки режима 1 при возврате в нулевую позицию
 										break;
 								
-								/*	case KEY_CENTER_SHORT:
+									case KEY_CENTER_SHORT:
 										one_full_turn(); //оборот на 360 градусов
-										break;*/
+										break;
 								
 									case KEY_RIGHT: 
 										right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
+										curr_rotation.mode1_error = 0; //обнуление накопленной ошибки режима 1 при возврате в нулевую позицию
 										break;	
 
 									default:
@@ -188,7 +189,8 @@ int main(void)
 						break;
 						
 					case KEY_CENTER_LONG:	//длинное нажатие центр. кнопки - текущее положение вала устанавливается нулевым
-						AngleShaftReset (&curr_rotation); //сброс текущего положения вала						
+						AngleShaftReset (&curr_rotation); //сброс текущего положения вала		
+						curr_rotation.mode1_error = 0;//обнуление накопленной ошибки режима 1 при возврате в нулевую позицию
 						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer); //cохранение в буфере EEPROM текущих данных угла вала
 						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //запись 8 байт
 						default_screen_mode1 (&curr_rotation); //главное меню режима 1 
@@ -201,21 +203,27 @@ int main(void)
 					
 					case KEY_ENC_SHORT: //короткое нажатие кнопки энкодера - подрежим установки шага хода вала
 						SetupRotationMode (&encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим ввода нового значения шага хода вала
+						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение в EEPROM	
+						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-10)); //4 байт		
 						break;
 					
 					case KEY_ENC_LONG: //длинное нажатие кнопки энкодера - сброс установленного шага хода вала и ввод нового значения шага 
-						SetAngleReset (&curr_rotation); //сброс установленного угла поворота до минимального значения
-						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение в EEPROM	
-						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //8 байт							
+						SetAngleReset (&curr_rotation); //сброс установленного угла поворота до минимального значения					
 						SetupRotationMode (&encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим ввода нового значения шага хода вала
+						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение в EEPROM	
+						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-10)); //4 байт		
 						break;
 				
-					case KEY_MODE: 
+					case KEY_MODE_SHORT: 
+						default_screen_mode1 (&curr_rotation);	//заставка дисплея - режим 1 по умолчанию
+						break;
+					
+					case KEY_MODE_LONG: 
 						status_flag.tool_mode = MODE_MILLING; //режим - фрезеровка
 						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
 						teeth_angle_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer, &status_flag); //сохранение данных режима фрезировки
 						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-3)); //запись 11 байт
-						default_screen_mode2 (&milling_mode, &status_flag);	//заставка дисплея - режим 2 по умолчанию
+						default_screen_mode2 (&milling_mode, &status_flag);	//заставка дисплея - режим фрезеровки по умолчанию
 						break;
 			
 					default:
@@ -252,12 +260,12 @@ int main(void)
 									{
 										case KEY_LEFT:
 											left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
-											RemainTeethGearReset (&milling_mode);
+											RemainTeethReset (&milling_mode); //сброс количества оставшихся зубьев
 											break;							
 								
 										case KEY_RIGHT: 
 											right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
-											RemainTeethGearReset (&milling_mode);
+											RemainTeethReset (&milling_mode);
 											break;	
 
 										default:
@@ -302,7 +310,11 @@ int main(void)
 							default_screen_mode2 (&milling_mode, &status_flag); //главное меню режима фрезеровки
 							break;
 				
-						case KEY_MODE: 
+						case KEY_MODE_SHORT: 
+							default_screen_mode2 (&milling_mode, &status_flag); //заставка дисплея - режим 1
+							break;
+						
+						case KEY_MODE_LONG: 
 							status_flag.tool_mode = MODE_DEFAULT; //если активен первый режим = MODE_DEFAULT; //установка режима по умолчанию
 							angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение угловых данных положения вала
 							teeth_angle_to_EEPROMbuf (&milling_mode, eeprom_tx_buffer, &status_flag); //сохранение данных режима фрезировки

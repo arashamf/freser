@@ -25,7 +25,7 @@ void MilAngleTeeth_in_Seconds (milling_data_t * );
 void MilAngleTeeth_from_Seconds (milling_data_t * );
 void GetMilAngleTeeth (milling_data_t * );
 void MilAngleTeethReset (milling_data_t * );
-void RemainTeethGearReset (milling_data_t * );
+void RemainTeethReset (milling_data_t * );
 void teeth_angle_to_EEPROMbuf (milling_data_t * , uint8_t * , STATUS_FLAG_t * );
 void teeth_angle_from_EEPROMbuf (milling_data_t * , uint8_t *, STATUS_FLAG_t * );
 void remain_teeth_to_EEPROMbuf (milling_data_t * , uint8_t * );

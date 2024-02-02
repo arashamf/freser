@@ -71,6 +71,7 @@ void AngleShaftReset (angular_data_t * handle)
 	handle->shaft_minute = 0; 
 	handle->shaft_degree = 0;
 	handle->ShaftAngleInSec = 0; //текущее положение вала - нулевое
+	handle->mode1_error = 0;
 }
 
 //---------------------------сброс угла шага хода вала на минимальное значение---------------------------//
@@ -118,12 +119,14 @@ void MilAngleTeethReset (milling_data_t * handle)
 	handle->step_shaft_minute 	= 0; 
 	handle->step_shaft_second 	= 0;
 	handle->AngleTeethInSec 		= 0;
+	handle->milling_error = 0;
 }
 
 //------------------------------------------------------------------------------------------------//
-void RemainTeethGearReset (milling_data_t * handle)
+void RemainTeethReset (milling_data_t * handle)
 {
 	handle->remain_teeth_gear = handle->teeth_gear_numbers;
+	handle->milling_error = 0;
 }
 
 //------------------------------------------------------------------------------------------------//

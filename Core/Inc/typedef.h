@@ -23,6 +23,7 @@ typedef struct
 	
 	uint32_t 	StepAngleInSec;		//полный установленный шаг вала в секундах
 	uint32_t 	ShaftAngleInSec; 	//полное текущее положение вала в секундах
+	float mode1_error;
 } angular_data_t;
 
 typedef struct 
@@ -43,6 +44,7 @@ typedef struct
 	int8_t 		step_shaft_minute; //часть угла поворота вала в режиме фрезеровки в минутах
 	int8_t 		step_shaft_second; //часть угла поворота вала в режиме фрезеровки в секундах
 	uint32_t 	AngleTeethInSec; //угол поворота в режиме фрезеровки в секундах
+	float milling_error;
 } milling_data_t;
 
 //----------------------------------------------------------------------------------//

@@ -150,54 +150,52 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 				
 				if (delta > 0) //если энкодер повернулся по часовой стрелке
 				{
-					if (HandleEncData->flag_DirShaftRotation == 0) //anee cia?aiea oeaaa ainoiaa?iinoe iiei?eoaeuiia
+					if (HandleEncData->flag_DirShaftRotation == 0)
 					{
-					while (delta > 0) //пока дельта больше нуля
-					{
-						//need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
-						need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
-						step_angle (FORWARD, need_step); //поворот по часовой стрелке
-						delta--;  //уменьшение дельты
-					}											
-					HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec;
-					if (HandleAng->ShaftAngleInSec > (CIRCLE_IN_SEC-1)) //если угол положения вала 360 гр. или больше
-					{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - CIRCLE_IN_SEC;	} 
+						while (delta > 0) //пока дельта больше нуля
+						{
+							need_step = calc_steps (HandleAng->StepAngleInSec, step_unit, HandleAng->mode1_error);
+							step_angle (FORWARD, need_step); //поворот по часовой стрелке
+							delta--;  //уменьшение дельты
+						}											
+						HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec + HandleAng->StepAngleInSec;
+						if (HandleAng->ShaftAngleInSec > (CIRCLE_IN_SEC-1)) //если угол положения вала 360 гр. или больше
+						{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - CIRCLE_IN_SEC;	} 
+							
+						GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 						
-					GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
-						
-					snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" f", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
-					ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-					snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step);
-					ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" f", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
+						ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+						snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step);
+						ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
 					}
 				}
 				else
 				{
 					if (delta < 0) //если энкодер повернулся против часовой стрелке
 					{	
-						if (HandleEncData->flag_DirShaftRotation == 0) //anee cia?aiea oeaaa ainoiaa?iinoe iiei?eoaeuiia
+						if (HandleEncData->flag_DirShaftRotation == 0) 
 						{
-						while (delta < 0) //пока дельта меньше нуля
-						{
-							//need_step = (uint32_t)(REDUCER*(HandleAng->StepAngleInSec/step_unit));
-							need_step = calc_steps (HandleAng->StepAngleInSec, step_unit);
-							step_angle (BACKWARD, need_step); //поворот против часовой стрелки
-							delta++; //увеличение дельты
-						}							
-						if (HandleAng->ShaftAngleInSec >= HandleAng->StepAngleInSec) //если угол положения вала больше угла шага
-						{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - HandleAng->StepAngleInSec; }
-						else 
-						{
-							if (HandleAng->ShaftAngleInSec < HandleAng->StepAngleInSec) //если угол положения вала меньше угла шага
-							{	HandleAng->ShaftAngleInSec = CIRCLE_IN_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
-						}
+							while (delta < 0) //пока дельта меньше нуля
+							{
+								need_step = calc_steps (HandleAng->StepAngleInSec, step_unit, HandleAng->mode1_error);
+								step_angle (BACKWARD, need_step); //поворот против часовой стрелки
+								delta++; //увеличение дельты
+							}							
+							if (HandleAng->ShaftAngleInSec >= HandleAng->StepAngleInSec) //если угол положения вала больше угла шага
+							{	HandleAng->ShaftAngleInSec = HandleAng->ShaftAngleInSec - HandleAng->StepAngleInSec; }
+							else 
+							{
+								if (HandleAng->ShaftAngleInSec < HandleAng->StepAngleInSec) //если угол положения вала меньше угла шага
+								{	HandleAng->ShaftAngleInSec = CIRCLE_IN_SEC - (HandleAng->StepAngleInSec - HandleAng->ShaftAngleInSec); }	//перевод в формат 359гр. ххмин.
+							}
 							
-						GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
+							GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
 							
-						snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" b", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
-						ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
-						snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step); 
-						ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
+							snprintf (LCD_buff, sizeof(LCD_buff), "%03d* %02d' %02d\" b", HandleAng->shaft_degree, HandleAng->shaft_minute, HandleAng->shaft_second);	
+							ssd1306_PutData (kord_X, kord_Y, LCD_buff, DISP_CLEAR);	
+							snprintf (LCD_buff, sizeof(LCD_buff), "step=%d", need_step); 
+							ssd1306_PutData (kord_X, kord_Y+1, LCD_buff, DISP_NOT_CLEAR);	
 						}
 					}
 				}
@@ -216,7 +214,6 @@ void right_shaft_rotation (angular_data_t * HandleAng)
 {
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
-//	need_step = HandleAng->StepAngleInSec/step_unit; //формула расчёта микрошагов без учёта редуктора
 	need_step = (uint32_t)(REDUCER*((float)HandleAng->StepAngleInSec/step_unit)); //количество необходимых микрошагов
 	step_angle (FORWARD, need_step); //поворот по часовой стрелке
 	
@@ -234,7 +231,6 @@ void left_shaft_rotation (angular_data_t * HandleAng)
 {
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
 	SetAngle_in_Seconds (HandleAng); //перевод угловых данных шага в секунды
-//	need_step = HandleAng->StepAngleInSec/step_unit; //формула расчёта микрошагов без учёта редуктора
 	need_step = (uint32_t)(REDUCER*((float)HandleAng->StepAngleInSec/step_unit)); //количество необходимых микрошагов
 	step_angle (BACKWARD, need_step); //поворот против часовой стрелке
 	
@@ -261,9 +257,8 @@ void one_full_turn (void)
 void left_rotate_to_zero (angular_data_t * HandleAng) 
 {
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
-	
-	//need_step = HandleAng->ShaftAngleInSec/step_unit; //формула расчёта микрошагов без учёта редуктора
-	need_step = (uint32_t)(REDUCER*((float)HandleAng->ShaftAngleInSec/step_unit));
+	float error;
+	need_step = calc_steps (HandleAng->ShaftAngleInSec, step_unit, error);
 	step_angle (BACKWARD, need_step); //поворот против часовой стрелке
 	
 	HandleAng->ShaftAngleInSec = 0;
@@ -276,9 +271,8 @@ void left_rotate_to_zero (angular_data_t * HandleAng)
 void right_rotate_to_zero (angular_data_t * HandleAng) 
 {
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
-	
-	//need_step = ((CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec)/step_unit); //формула расчёта микрошагов без учёта редуктора
-	need_step = (uint32_t)(REDUCER*((float)(CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec)/step_unit));
+	float error;
+	need_step = calc_steps ((CIRCLE_IN_SEC - HandleAng->ShaftAngleInSec), step_unit, error);
 	step_angle (FORWARD, need_step); //поворот по часовой стрелке
 	
 	HandleAng->ShaftAngleInSec = 0; //сброс текущего угла вала в нулевую позицию
@@ -295,8 +289,7 @@ void right_teeth_rotation (milling_data_t * HandleMil, angular_data_t * HandleAn
 	if (HandleMil->remain_teeth_gear > 0)
 	{
 		HandleMil->remain_teeth_gear--; //уменьшение на 1 оставшегося количества зубьев
-	//	need_step = ((HandleMil->AngleTeethInSec)/step_unit); //поворот на один угол зуба против часовой стрелке
-		need_step = (uint32_t)(REDUCER*((float)HandleMil->AngleTeethInSec/step_unit)); //поворот на один угол зуба против часовой стрелке с учётом редуктора
+		need_step = calc_steps (HandleMil->AngleTeethInSec, step_unit, HandleMil->milling_error); //поворот на один угол зуба против часовой стрелке с учётом редуктора
 		step_angle (FORWARD, need_step); //поворот по часовой стрелке
 		
 		//пересчёт угловых данных текущего положения вала
@@ -314,8 +307,7 @@ void left_teeth_rotation (milling_data_t * HandleMil, angular_data_t * HandleAng
 	if (HandleMil->remain_teeth_gear > 0)
 	{
 		HandleMil->remain_teeth_gear--; //уменьшение на 1 оставшегося количества зубьев
-	//	need_step = ((HandleMil->AngleTeethInSec)/step_unit); //поворот на один угол зуба против часовой стрелке
-		need_step = (uint32_t)(REDUCER*((float)HandleMil->AngleTeethInSec/step_unit)); //поворот на один угол зуба против часовой стрелке с учётом редуктора
+		need_step = calc_steps (HandleMil->AngleTeethInSec, step_unit, HandleMil->milling_error); //поворот на один угол зуба против часовой стрелке с учётом редуктора
 		step_angle (BACKWARD, need_step); //поворот против часовой стрелке
 		
 		if (HandleAng->ShaftAngleInSec >= HandleMil->AngleTeethInSec) //если угол положения вала больше угла шага

@@ -164,6 +164,8 @@ void i2c_write_buffer_16bit_registr (uint8_t slave_address, uint16_t registr_adr
 	LL_I2C_ClearFlag_STOP(I2C1);
 }
 
+//--------------------------------------------------------------------------------------//
+
 
 //-------------------------------------------------------------------------------------//
 void i2c_write_buffer_8bit_registr (uint8_t slave_address, uint8_t registr_adr, uint8_t * data_buffer, uint8_t numb_byte)
