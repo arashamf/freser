@@ -16,8 +16,8 @@ extern "C" {
 void step_angle (uint8_t , uint32_t );
 void set_angle (angular_data_t * , encoder_data_t *);		
 void set_teeth_gear (milling_data_t * , encoder_data_t * );
-void encoder_reset (encoder_data_t * );
 void enc_shaft_rotation (angular_data_t *, encoder_data_t * );
+void encoder_reset (encoder_data_t * );
 void right_shaft_rotation (angular_data_t * ) ;
 void left_shaft_rotation (angular_data_t * ) ;
 void left_rotate_to_zero (angular_data_t * ) ;

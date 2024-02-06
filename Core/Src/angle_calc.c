@@ -4,7 +4,7 @@
 
 // Functions --------------------------------------------------------------------------------------//
 
-//------------------------------------------------------------------------------------------------//
+//----------------------------сохранение данных настройки режима 1 в буффер EEPROM----------------------------//
 void angle_to_EEPROMbuf (angular_data_t * handle, uint8_t * EEPROM_buffer)
 {	
 	//передача угловых данных установки поворота вала из EEPROM
@@ -19,7 +19,7 @@ void angle_to_EEPROMbuf (angular_data_t * handle, uint8_t * EEPROM_buffer)
 	*(EEPROM_buffer+7) = (uint8_t)(handle->ShaftAngleInSec >> 0);
 }
 
-//------------------------------------------------------------------------------------------------//
+//----------------------------получение данных настройки режима 1 из буффера EEPROM----------------------------//
 void angle_from_EEPROMbuf (angular_data_t * handle, uint8_t * EEPROM_buffer)
 {
 	handle->StepAngleInSec = (uint32_t)(((*(EEPROM_buffer+0))<<24) | ((*(EEPROM_buffer+1))<<16) | ((*(EEPROM_buffer+2))<<8) | ((*(EEPROM_buffer+3))<<0));
@@ -71,7 +71,6 @@ void AngleShaftReset (angular_data_t * handle)
 	handle->shaft_minute = 0; 
 	handle->shaft_degree = 0;
 	handle->ShaftAngleInSec = 0; //текущее положение вала - нулевое
-	handle->mode1_error = 0;
 }
 
 //---------------------------сброс угла шага хода вала на минимальное значение---------------------------//
@@ -111,7 +110,7 @@ void GetMilAngleTeeth (milling_data_t * handle)
 }
 
 //---------------------сброс угловых данных режима фрезеровки на минимальное значение---------------------//
-void MilAngleTeethReset (milling_data_t * handle)
+void MilAngleTeethReset (milling_data_t * handle, STATUS_FLAG_t * status_flag)
 {	
 	handle->teeth_gear_numbers 	= 2;
 	handle->remain_teeth_gear 	= handle->teeth_gear_numbers;
@@ -119,13 +118,20 @@ void MilAngleTeethReset (milling_data_t * handle)
 	handle->step_shaft_minute 	= 0; 
 	handle->step_shaft_second 	= 0;
 	handle->AngleTeethInSec 		= 0;
-	handle->milling_error = 0;
+	MilingFlagReset (handle, status_flag);
 }
 
 //------------------------------------------------------------------------------------------------//
 void RemainTeethReset (milling_data_t * handle)
 {
 	handle->remain_teeth_gear = handle->teeth_gear_numbers;
+}
+
+//------------------------------------------------------------------------------------------------//
+void MilingFlagReset (milling_data_t * handle, STATUS_FLAG_t * status_flag)
+{
+	status_flag->right_flag 		= OFF;
+	status_flag->left_flag 			= OFF;
 	handle->milling_error = 0;
 }
 

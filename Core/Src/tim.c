@@ -21,7 +21,6 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
-#include "systick.h"
 #include "typedef.h"
 #include "ssd1306.h"
 
@@ -31,7 +30,6 @@ static void timer_bounce_init (void);
 
 // Variables -----------------------------------------------------------------//
 uint8_t end_bounce = 0;
-extern angular_data_t curr_rotation;
 /* USER CODE END 0 */
 
 /* TIM3 init function */

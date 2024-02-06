@@ -3,9 +3,9 @@
 <title>Static Call Graph - [f_stanok\f_stanok.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image f_stanok\f_stanok.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Fri Feb  2 13:41:49 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Tue Feb  6 16:23:58 2024
 <BR><P>
-<H3>Maximum Stack Usage =        200 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        192 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; SetupRotationMode &rArr; set_angle &rArr; setangle_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 <P>
@@ -75,9 +75,9 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[ad]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[b0]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[ae]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[b1]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
 <P><STRONG><a name="[21]"></a>__scatterload_copy</STRONG> (Thumb, 26 bytes, Stack size unknown bytes, __scatter_copy.o(!!handler_copy), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
@@ -85,7 +85,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
 </UL>
 
-<P><STRONG><a name="[af]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[b2]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[39]"></a>_printf_percent</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
@@ -107,72 +107,72 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
 </UL>
 
-<P><STRONG><a name="[b0]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[b3]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[b1]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[b4]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[b2]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[b5]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[b3]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[b6]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[b4]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[b7]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[b5]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[b8]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[b6]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
+<P><STRONG><a name="[b9]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
 
-<P><STRONG><a name="[b7]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[ba]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[b8]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[bb]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[b9]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[bc]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[ba]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[bd]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[bb]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[be]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[bc]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[bf]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[bd]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[c0]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[be]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[c1]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[bf]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[c2]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[c0]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[c3]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[c1]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[c4]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[c2]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[c5]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[c3]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[c6]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[c4]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[c7]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[2d]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[c5]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[c8]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[c6]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[c9]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[c7]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[ca]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[c8]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[cb]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[c9]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[cc]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[ca]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[cd]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[cb]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[ce]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[1f]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
-<P><STRONG><a name="[cc]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[cf]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[25]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -185,17 +185,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[cd]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[d0]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[29]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; SetupRotationMode &rArr; set_angle &rArr; setangle_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[ce]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[d1]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[50]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -205,7 +205,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[cf]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[d2]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[2e]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -215,7 +215,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 
-<P><STRONG><a name="[d0]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy.o(.emb_text), UNUSED)
+<P><STRONG><a name="[d3]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy.o(.emb_text), UNUSED)
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f030x6.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
@@ -289,12 +289,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 </UL>
 
 <P><STRONG><a name="[48]"></a>_printf_pre_padding</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, _printf_pad.o(.text))
@@ -335,11 +334,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
-<P><STRONG><a name="[d1]"></a>__rt_memcpy</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, rt_memcpy.o(.text), UNUSED)
+<P><STRONG><a name="[d4]"></a>__rt_memcpy</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, rt_memcpy.o(.text), UNUSED)
 
 <P><STRONG><a name="[3d]"></a>_memset_w</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memclr_w
@@ -356,16 +355,16 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset
 </UL>
 
-<P><STRONG><a name="[d2]"></a>__rt_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
+<P><STRONG><a name="[d5]"></a>__rt_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
 
 <P><STRONG><a name="[67]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
 </UL>
 
-<P><STRONG><a name="[d3]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
+<P><STRONG><a name="[d6]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
 
 <P><STRONG><a name="[3f]"></a>__rt_memclr_w</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rt_memclr.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset_w
@@ -376,27 +375,29 @@ Global Symbols
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeeth_from_Seconds
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMilAngleTeeth
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSetAngle_from_Seconds
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
 </UL>
 
-<P><STRONG><a name="[d4]"></a>__aeabi_uidivmod</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, aeabi_sdiv.o(.text), UNUSED)
+<P><STRONG><a name="[d7]"></a>__aeabi_uidivmod</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, aeabi_sdiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[d5]"></a>__aeabi_idiv</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text), UNUSED)
+<P><STRONG><a name="[d8]"></a>__aeabi_idiv</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[d6]"></a>__aeabi_idivmod</STRONG> (Thumb, 338 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text), UNUSED)
+<P><STRONG><a name="[d9]"></a>__aeabi_idivmod</STRONG> (Thumb, 338 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[d7]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[da]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[d8]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[db]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[d9]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[dc]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[7c]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 20 bytes, fdiv.o(.text))
+<P><STRONG><a name="[7d]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 20 bytes, fdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
 <P><STRONG><a name="[41]"></a>_fdiv</STRONG> (Thumb, 334 bytes, Stack size 20 bytes, fdiv.o(.text), UNUSED)
@@ -407,11 +408,13 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
 </UL>
 
-<P><STRONG><a name="[7f]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, ffixui.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<P><STRONG><a name="[81]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, ffixui.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[da]"></a>_ffixu</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, ffixui.o(.text), UNUSED)
+<P><STRONG><a name="[dd]"></a>_ffixu</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, ffixui.o(.text), UNUSED)
 
 <P><STRONG><a name="[43]"></a>__aeabi_i2f_normalise</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, fflti.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
@@ -422,15 +425,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f_normalise
 </UL>
 
-<P><STRONG><a name="[db]"></a>_fflt</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflti.o(.text), UNUSED)
+<P><STRONG><a name="[de]"></a>_fflt</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflti.o(.text), UNUSED)
 
 <P><STRONG><a name="[44]"></a>__aeabi_ui2f</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, fflti.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f_normalise
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[dc]"></a>_ffltu</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflti.o(.text), UNUSED)
+<P><STRONG><a name="[df]"></a>_ffltu</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflti.o(.text), UNUSED)
 
 <P><STRONG><a name="[45]"></a>__read_errno</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, _rserrno.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
@@ -441,7 +446,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
 </UL>
 
 <P><STRONG><a name="[36]"></a>_printf_int_common</STRONG> (Thumb, 176 bytes, Stack size 40 bytes, _printf_intcommon.o(.text))
@@ -473,16 +478,16 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_dec
 </UL>
 
-<P><STRONG><a name="[a7]"></a>_frem</STRONG> (Thumb, 274 bytes, Stack size 20 bytes, frem.o(.text))
+<P><STRONG><a name="[aa]"></a>_frem</STRONG> (Thumb, 274 bytes, Stack size 20 bytes, frem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = _frem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
 </UL>
 
-<P><STRONG><a name="[a8]"></a>_frnd</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, frnd.o(.text))
+<P><STRONG><a name="[ab]"></a>_frnd</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, frnd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _frnd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rintf
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rintf
 </UL>
 
 <P><STRONG><a name="[46]"></a>__aeabi_errno_addr</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text))
@@ -490,25 +495,24 @@ Global Symbols
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__read_errno
 </UL>
 
-<P><STRONG><a name="[dd]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[e0]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[de]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[e1]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[4a]"></a>__fpl_fcmp_InfNaN</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, fcmpin.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcheck_NaN2
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_cmpreturn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
 </UL>
 
-<P><STRONG><a name="[df]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[e2]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[4d]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[e0]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[e3]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[26]"></a>__user_setup_stackheap</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -551,22 +555,23 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[e1]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[e4]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[e2]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[e5]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[94]"></a>AngleShaftReset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, angle_calc.o(.text.AngleShaftReset))
+<P><STRONG><a name="[91]"></a>AngleShaftReset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, angle_calc.o(.text.AngleShaftReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
-<P><STRONG><a name="[e3]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[e6]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[52]"></a>EEPROM_ReadBytes</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text.EEPROM_ReadBytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = EEPROM_ReadBytes &rArr; i2c_read_array
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_array
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
 <P><STRONG><a name="[54]"></a>EEPROM_WriteBytes</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text.EEPROM_WriteBytes))
@@ -577,9 +582,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
 <P><STRONG><a name="[56]"></a>GetAngleShaft_from_Seconds</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, angle_calc.o(.text.GetAngleShaft_from_Seconds))
@@ -588,9 +593,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
 <P><STRONG><a name="[58]"></a>GetMilAngleTeeth</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, angle_calc.o(.text.GetMilAngleTeeth))
@@ -598,7 +604,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
 </UL>
 
@@ -607,7 +613,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_angle
 </UL>
 
@@ -716,7 +722,7 @@ Global Symbols
 <P><STRONG><a name="[6a]"></a>LL_TIM_Init</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, stm32f0xx_ll_tim.o(.text.LL_TIM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LL_TIM_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 </UL>
 
@@ -748,8 +754,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>MilAngleTeethReset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, angle_calc.o(.text.MilAngleTeethReset))
-<BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[92]"></a>MilAngleTeethReset</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, angle_calc.o(.text.MilAngleTeethReset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MilAngleTeethReset
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
 <P><STRONG><a name="[6b]"></a>MilAngleTeeth_from_Seconds</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, angle_calc.o(.text.MilAngleTeeth_from_Seconds))
@@ -757,7 +766,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
+</UL>
+
+<P><STRONG><a name="[9b]"></a>MilingFlagReset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, angle_calc.o(.text.MilingFlagReset))
+<BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(.text.NMI_Handler))
@@ -770,19 +783,20 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(.text.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[99]"></a>RemainTeethReset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, angle_calc.o(.text.RemainTeethReset))
+<P><STRONG><a name="[9d]"></a>RemainTeethReset</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, angle_calc.o(.text.RemainTeethReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[3]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_it.o(.text.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[93]"></a>SetAngleReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngleReset))
+<P><STRONG><a name="[90]"></a>SetAngleReset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngleReset))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
-<P><STRONG><a name="[8a]"></a>SetAngle_in_Seconds</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngle_in_Seconds))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<P><STRONG><a name="[8b]"></a>SetAngle_in_Seconds</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, angle_calc.o(.text.SetAngle_in_Seconds))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
 <P><STRONG><a name="[6c]"></a>SetupMillingMode</STRONG> (Thumb, 148 bytes, Stack size 24 bytes, main.o(.text.SetupMillingMode))
@@ -806,10 +820,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = SetupRotationMode &rArr; set_angle &rArr; setangle_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_angle
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_EEPROMbuf
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
 </UL>
@@ -847,96 +861,111 @@ Global Symbols
 <P><STRONG><a name="[15]"></a>TIM16_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, tim.o(.text.TIM16_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x6.o(RESET)
 </UL>
-<P><STRONG><a name="[91]"></a>angle_from_EEPROMbuf</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, angle_calc.o(.text.angle_from_EEPROMbuf))
-<BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[8e]"></a>angle_from_EEPROMbuf</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, angle_calc.o(.text.angle_from_EEPROMbuf))
+<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
 <P><STRONG><a name="[71]"></a>angle_to_EEPROMbuf</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, angle_calc.o(.text.angle_to_EEPROMbuf))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
-<P><STRONG><a name="[7b]"></a>calc_steps</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, stanok_math.o(.text.calc_steps))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = calc_steps &rArr; remainderf &rArr; _frem
+<P><STRONG><a name="[7b]"></a>calc_steps_milling</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, stanok_math.o(.text.calc_steps_milling))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = calc_steps_milling &rArr; remainderf &rArr; _frem
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rintf
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rintf
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmple
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
+</UL>
+
+<P><STRONG><a name="[84]"></a>calc_steps_mode1</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, stanok_math.o(.text.calc_steps_mode1))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = calc_steps_mode1 &rArr; remainderf &rArr; _frem
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rintf
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remainderf
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
 <P><STRONG><a name="[77]"></a>default_screen_mode1</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, ssd1306.o(.text.default_screen_mode1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = default_screen_mode1 &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
-<P><STRONG><a name="[88]"></a>default_screen_mode2</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, ssd1306.o(.text.default_screen_mode2))
+<P><STRONG><a name="[89]"></a>default_screen_mode2</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, ssd1306.o(.text.default_screen_mode2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = default_screen_mode2 &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
-<P><STRONG><a name="[86]"></a>delay_us</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, tim.o(.text.delay_us))
+<P><STRONG><a name="[87]"></a>delay_us</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, tim.o(.text.delay_us))
 <BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select_rotation_mode_screen
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 </UL>
 
-<P><STRONG><a name="[89]"></a>enc_shaft_rotation</STRONG> (Thumb, 308 bytes, Stack size 32 bytes, drive.o(.text.enc_shaft_rotation))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
-<LI>Call Chain = enc_shaft_rotation &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
+<P><STRONG><a name="[8a]"></a>enc_shaft_rotation</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, drive.o(.text.enc_shaft_rotation))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
+<LI>Call Chain = enc_shaft_rotation &rArr; default_screen_mode1 &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_EEPROMbuf
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngle_in_Seconds
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngle_in_Seconds
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
-<LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>encoder_init</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, tim.o(.text.encoder_init))
+<P><STRONG><a name="[96]"></a>encoder_init</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, tim.o(.text.encoder_init))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -957,23 +986,43 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
 </UL>
 
-<P><STRONG><a name="[a2]"></a>i2c_write_buffer_8bit_registr</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, i2c.o(.text.i2c_write_buffer_8bit_registr))
+<P><STRONG><a name="[a6]"></a>i2c_write_buffer_8bit_registr</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, i2c.o(.text.i2c_write_buffer_8bit_registr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = i2c_write_buffer_8bit_registr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
 </UL>
 
-<P><STRONG><a name="[a1]"></a>i2c_write_byte</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, i2c.o(.text.i2c_write_byte))
+<P><STRONG><a name="[a5]"></a>i2c_write_byte</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, i2c.o(.text.i2c_write_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = i2c_write_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
 </UL>
 
-<P><STRONG><a name="[8c]"></a>left_rotate_to_zero</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, drive.o(.text.left_rotate_to_zero))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = left_rotate_to_zero &rArr; calc_steps &rArr; remainderf &rArr; _frem
+<P><STRONG><a name="[8d]"></a>init_setup</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, main.o(.text.init_setup))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
+<LI>Call Chain = init_setup &rArr; default_screen_mode2 &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;teeth_angle_from_EEPROMbuf
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_from_EEPROMbuf
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngleReset
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeeth_from_Seconds
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeethReset
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMilAngleTeeth
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleShaftReset
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_ReadBytes
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSetAngle_from_Seconds
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[93]"></a>left_rotate_to_zero</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, drive.o(.text.left_rotate_to_zero))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = left_rotate_to_zero &rArr; step_angle &rArr; rotate_step
+</UL>
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_EEPROMbuf
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
@@ -981,25 +1030,25 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>left_teeth_rotation</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, drive.o(.text.left_teeth_rotation))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = left_teeth_rotation &rArr; calc_steps &rArr; remainderf &rArr; _frem
+<P><STRONG><a name="[95]"></a>left_teeth_rotation</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, drive.o(.text.left_teeth_rotation))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = left_teeth_rotation &rArr; calc_steps_milling &rArr; remainderf &rArr; _frem
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[2a]"></a>main</STRONG> (Thumb, 684 bytes, Stack size 8 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
+<P><STRONG><a name="[2a]"></a>main</STRONG> (Thumb, 564 bytes, Stack size 0 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = main &rArr; SetupRotationMode &rArr; set_angle &rArr; setangle_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder_init
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timers_ini
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder_init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
@@ -1008,62 +1057,58 @@ Global Symbols
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;teeth_angle_to_EEPROMbuf
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;teeth_angle_from_EEPROMbuf
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_from_EEPROMbuf
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngleReset
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RemainTeethReset
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeeth_from_Seconds
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeethReset
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMilAngleTeeth
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleShaftReset
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_ReadBytes
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetAngleReset
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RemainTeethReset
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilingFlagReset
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MilAngleTeethReset
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngleShaftReset
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;one_full_turn
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;one_full_turn
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder_reset
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_EEPROMbuf
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSetAngle_from_Seconds
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[9a]"></a>one_full_turn</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, drive.o(.text.one_full_turn))
+<P><STRONG><a name="[9e]"></a>one_full_turn</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, drive.o(.text.one_full_turn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = one_full_turn &rArr; step_angle &rArr; rotate_step
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>repeat_time</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, tim.o(.text.repeat_time))
+<P><STRONG><a name="[a0]"></a>repeat_time</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, tim.o(.text.repeat_time))
 <BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
 </UL>
 
-<P><STRONG><a name="[96]"></a>return_mode_screen</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ssd1306.o(.text.return_mode_screen))
+<P><STRONG><a name="[99]"></a>return_mode_screen</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, ssd1306.o(.text.return_mode_screen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = return_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>right_rotate_to_zero</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, drive.o(.text.right_rotate_to_zero))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = right_rotate_to_zero &rArr; calc_steps &rArr; remainderf &rArr; _frem
+<P><STRONG><a name="[9c]"></a>right_rotate_to_zero</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, drive.o(.text.right_rotate_to_zero))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = right_rotate_to_zero &rArr; step_angle &rArr; rotate_step
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;angle_to_EEPROMbuf
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngleShaft_from_Seconds
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEPROM_WriteBytes
@@ -1071,28 +1116,28 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[97]"></a>right_teeth_rotation</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, drive.o(.text.right_teeth_rotation))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = right_teeth_rotation &rArr; calc_steps &rArr; remainderf &rArr; _frem
+<P><STRONG><a name="[9a]"></a>right_teeth_rotation</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, drive.o(.text.right_teeth_rotation))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = right_teeth_rotation &rArr; calc_steps_milling &rArr; remainderf &rArr; _frem
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9b]"></a>rotate_step</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, drive.o(.text.rotate_step))
+<P><STRONG><a name="[9f]"></a>rotate_step</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, drive.o(.text.rotate_step))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = rotate_step
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;step_angle
 </UL>
 
 <P><STRONG><a name="[6f]"></a>scan_keys</STRONG> (Thumb, 244 bytes, Stack size 16 bytes, button.o(.text.scan_keys))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = scan_keys
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;repeat_time
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_buttons_GPIO
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;repeat_time
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_buttons_GPIO
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
@@ -1102,10 +1147,10 @@ Global Symbols
 <P><STRONG><a name="[73]"></a>select_rotation_mode_screen</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, ssd1306.o(.text.select_rotation_mode_screen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = select_rotation_mode_screen &rArr; ssd1306_PutData &rArr; ssd1306_Clear &rArr; ssd1306_Goto &rArr; ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
 </UL>
@@ -1133,11 +1178,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = setangle_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupRotationMode
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_angle
@@ -1147,118 +1192,129 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = setteeth_mode_screen &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_teeth_gear
 </UL>
 
-<P><STRONG><a name="[9e]"></a>ssd1306_Clear</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, ssd1306.o(.text.ssd1306_Clear))
+<P><STRONG><a name="[a2]"></a>ssd1306_Clear</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, ssd1306.o(.text.ssd1306_Clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ssd1306_Clear &rArr; ssd1306_Goto &rArr; ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
 </UL>
-<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 </UL>
 
-<P><STRONG><a name="[85]"></a>ssd1306_Goto</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Goto))
+<P><STRONG><a name="[86]"></a>ssd1306_Goto</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Goto))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ssd1306_Goto &rArr; ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select_rotation_mode_screen
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
-<P><STRONG><a name="[90]"></a>ssd1306_Init</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Init))
+<P><STRONG><a name="[98]"></a>ssd1306_Init</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, ssd1306.o(.text.ssd1306_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ssd1306_Init &rArr; ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendCommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[84]"></a>ssd1306_PutData</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ssd1306.o(.text.ssd1306_PutData))
+<P><STRONG><a name="[85]"></a>ssd1306_PutData</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ssd1306.o(.text.ssd1306_PutData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ssd1306_PutData &rArr; ssd1306_Clear &rArr; ssd1306_Goto &rArr; ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select_rotation_mode_screen
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
 </UL>
 
-<P><STRONG><a name="[87]"></a>ssd1306_PutString</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, ssd1306.o(.text.ssd1306_PutString))
+<P><STRONG><a name="[88]"></a>ssd1306_PutString</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, ssd1306.o(.text.ssd1306_PutString))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = ssd1306_PutString &rArr; __aeabi_memcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_SendDataBuffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select_rotation_mode_screen
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;return_mode_screen
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode2
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setteeth_mode_screen
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setangle_mode_screen
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_screen_mode1
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutData
 </UL>
 
-<P><STRONG><a name="[9f]"></a>ssd1306_SendCommand</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ssd1306_interface.o(.text.ssd1306_SendCommand))
+<P><STRONG><a name="[a3]"></a>ssd1306_SendCommand</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ssd1306_interface.o(.text.ssd1306_SendCommand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ssd1306_SendCommand &rArr; i2c_write_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write_byte
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Init
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Goto
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
-<P><STRONG><a name="[a0]"></a>ssd1306_SendDataBuffer</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, ssd1306_interface.o(.text.ssd1306_SendDataBuffer))
+<P><STRONG><a name="[a4]"></a>ssd1306_SendDataBuffer</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, ssd1306_interface.o(.text.ssd1306_SendDataBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ssd1306_SendDataBuffer &rArr; i2c_write_buffer_8bit_registr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write_buffer_8bit_registr
+<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_write_buffer_8bit_registr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_PutString
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssd1306_Clear
 </UL>
 
-<P><STRONG><a name="[8b]"></a>step_angle</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, drive.o(.text.step_angle))
+<P><STRONG><a name="[8c]"></a>step_angle</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, drive.o(.text.step_angle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = step_angle &rArr; rotate_step
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotate_step
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;one_full_turn
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_teeth_rotation
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;one_full_turn
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_teeth_rotation
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc_shaft_rotation
 </UL>
 
-<P><STRONG><a name="[92]"></a>teeth_angle_from_EEPROMbuf</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, angle_calc.o(.text.teeth_angle_from_EEPROMbuf))
-<BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[94]"></a>steps_for_back_to_zero</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, stanok_math.o(.text.steps_for_back_to_zero))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = steps_for_back_to_zero &rArr; __aeabi_fdiv
+</UL>
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+</UL>
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_rotate_to_zero
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_rotate_to_zero
+</UL>
+
+<P><STRONG><a name="[8f]"></a>teeth_angle_from_EEPROMbuf</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, angle_calc.o(.text.teeth_angle_from_EEPROMbuf))
+<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_setup
 </UL>
 
 <P><STRONG><a name="[72]"></a>teeth_angle_to_EEPROMbuf</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, angle_calc.o(.text.teeth_angle_to_EEPROMbuf))
@@ -1266,7 +1322,7 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupMillingMode
 </UL>
 
-<P><STRONG><a name="[8f]"></a>timers_ini</STRONG> (Thumb, 168 bytes, Stack size 56 bytes, tim.o(.text.timers_ini))
+<P><STRONG><a name="[97]"></a>timers_ini</STRONG> (Thumb, 168 bytes, Stack size 56 bytes, tim.o(.text.timers_ini))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = timers_ini &rArr; LL_TIM_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_TIM_Init
@@ -1278,95 +1334,95 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>__aeabi_fcmpge</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgeq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmpge
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[a3]"></a>_fgeq</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fcmp.o(i._fgeq), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
+<P><STRONG><a name="[a7]"></a>_fgeq</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fcmp.o(i._fgeq), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
 </UL>
 
-<P><STRONG><a name="[82]"></a>__aeabi_fcmple</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fleq))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmple
+<P><STRONG><a name="[82]"></a>__aeabi_fcmpgt</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgr))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmpgt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[a5]"></a>_fleq</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, fcmp.o(i._fleq), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
+<P><STRONG><a name="[a9]"></a>_fgr</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fcmp.o(i._fgr), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
 </UL>
 
 <P><STRONG><a name="[38]"></a>_is_digit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, __printf_wp.o(i._is_digit))
 <BR><BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
 </UL>
 
-<P><STRONG><a name="[80]"></a>remainderf</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, remainderf.o(i.remainderf))
+<P><STRONG><a name="[7c]"></a>remainderf</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, remainderf.o(i.remainderf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = remainderf &rArr; _frem
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frem
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frem
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[7d]"></a>rintf</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, rintf.o(i.rintf))
+<P><STRONG><a name="[7f]"></a>rintf</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, rintf.o(i.rintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = rintf &rArr; _frnd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frnd
+<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frnd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[81]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd))
+<P><STRONG><a name="[7e]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[a9]"></a>_fadd</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
+<P><STRONG><a name="[ac]"></a>_fadd</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
 </UL>
 
-<P><STRONG><a name="[a4]"></a>_fcmpge</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, fgef.o(x$fpl$fgeqf), UNUSED)
+<P><STRONG><a name="[a8]"></a>_fcmpge</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, fgef.o(x$fpl$fgeqf), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_InfNaN
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fgeq
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fgr
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fgeq
 </UL>
 
-<P><STRONG><a name="[e4]"></a>__aeabi_cfcmple</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, flef.o(x$fpl$fleqf), UNUSED)
-
-<P><STRONG><a name="[a6]"></a>_fcmple</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, flef.o(x$fpl$fleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_InfNaN
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fleq
-</UL>
-
-<P><STRONG><a name="[7e]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
+<P><STRONG><a name="[80]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;steps_for_back_to_zero
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_mode1
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_steps_milling
 </UL>
 
-<P><STRONG><a name="[e5]"></a>_fmul</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
+<P><STRONG><a name="[e7]"></a>_fmul</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
 
-<P><STRONG><a name="[e6]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub), UNUSED)
+<P><STRONG><a name="[e8]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub), UNUSED)
 
-<P><STRONG><a name="[ab]"></a>_fsub</STRONG> (Thumb, 204 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
+<P><STRONG><a name="[ae]"></a>_fsub</STRONG> (Thumb, 204 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[9d]"></a>scan_buttons_GPIO</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, button.o(.text.scan_buttons_GPIO))
+<P><STRONG><a name="[a1]"></a>scan_buttons_GPIO</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, button.o(.text.scan_buttons_GPIO))
 <BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scan_keys
 </UL>
 
-<P><STRONG><a name="[ac]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
+<P><STRONG><a name="[af]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
 </UL>
 
-<P><STRONG><a name="[aa]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<P><STRONG><a name="[ad]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
 </UL>
 
 <P><STRONG><a name="[1d]"></a>_printf_input_char</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _printf_char_common.o(.text))

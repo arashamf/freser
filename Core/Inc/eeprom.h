@@ -15,6 +15,7 @@ extern "C" {
 // Prototypes -----------------------------------------------------------------//
 void EEPROM_WriteBytes	(uint16_t, uint8_t*, uint16_t);
 void EEPROM_ReadBytes	(uint16_t, uint8_t*, uint16_t);
+void SaveData_In_EEPROM (angular_data_t * , uint8_t * , uint8_t);
 
 // Variables ------------------------------------------------------------------//
 //extern uint8_t eeprom_rx_buffer[];
