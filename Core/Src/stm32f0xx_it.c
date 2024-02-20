@@ -130,7 +130,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-	SysTick_Callback ( uwTick);
+	//SysTick_Callback ( uwTick);
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -140,20 +140,6 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f0xx.s).                    */
 /******************************************************************************/
-
-/**
-  * @brief This function handles I2C1 global interrupt.
-  */
-void I2C1_IRQHandler(void)
-{
-  /* USER CODE BEGIN I2C1_IRQn 0 */
-
-  /* USER CODE END I2C1_IRQn 0 */
-
-  /* USER CODE BEGIN I2C1_IRQn 1 */
-
-  /* USER CODE END I2C1_IRQn 1 */
-}
 
 /* USER CODE BEGIN 1 */
 

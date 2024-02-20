@@ -28,9 +28,9 @@ void ssd1306_SendCommand(uint8_t type_command)
 /*----------------------------------------------------------------------------*/
 void ssd1306_SendByteData(uint8_t data)
 {
-	temp[0] = SSD1306_BYTE_DATA ;
+	temp[0] = SSD1306_BYTE_DATA;
 	temp[1] = data;
-	msg_size = 2;
+	msg_size = 2;                
 	i2c_write_byte (SSD1306_I2C_ADDRESS, temp, 2);
 }
 

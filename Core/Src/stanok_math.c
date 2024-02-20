@@ -66,3 +66,16 @@ uint32_t steps_for_back_to_zero (uint32_t Second, float step_unit)
 		need_step = (uint32_t)(REDUCER*(Second/step_unit));	
 		return need_step;
 }
+
+//---------------------------------------------------------------------------------------------------//
+uint32_t calc_passed_angle  (uint32_t receive_step, float step_unit)
+{
+		float buffer;
+		uint32_t second = 0;
+	
+		buffer = (uint32_t )(rintf((receive_step/REDUCER) * step_unit));	
+		second = (uint32_t)buffer;
+		return second;
+}
+
+

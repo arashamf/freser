@@ -101,20 +101,26 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM3_Init();
   MX_I2C1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	encoder_init();
 	timers_ini ();
 	
 	ssd1306_Init();
 	delay_us (5000); //5 мс задержка
+	//ssd1306_Init();
 	
 	init_setup (&milling_mode , &curr_rotation, &status_flag, eeprom_tx_buffer); //получение из EEPROM и обработка всех настроек 
 	
 	DRIVE_ENABLE(OFF); //отключение привода
 	STEP(OFF); //
 	delay_us (10000); //10 мс задержка
+	
+	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "start...");
+	SSD1306_PutString (LCD_buff , &Font_7x10, SSD1306_COLOR_WHITE);
+	HAL_Delay (1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -185,13 +191,6 @@ int main(void)
 						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-10)); //4 байт		
 						break;
 					
-					case KEY_ENC_LONG: //длинное нажатие кнопки энкодера - сброс установленного шага хода вала и ввод нового значения шага 
-						curr_rotation.mode1_error = 0;//обнуление накопленной ошибки режима 1
-						SetAngleReset (&curr_rotation); //сброс установленного угла поворота до минимального значения					
-						SetupRotationMode (&encoder_data, &curr_rotation, eeprom_tx_buffer); //подрежим ввода нового значения шага хода вала
-						angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение в EEPROM	
-						EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-10)); //4 байт		
-						break;
 				
 					case KEY_MODE_SHORT: 
 						default_screen_mode1 (&curr_rotation);	//заставка дисплея - режим 1 по умолчанию
@@ -339,7 +338,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL12;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
   RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -374,15 +373,26 @@ void SetupRotationMode (encoder_data_t * handle_enc, angular_data_t * handle_ang
 	handle_enc->prevCounter_SetAngle = handle_enc->prevCounter_ShaftRotation; //сброс измений показаний энкодера 
 	while(1) //установка угловых данных шага угла
 	{
-		if ((key_code = scan_keys()) != KEY_ENC_SHORT) //пока не будет повторного нажатия кнопки энкодера
-		{	set_angle(handle_ang, handle_enc);	}		//проверка показаний энкодера								
-		else
-		{	
-			angle_to_EEPROMbuf (handle_ang, TXbuffer); //перенос данных угла в буффер
-			EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, TXbuffer, (EEPROM_NUMBER_BYTES-10)); //запись 4 байт (настроек шага хода вала)			
-			default_screen_mode1 (handle_ang); //заставка дисплея - режим 1 по умолчанию
-			handle_enc->prevCounter_ShaftRotation = handle_enc->prevCounter_SetAngle; //сброс измениний показаний энкодера 
-			break;	
+		set_angle(handle_ang, handle_enc);	//проверка показаний энкодера
+		if ((key_code = scan_keys()) != NO_KEY)
+		{
+			if (key_code == KEY_ENC_LONG) //длинное нажатие кнопки энкодера - сброс установленного шага хода вала и ввод нового значения шага 
+			{
+				SetAngleReset (&curr_rotation); //сброс установленного угла поворота до минимального значения					
+				angle_to_EEPROMbuf (&curr_rotation, eeprom_tx_buffer);  //сохранение в EEPROM	
+				EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-10)); //4 байт		
+				setangle_mode_screen (handle_ang);
+				continue;
+			}	
+			else
+			{
+				angle_to_EEPROMbuf (handle_ang, TXbuffer); //перенос данных угла в буффер
+				EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, TXbuffer, (EEPROM_NUMBER_BYTES-10)); //запись 4 байт (настроек шага хода вала)
+				handle_enc->prevCounter_ShaftRotation = handle_enc->prevCounter_SetAngle; //сброс изменений показаний энкодера 
+				default_screen_mode1 (handle_ang); //заставка дисплея - режим 1 по умолчанию
+				break;
+			}			
+			key_code = NO_KEY;
 		}
 	}
 }

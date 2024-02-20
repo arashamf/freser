@@ -4,15 +4,27 @@
 
 // Includes ---------------------------------------------------------------------//
 #include "main.h"
-#include "typedef.h"
+#include "fonts.h"
+#include "ssd1306_interface.h"
+
+// Exported types ---------------------------------------------------------------//
+typedef enum 
+{
+	SSD1306_COLOR_BLACK = 0x00, // Black color, no pixel 
+	SSD1306_COLOR_WHITE = 0x01  // Pixel is set. Color depends on LCD 
+} SSD1306_COLOR_t;
 
 // Defines ---------------------------------------------------------------------//
-#define SSD1306_X_SIZE                                  128
+#define SSD1306_WRITECOMMAND(command)			ssd1306_SendCommand (command) // Write command 
+#define SSD1306_WRITEDATA(data)						ssd1306_SendByteData(data) // Write data 
+#define ABS(x)  ((x) > 0 ? (x) : -(x)) 		// Absolute value 
+
+#define SSD1306_X_SIZE                                  132
 #define SSD1306_Y_SIZE                                  32
 #define SSD1306_BUFFER_SIZE                             (SSD1306_X_SIZE*SSD1306_Y_SIZE) / 8
-#define SIZE_TEMP_BUFFER   															6
-#define LCD_DEFAULT_X_SIZE  														5
-#define LCD_DEFAULT_Y_SIZE 															0
+#define LCD_BUFFER_SIZE 																16
+#define LCD_DEFAULT_X_SIZE  														0
+#define LCD_DEFAULT_Y_SIZE 															1
 
 //#define OLED_adress 				0x78
 #define DISPLAYOFF 						0xAE
@@ -47,12 +59,21 @@
 
 // Functions -----------------------------------------------------------------//
 void ssd1306_Init();
-void ssd1306_Goto(unsigned char x, unsigned char y);
-void ssd1306_PutChar(unsigned int c);
-void ssd1306_PutString(char *string);
-void ssd1306_num_to_str(unsigned int value, unsigned char nDigit);
-void ssd1306_Clear(void);
-void ssd1306_PutData (uint8_t coordinate_X, uint8_t coordinate_Y, char * buffer, uint8_t need_clear);
+void SSD1306_DrawPixel(uint16_t , uint16_t , SSD1306_COLOR_t );
+char SSD1306_PutChar(char , FontDef_t* , SSD1306_COLOR_t );
+char SSD1306_PutString(uint8_t* , FontDef_t* , SSD1306_COLOR_t );
+void SSD1306_UpdateScreen(void);
+void SSD1306_Clear_Screen (void);
+void SSD1306_ToggleInvert(void);
+void SSD1306_Fill(SSD1306_COLOR_t );
+void SSD1306_GotoXY(uint16_t , uint16_t );
+void SSD1306_DrawLine(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
+void SSD1306_DrawRectangle(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
+void SSD1306_DrawFilledRectangle(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
+void SSD1306_DrawTriangle(uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
+void SSD1306_DrawFilledTriangle(uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
+void SSD1306_DrawCircle(int16_t , int16_t , int16_t , SSD1306_COLOR_t );
+void SSD1306_DrawFilledCircle(int16_t , int16_t , int16_t , SSD1306_COLOR_t );
 void default_screen_mode1 (angular_data_t * );
 void default_screen_mode2 (milling_data_t * , STATUS_FLAG_t * );
 void setangle_mode_screen (angular_data_t* );
@@ -61,7 +82,5 @@ void setteeth_mode_screen (milling_data_t* handle);
 void select_rotation_mode_screen (void);
 
 // Variables ------------------------------------------------------------------//
-extern char LCD_buff[20];
-extern uint8_t kord_X; 
-extern uint8_t kord_Y;
+extern uint8_t LCD_buff[LCD_BUFFER_SIZE];
 #endif // #ifndef SSD1306_H
