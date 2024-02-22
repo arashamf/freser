@@ -64,6 +64,16 @@ void GetAngleShaft_from_Seconds (angular_data_t * handle)
 	handle->shaft_second = tmp % SECOND_PER_MINUTE; //количество секунд
 }
 
+//-------------------перевод угла текущего положения вала из секунд в формат гр/мин/с-------------------//
+void GetSetShaftAngle_from_Seconds (angular_data_t * handle)
+{
+	uint32_t tmp = 0;
+	handle->shaft_degree = handle->SetShaftAngleInSec/(SECOND_PER_DEGREE); //количество градусов
+	tmp = handle->SetShaftAngleInSec % SECOND_PER_DEGREE; //остаток с минутами и секундами
+	handle->shaft_minute = tmp/SECOND_PER_MINUTE; //количество минут
+	handle->shaft_second = tmp % SECOND_PER_MINUTE; //количество секунд
+}
+
 //-------------------------------обнуление угла текущего положения вала -------------------------------//
 void AngleShaftReset (angular_data_t * handle)
 {

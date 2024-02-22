@@ -148,16 +148,16 @@ int main(void)
 								switch (key_code)
 								{
 									case KEY_LEFT:
-										left_rotate_to_zero ( &curr_rotation); //поворот против часовой позиции в нулевую позицию
+										left_rotate_to_zero ( &curr_rotation, &encoder_data); //поворот против часовой позиции в нулевую позицию
 										curr_rotation.mode1_error = 0; //обнуление накопленной ошибки режима 1 при возврате в нулевую позицию
 										break;
 								
 									case KEY_CENTER_SHORT:
-										one_full_turn(); //оборот на 360 градусов
+										//one_full_turn(&encoder_data); //оборот на 360 градусов
 										break;
 								
 									case KEY_RIGHT: 
-										right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
+										right_rotate_to_zero (&curr_rotation, &encoder_data); //поворот по часовой позиции в нулевую позицию
 										curr_rotation.mode1_error = 0; //обнуление накопленной ошибки режима 1 при возврате в нулевую позицию
 										break;	
 
@@ -237,13 +237,13 @@ int main(void)
 									switch (key_code) //если кнопка была нажата
 									{
 										case KEY_LEFT:
-											left_rotate_to_zero (&curr_rotation); //поворот против часовой позиции в нулевую позицию
+											left_rotate_to_zero (&curr_rotation, &encoder_data); //поворот против часовой позиции в нулевую позицию
 											RemainTeethReset (&milling_mode); //сброс количества оставшихся зубьев
 											MilingFlagReset (&milling_mode, &status_flag); //сброс флагов и накопленной ошибки
 											break;							
 								
 										case KEY_RIGHT: 
-											right_rotate_to_zero (&curr_rotation); //поворот по часовой позиции в нулевую позицию
+											right_rotate_to_zero (&curr_rotation, &encoder_data); //поворот по часовой позиции в нулевую позицию
 											RemainTeethReset (&milling_mode); //сброс количества оставшихся зубьев
 											MilingFlagReset (&milling_mode, &status_flag); //сброс флагов и накопленной ошибки
 											break;	
@@ -312,7 +312,11 @@ int main(void)
 		}
 		
 		if (status_flag.tool_mode == MODE_DEFAULT) //если активен первый режим
-		{	enc_shaft_rotation (&curr_rotation, &encoder_data);	} //отслеживания положения энкодера и поворот	вала в случае изменения его изменения
+		{	
+			//enc_shaft_rotation (&curr_rotation, &encoder_data);	 //отслеживания положения энкодера и поворот	вала в случае изменения его изменения
+			read_enc_shaft_rotation (&curr_rotation, &encoder_data);	//чтение и обработка показаний энкодера
+			step_by_step (&curr_rotation, &encoder_data); //изменение положения вала при необходимости
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -456,6 +460,8 @@ void init_setup (milling_data_t * handle_mil, angular_data_t * handle_ang, STATU
 	if ((handle_mil->AngleTeethInSec > CIRCLE_IN_SEC))//проверка достоверности полученных угловых данных режима фрезеровки
 	{	MilAngleTeethReset (handle_mil, status_flag);	}//если данные недостоверные - сброс настроек режима фрезеровки
 	MilAngleTeeth_from_Seconds (handle_mil); //перевод угловых данных хода шага фрезировки в формат гр/мин/с
+	
+	handle_ang->SetShaftAngleInSec = handle_ang->ShaftAngleInSec;
 	
 	if (status_flag->tool_mode == MODE_DEFAULT) 
 	{ default_screen_mode1 (handle_ang); } //заставка по умолчанию режима 1

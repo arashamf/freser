@@ -21,8 +21,9 @@ typedef struct
 	int8_t 		shaft_minute; 		//часть текущего положения  вала в минутах
 	int8_t 		shaft_second; 		//часть текущего положения  вала в секундах
 	
-	uint32_t 	StepAngleInSec;		//полный установленный шаг вала в секундах
-	uint32_t 	ShaftAngleInSec; 	//полное текущее положение вала в секундах
+	uint32_t 	StepAngleInSec;				//полный установленный шаг вала в секундах
+	uint32_t 	ShaftAngleInSec; 			//полное текущее положение вала в секундах
+	uint32_t 	SetShaftAngleInSec; 	//установленное положение вала в секундах
 	float mode1_error;
 } angular_data_t;
 
@@ -32,6 +33,7 @@ typedef struct
 	int32_t 	currCounter_SetAngle; 			//текущее показание энкодера
 	int32_t 	prevCounter_ShaftRotation;  //сохранённое показание энкодера
 	int32_t 	currCounter_ShaftRotation;	//текущее показание энкодера
+	int32_t delta;
 //	int8_t 		flag_DirShaftRotation;
 } encoder_data_t;
 

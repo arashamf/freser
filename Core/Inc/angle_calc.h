@@ -19,6 +19,7 @@ void SetAngle_in_Seconds (angular_data_t *);
 void GetSetAngle_from_Seconds (angular_data_t * );
 void ShaftAngle_in_Seconds (angular_data_t * );
 void GetAngleShaft_from_Seconds (angular_data_t * );
+void GetSetShaftAngle_from_Seconds (angular_data_t * );
 void AngleShaftReset (angular_data_t * );
 void SetAngleReset (angular_data_t * );
 void MilAngleTeeth_in_Seconds (milling_data_t * );
