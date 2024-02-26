@@ -140,7 +140,7 @@ void RemainTeethReset (milling_data_t * handle)
 //------------------------------------------------------------------------------------------------//
 void MilingFlagReset (milling_data_t * handle, STATUS_FLAG_t * status_flag)
 {
-	status_flag->right_flag 		= OFF;
+	status_flag->right_flag 		= ON;
 	status_flag->left_flag 			= OFF;
 	handle->milling_error = 0;
 }

@@ -82,11 +82,10 @@ uint32_t step_angle (uint8_t dir, uint32_t need_step,	angular_data_t * HandleAng
 				HandleAng->SetShaftAngleInSec = HandleAng->ShaftAngleInSec; //сброс уставки хода вала
 				return receive_step; //остановка вращения и возврат фактически пройденного угла	
 			}		
-			if (((count % 100) == 0) && (count != 0))
-			//if ((count % 100) == 0) 
+			if (((count % 100) == 0) && (count != 0)) //каждые 100 шагов опрос энкодера
 			{	
-				if (read_enc_shaft_rotation (HandleAng, HandleEncData) == ON)
-				{ continue;	}
+				if (read_enc_shaft_rotation (HandleAng, HandleEncData) == ON) //если показания энкодера изменились
+				{ continue;	} //пропуск паузы
 			}
 			delay_us (1499); 			
 		}
@@ -143,7 +142,7 @@ uint8_t read_enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * Ha
 				}
 			}
 			GetSetShaftAngle_from_Seconds (HandleAng); //перевод угла уставки в формат гр./мин./с для отображения на дисплее
-			default_screen_mode1 (HandleAng); //главное меню режима 1
+			default_screen_mode1 (HandleAng, &Font_11x18); //главное меню режима 1
 			return ON;
 		}
 	}
@@ -205,7 +204,7 @@ void step_by_step (angular_data_t * HandleAng, encoder_data_t * HandleEncData)
 		if (HandleEncData->delta == 0) //если изменение показания энкодера полностью пройдено валом
 		{
 			GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
-			default_screen_mode1 (HandleAng); //главное меню режима 1
+		//	default_screen_mode1 (HandleAng, &Font_16x26); //главное меню режима 1
 		}
 		angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 		EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //запись буффера с данными угла поворота в
@@ -274,7 +273,7 @@ void enc_shaft_rotation (angular_data_t * HandleAng, encoder_data_t * HandleEncD
 					}
 				}
 				GetAngleShaft_from_Seconds(HandleAng); //конвертация текущего угла вала в секундах в формат гр/мин/сек
-				default_screen_mode1 (HandleAng); //главное меню режима 1 	
+				default_screen_mode1 (HandleAng, &Font_11x18); //главное меню режима 1 	
 				angle_to_EEPROMbuf (HandleAng, eeprom_tx_buffer); //перенос данных угла в буффер
 				EEPROM_WriteBytes (EEPROM_MEMORY_PAGE, eeprom_tx_buffer, (EEPROM_NUMBER_BYTES-6)); //запись буффера с данными угла поворота в памяти					
 			}
@@ -309,7 +308,7 @@ void set_angle (angular_data_t * HandleAng, encoder_data_t * HandleEncData)
 					{ HandleAng->StepAngleInSec = SECOND_PER_MINUTE; } //угол равен 1 минуте
 				}
 				GetSetAngle_from_Seconds (HandleAng); //перевод угла шага хода вала из секунд в формат гр/мин/с
-				setangle_mode_screen (HandleAng); //вывод информации на дисплей
+				setangle_mode_screen (HandleAng, &Font_11x18); //вывод информации на дисплей
 			}
 		}
 		else
@@ -341,7 +340,7 @@ void set_teeth_gear (milling_data_t * HandleMil, encoder_data_t * HandleEncData)
 					if (HandleMil->teeth_gear_numbers < 0x02) //и не меньше 2
 					{	HandleMil->teeth_gear_numbers = 0xFE;	} //сброс на максимальное значение
 				}	
-				setteeth_mode_screen (HandleMil); //заставка дисплея - режим ввода настроечных данных фрезеровки
+				setteeth_mode_screen (HandleMil, &Font_11x18);
 			}
 		}
 	}
@@ -450,9 +449,9 @@ void left_teeth_rotation (milling_data_t * HandleMil, angular_data_t * HandleAng
 	uint32_t need_step = 0; //количество вычисленных микрошагов(импульсов)
 	uint32_t receive_step = 0; //количество фактически пройденных микрошагов(импульсов)
 	
-	if (HandleMil->remain_teeth_gear > 0)
+	if (HandleMil->remain_teeth_gear < HandleMil->teeth_gear_numbers)
 	{
-		HandleMil->remain_teeth_gear--; //уменьшение на 1 оставшегося количества зубьев
+		HandleMil->remain_teeth_gear++; //увеличение на 1 оставшегося количества зубьев
 		need_step = calc_steps_milling (HandleMil, step_unit); //поворот на один угол зуба против часовой стрелке с учётом редуктора
 		milling_step (BACKWARD, need_step); //поворот против часовой стрелке
 		
@@ -467,3 +466,19 @@ void left_teeth_rotation (milling_data_t * HandleMil, angular_data_t * HandleAng
 }
 
 //---------------------------------------------------------------------------------------------------//
+void teeth_counter_increment (milling_data_t * HandleMil)
+{
+	if (HandleMil->remain_teeth_gear < HandleMil->teeth_gear_numbers)
+	{
+		HandleMil->remain_teeth_gear++;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------//
+void teeth_counter_decrement (milling_data_t * HandleMil)
+{
+	if (HandleMil->remain_teeth_gear > 0)
+	{
+		HandleMil->remain_teeth_gear--;
+	}
+}

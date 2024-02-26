@@ -103,7 +103,7 @@ uint16_t scan_keys (void)
 			}
 			else //если кнопка продолжает удерживаться
 			{			
-				if (count_autorepeat < COUNT_REPEAT_BUTTON)
+				if (count_autorepeat < COUNT_REPEAT_BUTTON) //ожидание 500 мс
 				{	count_autorepeat++;	}
 				else //если кнопка удерживалась более 650 мс
 				{	
@@ -124,10 +124,30 @@ uint16_t scan_keys (void)
 						default:
 							break;	
 					}
+					key_state = KEY_STATE_WAIT_TURNOFF; //стадия ожидания отпускания кнопки
+					repeat_time (KEY_AUTOREPEAT_TIME); //установка таймера ожидания отключения кнопки
+					return key_code;
 				}
 				repeat_time (KEY_AUTOREPEAT_TIME); //установка таймера ожидания отключения кнопки
 			} 	
 		}					
+	}
+	
+	if (key_state == KEY_STATE_WAIT_TURNOFF) //ожидание отпускания кнопки
+	{	
+		if (end_bounce == SET) //если флаг окончания дребезга установлен (устанавливается в прерывании таймера)
+		{
+			key_code = NO_KEY;
+			if(scan_buttons_GPIO() == 0)	 // если кнопка была отпущена (короткое нажатие кнопки < 150 мс)
+			{
+				key_state = KEY_STATE_OFF; //переход в начальное состояние ожидания нажатия кнопки
+			}
+			else
+			{
+				repeat_time (KEY_AUTOREPEAT_TIME); //установка таймера ожидания отключения кнопки
+			}
+			return NO_KEY; //возврата номера кнопки
+		}
 	}
 	return NO_KEY;
 }

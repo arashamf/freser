@@ -88,6 +88,13 @@ void ssd1306_Init()
 }
 
 //-----------------------------------------------------------------------------------------------//
+void SSD1306_GotoXY(uint16_t x, uint16_t y) 
+{
+	SSD1306.CurrentX = x; // Set write pointers 
+	SSD1306.CurrentY = y;
+}
+
+//-----------------------------------------------------------------------------------------------//
 void SSD1306_DrawPixel(uint16_t x, uint16_t y, SSD1306_COLOR_t color) 
 {
 	if (x >= SSD1306_X_SIZE || y >= SSD1306_Y_SIZE) 
@@ -140,6 +147,42 @@ char SSD1306_PutString (uint8_t* str, FontDef_t* Font, SSD1306_COLOR_t color)
 }
 
 //-----------------------------------------------------------------------------------------------//
+char SSD1306_Putc(char ch, FontDef_t* Font, SSD1306_COLOR_t color) 
+{
+	uint32_t i, b, j;
+
+	 // Check available space in LCD 
+	if (SSD1306_X_SIZE <= (SSD1306.CurrentX + Font->FontWidth) ||	SSD1306_Y_SIZE <= (SSD1306.CurrentY + Font->FontHeight)) 
+	{		return 0;}     // Error
+
+	for (i = 0; i < Font->FontHeight; i++) 	// Go through font 
+	{
+		b = Font->data[(ch - 32) * Font->FontHeight + i];
+		for (j = 0; j < Font->FontWidth; j++) 
+		{
+			if ((b << j) & 0x8000) 
+			{	SSD1306_DrawPixel(SSD1306.CurrentX + j, (SSD1306.CurrentY + i), (SSD1306_COLOR_t) color);	} 
+			else 
+			{	SSD1306_DrawPixel(SSD1306.CurrentX + j, (SSD1306.CurrentY + i), (SSD1306_COLOR_t)!color);	}
+		}
+	}
+	
+	SSD1306.CurrentX += Font->FontWidth; 	// Increase pointer 
+	return ch; 	// Return character written 
+}
+
+//-----------------------------------------------------------------------------------------------//
+char SSD1306_Puts(uint8_t* str, FontDef_t* Font, SSD1306_COLOR_t color) {
+	while (*str) 
+	{
+		if (SSD1306_Putc(*str, Font, color) != *str) 
+		{	return *str;	}
+		str++;
+	}	
+	return *str; // Everything OK, zero should be returned 
+}
+
+//-----------------------------------------------------------------------------------------------//
 void SSD1306_UpdateScreen(void) 
 {
 	uint8_t m;
@@ -157,7 +200,7 @@ void SSD1306_UpdateScreen(void)
 void SSD1306_Clear_Screen (void)
 {
 	SSD1306_Fill(SSD1306_COLOR_BLACK); 
-	SSD1306_UpdateScreen();
+	//SSD1306_UpdateScreen();
 }
 
 //-----------------------------------------------------------------------------------------------//
@@ -178,13 +221,6 @@ void SSD1306_Fill(SSD1306_COLOR_t color)
 		memset(SSD1306_Buffer, (color == SSD1306_COLOR_WHITE) ? 0x00 : 0xFF, SSD1306_BUFFER_SIZE);
 	else 
 		memset(SSD1306_Buffer, (color == SSD1306_COLOR_BLACK) ? 0x00 : 0xFF, SSD1306_BUFFER_SIZE);
-}
-
-//-----------------------------------------------------------------------------------------------//
-void SSD1306_GotoXY(uint16_t x, uint16_t y) 
-{
-	SSD1306.CurrentX = x; // Set write pointers 
-	SSD1306.CurrentY = y;
 }
 
 //-----------------------------------------------------------------------------------------------//
@@ -463,64 +499,70 @@ void SSD1306_DrawFilledCircle(int16_t x0, int16_t y0, int16_t r, SSD1306_COLOR_t
 }
 
 //-----------------------------------------------------------------------------------------------//
-void default_screen_mode1 (angular_data_t* rotation)
+void default_screen_mode1 (angular_data_t* rotation, FontDef_t * font)
 {
-	SSD1306_Clear_Screen();
+	//SSD1306_Clear_Screen();
 	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "%03d*%02d'", rotation->shaft_degree, rotation->shaft_minute);
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);
+	//SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 
 
 //-----------------------------------------------------------------------------------------------//
-void default_screen_mode2 (milling_data_t* handle, STATUS_FLAG_t * status)
+void default_screen_mode2 (milling_data_t* handle, FontDef_t * font)
 {
-	SSD1306_Clear_Screen();
-	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+//	SSD1306_Clear_Screen();
+	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE+1, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "%03d/%03d", handle->teeth_gear_numbers, 
 	handle->remain_teeth_gear);
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);
+	//SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 
 //-----------------------------------------------------------------------------------------------//
-void setangle_mode_screen (angular_data_t* handle)
+void setangle_mode_screen (angular_data_t* handle, FontDef_t * font)
 {
-	SSD1306_Clear_Screen();
+	//SSD1306_Clear_Screen();
 	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "S%03d*%02d'", handle->set_degree, handle->set_minute);
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);
+	//SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 
 //-----------------------------------------------------------------------------------------------//
-void return_mode_screen (angular_data_t* handle)
+void return_mode_screen (angular_data_t* handle, FontDef_t * font)
 {	
-	SSD1306_Clear_Screen();
+	//SSD1306_Clear_Screen();
 	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "<-PUSH->");	
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);
+//	SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 
 //-----------------------------------------------------------------------------------------------//
-void setteeth_mode_screen (milling_data_t* handle)
+void setteeth_mode_screen (milling_data_t* handle, FontDef_t * font)
 {	
-	SSD1306_Clear_Screen();
-	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
+	//SSD1306_Clear_Screen();
+	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE+1, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "S%03d", handle->teeth_gear_numbers);
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);
+//	SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 
 //-----------------------------------------------------------------------------------------------//
-void select_rotation_mode_screen (void)
+void select_rotation_mode_screen (FontDef_t * font)
 {	
-	SSD1306_Clear_Screen();
+	//SSD1306_Clear_Screen();
 	SSD1306_GotoXY(LCD_DEFAULT_X_SIZE, LCD_DEFAULT_Y_SIZE);
 	snprintf ((char *)LCD_buff, LCD_BUFFER_SIZE, "<-SELECT->");
-	SSD1306_PutString (LCD_buff , &Font_11x18, SSD1306_COLOR_WHITE);	
+	//SSD1306_PutString (LCD_buff , font, SSD1306_COLOR_WHITE);	
+	SSD1306_Puts (LCD_buff , font, SSD1306_COLOR_WHITE);
 	SSD1306_UpdateScreen();
 }
 

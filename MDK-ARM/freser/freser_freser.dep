@@ -1,7 +1,7 @@
 Dependencies for Project 'freser', Target 'freser': (DO NOT MODIFY !)
 CompilerVersion: 6160000::V6.16::ARMCLANG
 F (startup_stm32f042x6.s)(0x65CF6105)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto -c-gdwarf-4-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 536" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F042x6 SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o freser/startup_stm32f042x6.o)
-F (../Core/Src/main.c)(0x65D6EF76)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/main.o -MD)
+F (../Core/Src/main.c)(0x65DC994F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/main.o -MD)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x65CF59FF)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x65CF6100)
@@ -44,15 +44,15 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\i2c.h)(0x65CF5C10)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
 I (..\Core\Inc\gpio.h)(0x6582A1BF)
-I (..\display\ssd1306.h)(0x65CF1A3A)
+I (..\display\ssd1306.h)(0x65DC990F)
 I (..\display\fonts.h)(0x65CF2905)
 I (..\display\ssd1306_interface.h)(0x65BB33EC)
 I (..\Core\Inc\button.h)(0x65D483DE)
-I (..\Core\Inc\drive.h)(0x65D6F36B)
+I (..\Core\Inc\drive.h)(0x65DC90AD)
 I (..\Core\Inc\eeprom.h)(0x65C1FE5B)
 I (..\Core\Inc\angle_calc.h)(0x65D5D110)
 F (../Core/Src/gpio.c)(0x65CF61F3)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/gpio.o -MD)
@@ -99,7 +99,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 F (../Core/Src/i2c.c)(0x65CF5C10)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/i2c.o -MD)
 I (..\Core\Inc\i2c.h)(0x65CF5C10)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
@@ -144,7 +144,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
 F (../Core/Src/tim.c)(0x65CF6263)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/tim.o -MD)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
@@ -190,8 +190,8 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
-I (..\display\ssd1306.h)(0x65CF1A3A)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
+I (..\display\ssd1306.h)(0x65DC990F)
 I (..\display\fonts.h)(0x65CF2905)
 I (..\display\ssd1306_interface.h)(0x65BB33EC)
 F (../Core/Src/stm32f0xx_it.c)(0x65CF5EF4)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/stm32f0xx_it.o -MD)
@@ -237,7 +237,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\stm32f0xx_it.h)(0x65CF41EC)
 I (..\Core\Inc\systick.h)(0x6576E820)
 F (../Core/Src/stm32f0xx_hal_msp.c)(0x654B3D3A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/stm32f0xx_hal_msp.o -MD)
@@ -283,8 +283,8 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
-F (..\Core\Src\angle_calc.c)(0x65D5D0CF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/angle_calc.o -MD)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
+F (..\Core\Src\angle_calc.c)(0x65DC5380)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/angle_calc.o -MD)
 I (..\Core\Inc\angle_calc.h)(0x65D5D110)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x65CF59FF)
@@ -328,8 +328,8 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
-F (..\Core\Src\button.c)(0x65BCA387)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/button.o -MD)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
+F (..\Core\Src\button.c)(0x65DC3ADB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/button.o -MD)
 I (..\Core\Inc\button.h)(0x65D483DE)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x65CF59FF)
@@ -373,7 +373,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
 F (..\Core\Src\eeprom.c)(0x65C1FE64)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/eeprom.o -MD)
 I (..\Core\Inc\eeprom.h)(0x65C1FE5B)
@@ -419,7 +419,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\i2c.h)(0x65CF5C10)
 I (..\Core\Inc\angle_calc.h)(0x65D5D110)
 F (..\Core\Src\stanok_math.c)(0x65D5A6F5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/stanok_math.o -MD)
@@ -466,10 +466,10 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x6035400A)
-F (..\Core\Src\drive.c)(0x65D6FF72)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/drive.o -MD)
-I (..\Core\Inc\drive.h)(0x65D6F36B)
+F (..\Core\Src\drive.c)(0x65DC9956)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/drive.o -MD)
+I (..\Core\Inc\drive.h)(0x65DC90AD)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x65CF59FF)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x65CF6100)
@@ -512,11 +512,11 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\gpio.h)(0x6582A1BF)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
 I (..\Core\Inc\button.h)(0x65D483DE)
-I (..\display\ssd1306.h)(0x65CF1A3A)
+I (..\display\ssd1306.h)(0x65DC990F)
 I (..\display\fonts.h)(0x65CF2905)
 I (..\display\ssd1306_interface.h)(0x65BB33EC)
 I (..\Core\Inc\eeprom.h)(0x65C1FE5B)
@@ -1246,9 +1246,9 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
-F (..\display\ssd1306.c)(0x65D5D16A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/ssd1306.o -MD)
-I (..\display\ssd1306.h)(0x65CF1A3A)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
+F (..\display\ssd1306.c)(0x65DC9A67)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ../Drivers -I ../display-I./RTE/_freser-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/ASkupov.CHASPROM/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.0/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F042x6 -D_RTE_ -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32F042x6-o freser/ssd1306.o -MD)
+I (..\display\ssd1306.h)(0x65DC990F)
 I (..\Core\Inc\main.h)(0x65CF5E1C)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal.h)(0x65CF59FF)
 I (..\Core\Inc\stm32f0xx_hal_conf.h)(0x65CF6100)
@@ -1291,7 +1291,7 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\display\fonts.h)(0x65CF2905)
 I (..\display\ssd1306_interface.h)(0x65BB33EC)
 I (..\Core\Inc\tim.h)(0x65CF5C11)
@@ -1339,5 +1339,5 @@ I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_pwr.h)(0x65CF59FF)
 I (..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_ll_dma.h)(0x65CF59FF)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60354010)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60354014)
-I (..\Core\Inc\typedef.h)(0x65D5CA91)
+I (..\Core\Inc\typedef.h)(0x65DC3886)
 I (..\Core\Inc\i2c.h)(0x65CF5C10)

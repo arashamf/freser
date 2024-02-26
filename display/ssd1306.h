@@ -59,6 +59,7 @@ typedef enum
 
 // Functions -----------------------------------------------------------------//
 void ssd1306_Init();
+void SSD1306_GotoXY(uint16_t , uint16_t );
 void SSD1306_DrawPixel(uint16_t , uint16_t , SSD1306_COLOR_t );
 char SSD1306_PutChar(char , FontDef_t* , SSD1306_COLOR_t );
 char SSD1306_PutString(uint8_t* , FontDef_t* , SSD1306_COLOR_t );
@@ -66,7 +67,6 @@ void SSD1306_UpdateScreen(void);
 void SSD1306_Clear_Screen (void);
 void SSD1306_ToggleInvert(void);
 void SSD1306_Fill(SSD1306_COLOR_t );
-void SSD1306_GotoXY(uint16_t , uint16_t );
 void SSD1306_DrawLine(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
 void SSD1306_DrawRectangle(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
 void SSD1306_DrawFilledRectangle(uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
@@ -74,12 +74,12 @@ void SSD1306_DrawTriangle(uint16_t , uint16_t , uint16_t , uint16_t , uint16_t ,
 void SSD1306_DrawFilledTriangle(uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , uint16_t , SSD1306_COLOR_t );
 void SSD1306_DrawCircle(int16_t , int16_t , int16_t , SSD1306_COLOR_t );
 void SSD1306_DrawFilledCircle(int16_t , int16_t , int16_t , SSD1306_COLOR_t );
-void default_screen_mode1 (angular_data_t * );
-void default_screen_mode2 (milling_data_t * , STATUS_FLAG_t * );
-void setangle_mode_screen (angular_data_t* );
-void return_mode_screen (angular_data_t* );
-void setteeth_mode_screen (milling_data_t* handle);
-void select_rotation_mode_screen (void);
+void default_screen_mode1 (angular_data_t * , FontDef_t *);
+void default_screen_mode2 (milling_data_t * , FontDef_t *);
+void setangle_mode_screen (angular_data_t* , FontDef_t *);
+void return_mode_screen (angular_data_t* , FontDef_t *);
+void setteeth_mode_screen (milling_data_t* handle, FontDef_t *);
+void select_rotation_mode_screen (FontDef_t *);
 
 // Variables ------------------------------------------------------------------//
 extern uint8_t LCD_buff[LCD_BUFFER_SIZE];
